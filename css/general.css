@@ -100,7 +100,6 @@ body {
 
 
 
-
 /*    UPDATE   record_update.php */
 
 #content_update {
@@ -140,9 +139,9 @@ body {
 }
 
 #imagerandom {
-	float: right;
+	display: block;
+	margin: 0 0 200px 200px;
 }
-
 
 
 

@@ -12,7 +12,9 @@ require "connection.php";
 mysqli_set_charset($con, "utf8"); // ##---##---## encodage utf8 assuré, pas de probleme avec les accents
 
 
-// ##---##---## Données reçues du formulaire placées dans des variables, TRIM pour eliminer les espaces blancs avant et apres, STR_REPLACE pour remplacer les apostrophes ' avec '' (sinon, ils ne sont pas bien processés)  
+// ##---##---## Données reçues du formulaire placées dans des variables
+// Sont les memes que dans update.php, sauf que dans update.php il y a aussi $record_id
+// TRIM pour eliminer les espaces blancs avant et apres, STR_REPLACE pour remplacer les apostrophes ' avec '' (sinon, ils ne sont pas bien processés)  
 $title = $_POST['title'];
 $title = trim($title);
 $title = str_replace("'","''",$title);
@@ -22,7 +24,10 @@ $archive = trim($archive);
 $archive = str_replace("'","''",$archive);
 
 $cluster = $_POST['cluster'];
+
 $type = $_POST['type'];
+$annotation = $_POST['annotation'];
+$addition = $_POST['addition'];
 $support = $_POST['support'];
 $tool = $_POST['tool'];
 $status = $_POST['status'];
@@ -31,8 +36,6 @@ $dossier = $_POST['dossier'];
 
 $date = $_POST['date'];
 $date = trim($date);
-
-$datesource = $_POST['source'];
 
 $publie = $_POST['publie'];
 $publie = trim($publie);
@@ -45,8 +48,22 @@ $comment = trim($comment);
 $comment = str_replace("'","''",$comment);
 
 
+// ##### for OPTIONAL VALUES
+// attention to double quotes, otherwise it does not work. In the Sql, there are no quotes corresponding to the optional values, otherwise NULL is not accepted -- because cannot INSERT 'NULL', but only INSERT NULL
+if ($annotation != '') {
+		$optional_annotation = "$annotation";  
+	} else {
+		$optional_annotation = 'NULL';
+}
 
-$sql = "INSERT INTO fiche_texte (titre, cote, ensemble_id, type_id, support_id, instrument_id, statut_id, genre_id, dates_dates, publie, dossier_id, numerise, commentaire) VALUES ('$title', '$archive', '$cluster', '$type', '$support', '$tool', '$status', '$genre', '$date', '$publie', '$dossier', '$digitize', '$comment'); INSERT INTO dates (dates, source) VALUES ('$date', '$datesource')";
+if ($addition != '') {
+		$optional_addition = "$addition";
+	} else {
+		$optional_addition = 'NULL';
+}
+
+
+$sql = "INSERT INTO fiche_texte (titre, cote, ensemble_id, type_id, annotation_id, addition_id, support_id, instrument_id, statut_id, genre_id, dates, publie, dossier_id, numerise, commentaire) VALUES ('$title', '$archive', '$cluster', '$type', $optional_annotation, $optional_addition, '$support', '$tool', '$status', '$genre', '$date', '$publie', '$dossier', '$digitize', '$comment')";
 
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps
@@ -64,7 +81,7 @@ if (mysqli_multi_query($con, $sql)) {
 	*/
 
 
-    echo "<form id='formulaire_cache' action='record_created.php' method='post'>";
+    echo "<form id='formulaire_cache' action='../record_created.php' method='post'>";
 	echo "<input type='hidden' name='record_id' value='";
 	echo $record_id;
 	echo "'>";
