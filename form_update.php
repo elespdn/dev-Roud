@@ -19,7 +19,7 @@
 			</ul>
 		</div>
 
-		<div id="content_update" class="content">
+		<div id="content_update">
 			
 			<table class="table_update"> <!-- td left: old record, td right: update form -->
 				<tr>

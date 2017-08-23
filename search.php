@@ -54,7 +54,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 
 // LEFT JOIN if join includes NULL values
-$visualizeall = "SELECT fiche_texte.id, titre, cote, ensemble.ensemble, type.type, annotation.annotation, addition.addition, support.support, instrument.instrument, statut.statut, genre.genre, dates, dossier.dossier, publie, numerise, commentaire FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id LEFT JOIN annotation ON fiche_texte.annotation_id = annotation.id LEFT JOIN addition ON fiche_texte.addition_id = addition.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id INNER JOIN dossier ON fiche_texte.dossier_id = dossier.id";
+$visualizeall = "SELECT fiche_texte.id, titre, cote, ensemble.ensemble, type.type, annotation.annotation, addition.addition, support.support, numbered.numbered, support_info, instrument.instrument, statut.statut, genre.genre, dates, dossier.dossier, publie, numerise, commentaire FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id LEFT JOIN annotation ON fiche_texte.annotation_id = annotation.id LEFT JOIN addition ON fiche_texte.addition_id = addition.id INNER JOIN support ON fiche_texte.support_id = support.id LEFT JOIN numbered ON fiche_texte.numbered_id = numbered.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id INNER JOIN dossier ON fiche_texte.dossier_id = dossier.id";
 
 if ($query = mysqli_query($con, $visualizeall)) {
 
@@ -63,7 +63,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 	
 	echo"<h3>Total : " .$num_rows. " fiches.</h3>";
 
-	echo "<table id='table_id' class='display'><thead><tr><th>N°</th><th>Titre</th><th>Cote</th><th>Ensemble</th><th>Type de document</th><th>Annoté</th><th>Adjonction(s)</th><th>Support</th><th>Instrument d'&#233;criture</th><th>Statut g&#233;n&#233;tique</th><th>Genre</th><th>Date / Datation</th><th>Dossier</th><th>Version publiée</th><th>Numeriser</th><th>Commentaire</th></tr></thead><tbody>";
+	echo "<table id='table_id' class='display'><thead><tr><th>N°</th><th>Titre</th><th>Cote</th><th>Ensemble</th><th>Type de document</th><th>Annoté</th><th>Adjonction(s)</th><th>Support</th><th>Numeroté</th><th>Info support</th><th>Instrument d'&#233;criture</th><th>Statut g&#233;n&#233;tique</th><th>Genre</th><th>Date / Datation</th><th>Dossier</th><th>Version publiée</th><th>Numeriser</th><th>Commentaire</th></tr></thead><tbody>";
 
 	while ($row=mysqli_fetch_array($query)) {
 
@@ -86,6 +86,10 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo $row['addition'];
 		echo "</td><td>";
 		echo $row['support'];
+		echo "</td><td>";
+		echo $row['numbered'];
+		echo "</td><td>";
+		echo $row['support_info'];
 		echo "</td><td>";
 		echo $row['instrument'];
 		echo "</td><td>";

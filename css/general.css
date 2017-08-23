@@ -67,7 +67,7 @@ body {
 /*######   RECHERCHE   search.php ######*/
 
 #content_search {
-	padding: 30px 50px 50px 50px;
+	margin: 50px;
 }
 
 #home_search {
@@ -86,16 +86,31 @@ body {
 	color: grey;
 }
 
-#table_insert tr:hover {
+.table_insert tr:hover {
 	background-color: #f1f1f1;
 }
 
-#table_insert td {
-	padding: 20px 100px 10px 0;	
+
+.table_insert td {
+	padding: 20px 100px 20px 0;	
 }
 
-#table_insert td:first-child {
+
+legend {
 	font-weight: bold;
+	display: inline;
+}
+
+
+.separation_form {
+	margin: 50px 0 50px 0;
+	color: #FAFAFA;
+}
+
+
+input[type=checkbox]
+{
+  transform: scale(1.2);
 }
 
 
@@ -103,7 +118,7 @@ body {
 /*    UPDATE   record_update.php */
 
 #content_update {
-	padding: 30px 100px 50px 100px;
+	margin: 30px 100px 50px 100px;
 }
 
 #home_update {
@@ -113,7 +128,7 @@ body {
 }
 
 #oldrecord {
-	padding-right: 200px;
+	padding-right: 100px;
 }
 
 

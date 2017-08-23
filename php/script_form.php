@@ -4,23 +4,23 @@
 require "connection.php";
 mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec les accents
 
-echo "<table id='table_insert'>
+echo "		<table class='table_insert'>
 				<tr>
-					<td><span>Titre </span></td> 
+					<td><legend>Titre </legend></td> 
 					<td>
 						<textarea rows='1' cols='50' name='title'></textarea> 
 					</td>
 				</tr>    
 
 				<tr>
-					<td><span>Cote </span></td>
+					<td><legend>Cote </legend></td>
 					<td>
 						<textarea rows='1' cols='50' name='archive'></textarea> 
 					</td>
 				</tr>    
 
 				<tr>
-					<td><span>Ensemble </span></td>
+					<td><legend>Ensemble </legend></td>
 					<td><select name='cluster'>"; 
 						
 
@@ -33,11 +33,20 @@ echo "<option value='". $row['id']."'>".$row['ensemble']. '</option>';
 } 
 
 echo "</select></td>
-				</tr>    
+				</tr> 
+			</table>
 
+
+			<hr class='separation_form'/>
+
+
+			<table class='table_insert'>
 				<tr>
-					<td><span>Type de document </span></td>
-					<td><select name='type'>";
+					<td>
+						<legend>Type de document </legend>
+					</td>
+					<td>
+						<select name='type'>";   					
 					
 $sql = "SELECT * FROM type";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
@@ -46,47 +55,38 @@ while ($row = mysqli_fetch_array($query))
 echo "<option value='". $row['id']."'>".$row['type']. '</option>';
 } 
 
-echo "</select></td>
-				</tr>    
-
-				<tr>
-					<td><span>Annoté </span></td>
-					<td><select name='annotation'>
-						<option> </option>";
+echo "					</select>
+					</td>
+					
+					<td>
+						<legend>Annoté </legend>";
 
 $sql = "SELECT * FROM annotation";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
 while ($row = mysqli_fetch_array($query)) 
 {  
-echo "<option value='". $row['id']."'>".$row['annotation']. '</option>';
+echo "					<input type='checkbox' name='annotation' value='". $row['id']."'>";
 } 
 
 
-echo "</select></td>
-				</tr>    
-
-				<tr>
-					<td><span>Avec adjonction(s) </span></td>
-					<td><select name='addition'>
-						<option> </option>";
+echo "				</td>
+				
+					<td><legend>Avec adjonction(s) </legend>";
 
 $sql = "SELECT * FROM addition";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
 while ($row = mysqli_fetch_array($query)) 
 {  
-echo "<option value='". $row['id']."'>".$row['addition']. '</option>';
+echo "<input type='checkbox' name='addition' value='". $row['id']."'>";
 } 
 
 
-echo "</select></td>
+echo "				</td>
 				</tr>    
 
 				<tr>
-					<td><span>Support </span></td>
-					<td><select name='support'>
-						<option> </option>";
-					
-
+					<td><legend>Support </legend></td>
+					<td><select name='support'>";
 
 $sql = "SELECT * FROM support";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
@@ -95,11 +95,40 @@ while ($row = mysqli_fetch_array($query))
 echo "<option value='". $row['id']."'>".$row['support']. '</option>';
 } 
 
-echo "	</select></td>
-				</tr>    
+echo "					</select>
+					</td>
 
+					<td>
+						<legend>Numeroté </legend>";
+
+$sql = "SELECT * FROM numbered";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+{  
+echo "					<input type='checkbox' name='numbered' value='". $row['id']."'/>";
+} 
+
+
+echo "				</td>
+				</tr> 
 				<tr>
-					<td><span>Instrument d'&#233;criture </span></td>
+					<td><legend>Plus d'info sur le support </legend></td>
+					<td colspan='2'>
+						<textarea rows='3' cols='50' name='support_info'></textarea> 
+					</td>
+					<td>
+						<span class='suggest'>Suggestions: étendue, quantité de feuillets, recto/verso, papier (si particulier), couleur des pages (si particulier), coverture.</span>
+					</td>
+				</tr>
+			</table>
+
+
+			<hr class='separation_form'/>
+
+
+			<table class='table_insert'>
+				<tr>
+					<td><legend>Instrument d'&#233;criture </legend></td>
 					<td><select name='tool'>
 						<option> </option>";
 				
@@ -115,7 +144,7 @@ echo "</select></td>
 				</tr>
 
 				<tr>
-					<td><span>Statut g&#233;n&#233;tique </span></td>
+					<td><legend>Statut g&#233;n&#233;tique </legend></td>
 					<td><select name='status'>
 						<option> </option>";
 					
@@ -133,7 +162,7 @@ echo "	</select></td>
 
 
 				<tr>
-					<td><span>Genre </span></td>
+					<td><legend>Genre </legend></td>
 					<td><select name='genre'>
 						<option> </option>"; 
 				
@@ -152,7 +181,7 @@ echo "</select></td>
 
 
 				<tr>
-					<td><span>Date / Datation </span></td>
+					<td><legend>Date / Datation </legend></td>
 				<!-- Aggiungere una casellina per decidere se è Date o Datation, e constraints per inserire la data nel modo giusto con js! -->
 					<td>
 						<input type='text' id='date' name='date' pattern='^\d\d\d\d(.)*|^\?(.)*'></input>
@@ -164,7 +193,7 @@ echo "</select></td>
 				</tr>    
 
 				<tr>
-					<td><span>Dossier </span></td>
+					<td><legend>Dossier </legend></td>
 					<td><select name='dossier'>
 						<option> </option>";
 					
@@ -182,14 +211,14 @@ echo "</select></td>
 
 
 				<tr>
-					<td><span>Version publiée </span></td> 
+					<td><legend>Version publiée </legend></td> 
 					<td>
 						<textarea rows='1' cols='50' name='publie'></textarea> 
 					</td>
 				</tr>    
 
 				<tr>
-					<td><span>Numeriser </span></td>
+					<td><legend>Numeriser </legend></td>
 				<!-- numerise, ajouter numero id nelle opzioni dell html -->
 					<td><select name='digitize'>
 						<option value='oui'>Oui</option>
@@ -200,7 +229,7 @@ echo "</select></td>
 
 
 				<tr>
-					<td><span>Commentaire </span></td> 
+					<td><legend>Commentaire </legend></td> 
 					<td>
 						<textarea rows='5' cols='50' name='comment'></textarea> 
 					</td>
