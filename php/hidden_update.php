@@ -26,9 +26,17 @@ $archive = $_POST['archive'];
 $archive = trim($archive);
 $archive = str_replace("'","''",$archive);
 
+$new_archive = $_POST['new_archive'];
+$new_archive = trim($new_archive);
+$new_archive = str_replace("'","''",$new_archive);
+
 $support_info = $_POST['support_info'];
 $support_info = trim($support_info);
 $support_info = str_replace("'","''",$support_info);
+
+$other_tool = $_POST['other_tool'];
+$other_tool = trim($other_tool);
+$other_tool = str_replace("'", "''", $other_tool);
 
 $cluster = $_POST['cluster'];
 $type = $_POST['type'];
@@ -37,6 +45,7 @@ $addition = $_POST['addition'];
 $support = $_POST['support'];
 $numbered = $_POST['numbered'];
 $tool = $_POST['tool'];
+$color = $_POST['color'];
 $status = $_POST['status'];
 $genre = $_POST['genre'];
 $dossier = $_POST['dossier'];
@@ -78,7 +87,7 @@ if ($numbered != '') {
 
 
 
-$sql = "UPDATE fiche_texte SET titre = '$title', cote='$archive', ensemble_id='$cluster', type_id='$type', annotation_id=$optional_annotation, addition_id=$optional_addition, support_id='$support', numbered_id=$optional_numbered, support_info='$support_info', instrument_id='$tool', statut_id='$status', genre_id='$genre', dates='$date', dossier_id='$dossier', publie='$publie', numerise='$digitize', commentaire='$comment' WHERE id='$record_id'";
+$sql = "UPDATE fiche_texte SET titre = '$title', cote='$archive', nouvelle_cote='$new_archive', ensemble_id='$cluster', type_id='$type', annotation_id=$optional_annotation, addition_id=$optional_addition, support_id='$support', numbered_id=$optional_numbered, support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool' statut_id='$status', genre_id='$genre', dates='$date', dossier_id='$dossier', publie='$publie', numerise='$digitize', commentaire='$comment' WHERE id='$record_id'";
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps
 if (mysqli_multi_query($con, $sql)) {
@@ -107,9 +116,6 @@ if (mysqli_multi_query($con, $sql)) {
  
 	
 
-
-
-mysqli_close($con); 
 
 ?>  
 

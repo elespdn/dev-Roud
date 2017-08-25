@@ -40,12 +40,12 @@ require "php/script_visualize.php";
 					</td> 
 
 
-					<td>  <!-- td right: update form -->
+					<td id="newrecord">  <!-- td right: update form -->
 						<div>
 
 							<form action='php/hidden_update.php' method='POST'> 
 			
-								<h3>Modifier fiche</h3>
+								<h1 class="page_title">Modifier la fiche</h1>
 
 
 <?php
@@ -58,7 +58,7 @@ echo "
 									<h3>Modifier la fiche n° $record_id ?</h3>
 									<input type='submit' value='Modifier'/> 
 								<div/>";
-mysqli_close($con); 
+
 ?>
 
 							</form>

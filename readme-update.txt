@@ -107,7 +107,28 @@ FOLDER ORGANIZATION
 			--> form_insert.php
 			--> form_update.php
 		
-
+COLUMN NUMBER in visualization search.php (don't correspond to fiche_texte)
+	0	id
+	1	title
+	2	cote
+	3	nouvelle cote
+	4	ensemble edit	
+	5	type de doc	
+	6	annote
+	7	avec adjonctions
+	8	support
+	9	numeroté
+	10	info support
+	11	instrument
+	12	autres instrument	
+	13	date
+	14	genre
+	15	dossier
+	16	etape
+	17	version publiée
+	18	numeriser
+	19	commentaire
+	
 
 
 ## _________________ Content UPDATE 22 Aout 2017 ________________ ##
@@ -141,6 +162,38 @@ Add table (à changer dans l'interface)
 Add column in fiche_texte (à changer dans l'interface)
 	Support_info: VARCHAR [optionnel]
 	DONE (all files)
+	
+
+
+## ________________ Content UPDATE 24 Aout 2017 _________________ ##
+
+Add column in fiche_texte (à changer dans l'interface)
+	Nouvelle_cote: VARCHAR [optionnel]
+	DONE (all files)
+	
+	
+## _________________ Content UPDATE 25 Aout 2017 ___________________ ##
+
+Change values (rien à changer dans l'interface)
+	Etapes du processus d'écriture: note, plan, brouillon, mise au net, manuscrit définitif, correction sur épreuves, original corrigé
+	DONE (in the db)
+	
+Change values (rien à changer dans l'interface)
+	Instrument d'écriture: crayon, stylo feutre, stylo à bille, machine à écrire
+	DONE (in the db)
+	
+Add table (à changer dans l'interface)
+	Couleur: noir, rouge, bleu, rose, violet
+	DONE (all files)
+	
+Add table (à changer dans l'interface)
+	Autres instruments d'écriture (varchar 300)
+	DONE (all files)
+	
+
+
+	
+
 
 
 
@@ -158,6 +211,12 @@ Add column in fiche_texte (à changer dans l'interface)
 - Passare in rassegna tutti i campi e vedere quali sono opzionali (null in fiche_texte)
 - Stabilire parole da usare nel Commentaire (es. adjonctions)
 
+
+## _____________________ TO DO ___________________ ##
+
+- check presenza/assenza di freccettine che indicano ordine delle colonne (vd. background-image: url("DataTables-1.10.15/images/sort_both.png"); in CSS, che non c'è! non abbiamo images dentro css/DataTable .. !
+
+- aggiungere field nouvelle cote
 
 
 

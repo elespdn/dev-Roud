@@ -18,7 +18,7 @@
 
 		<div class="content">
 
-			<h3>Remplir fiche</h3>
+			<h1 class="page_title">Remplir fiche</h1>
 
 			<form action='php/hidden_insert.php' method='POST'> 
 

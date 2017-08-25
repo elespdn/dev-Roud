@@ -20,7 +20,14 @@ echo "		<table class='table_insert'>
 				</tr>    
 
 				<tr>
-					<td><legend>Ensemble </legend></td>
+					<td><legend>Nouvelle cote </legend></td>
+					<td>
+						<textarea rows='1' cols='50' name='new_archive'></textarea> 
+					</td>
+				</tr>    
+
+				<tr>
+					<td><legend>Ensemble éditorial </legend></td>
 					<td><select name='cluster'>"; 
 						
 
@@ -39,6 +46,7 @@ echo "</select></td>
 
 			<hr class='separation_form'/>
 
+			<h2>Déscription materielle</h2>
 
 			<table class='table_insert'>
 				<tr>
@@ -77,7 +85,7 @@ $sql = "SELECT * FROM addition";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
 while ($row = mysqli_fetch_array($query)) 
 {  
-echo "<input type='checkbox' name='addition' value='". $row['id']."'>";
+echo "					<input type='checkbox' name='addition' value='". $row['id']."'>";
 } 
 
 
@@ -117,20 +125,14 @@ echo "				</td>
 						<textarea rows='3' cols='50' name='support_info'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Suggestions: étendue, quantité de feuillets, recto/verso, papier (si particulier), couleur des pages (si particulier), coverture.</span>
+						<span class='suggest'>Suggestions: étendue, quantité de feuillets, recto/verso, taille du cahier, papier (si particulier), couleur des pages (si particulier), coverture.</span>
 					</td>
 				</tr>
-			</table>
 
-
-			<hr class='separation_form'/>
-
-
-			<table class='table_insert'>
 				<tr>
 					<td><legend>Instrument d'&#233;criture </legend></td>
-					<td><select name='tool'>
-						<option> </option>";
+					<td>
+						<select name='tool'>";
 				
 
 $sql = "SELECT * FROM instrument";
@@ -140,45 +142,43 @@ while ($row = mysqli_fetch_array($query))
 echo "<option value='". $row['id']."'>".$row['instrument']. '</option>';
 } 
 
-echo "</select></td>
-				</tr>
-
-				<tr>
-					<td><legend>Statut g&#233;n&#233;tique </legend></td>
-					<td><select name='status'>
-						<option> </option>";
+echo "					</select>
+					&emsp;&emsp;&emsp;&emsp;&emsp;
 					
-
-$sql = "SELECT * FROM statut";
-$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
-while ($row = mysqli_fetch_array($query)) 
-{  
-echo "<option value='". $row['id']."'>".$row['statut']. '</option>';
-} 
-
-
-echo "	</select></td>
-				</tr>
-
-
-				<tr>
-					<td><legend>Genre </legend></td>
-					<td><select name='genre'>
-						<option> </option>"; 
+						<select name='color'>";
 				
 
-
-$sql = "SELECT * FROM genre";
+$sql = "SELECT * FROM color";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
 while ($row = mysqli_fetch_array($query)) 
 {  
-echo "<option value='". $row['id']."'>".$row['genre']. '</option>';
+echo "<option value='". $row['id']."'>".$row['color']. '</option>';
 } 
 
-
-echo "</select></td>
+echo "					</select>
+					</td>
 				</tr>
 
+				<tr>
+					<td><legend>Autre(s) instrument(s) d'écriture </legend></td>
+					<td colspan='2'>
+						<textarea rows='3' cols='50' name='other_tool'></textarea> 
+					</td>
+					<td>
+						<span class='suggest'>Suggestions : spécifier si l'instrument a été utilisé pour des annotations ou adjonctions ; utiliser les mêmes termes que dans l'onglet en dessus (crayon, machine à écrire, etc.).</span>
+					</td>
+				</tr>
+
+
+			</table>
+
+
+			<hr class='separation_form'/>
+
+			<h2>Identification du texte</h2>
+
+
+			<table class='table_insert'>
 
 				<tr>
 					<td><legend>Date / Datation </legend></td>
@@ -191,6 +191,23 @@ echo "</select></td>
   					
   					</td>
 				</tr>    
+
+				<tr>
+					<td><legend>Genre </legend></td>
+					<td><select name='genre'>
+						<option> </option>"; 
+
+$sql = "SELECT * FROM genre";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+{  
+echo "<option value='". $row['id']."'>".$row['genre']. '</option>';
+} 
+
+
+echo "</select></td>
+				</tr>
+				
 
 				<tr>
 					<td><legend>Dossier </legend></td>
@@ -209,14 +226,38 @@ echo "</select></td>
 				</tr>
 
 
+				<tr>
+					<td><legend>Etapes du processus d'écriture </legend></td>
+					<td><select name='status'>";
+					
+
+$sql = "SELECT * FROM statut";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+{  
+echo "<option value='". $row['id']."'>".$row['statut']. '</option>';
+} 
+
+
+echo "	</select></td>
+				</tr>
 
 				<tr>
 					<td><legend>Version publiée </legend></td> 
 					<td>
 						<textarea rows='1' cols='50' name='publie'></textarea> 
 					</td>
-				</tr>    
+				</tr>   
 
+			</table>
+
+
+			<hr class='separation_form'/>
+
+			<h2>Numerisation et site web</h2>
+
+
+			<table class='table_insert'>
 				<tr>
 					<td><legend>Numeriser </legend></td>
 				<!-- numerise, ajouter numero id nelle opzioni dell html -->
@@ -226,8 +267,13 @@ echo "</select></td>
 						<option value='peut-etre'>Eventuellement</option>
 					</select></td>
 				<tr/>
+			</table>
 
 
+			<hr class='separation_form'/>
+			<h2>Notes</h2>
+
+			<table class='table_insert'>
 				<tr>
 					<td><legend>Commentaire </legend></td> 
 					<td>
