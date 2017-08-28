@@ -35,6 +35,10 @@ $other_tool = $_POST['other_tool'];
 $other_tool = trim($other_tool);
 $other_tool = str_replace("'", "''", $other_tool);
 
+$numerise_info = $_POST['numerise_info'];
+$numerise_info = trim($numerise_info);
+$numerise_info = str_replace("'", "''", $numerise_info);
+
 $cluster = $_POST['cluster'];
 $type = $_POST['type'];
 $annotation = $_POST['annotation'];
@@ -83,7 +87,7 @@ if ($numbered != '') {
 
 
 
-$sql = "INSERT INTO fiche_texte (titre, cote, nouvelle_cote, ensemble_id, type_id, annotation_id, addition_id, support_id, numbered_id, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, publie, dossier_id, numerise, commentaire) VALUES ('$title', '$archive', '$new_archive', '$cluster', '$type', $optional_annotation, $optional_addition, '$support', $optional_numbered, '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$publie', '$dossier', '$digitize', '$comment')";
+$sql = "INSERT INTO fiche_texte (titre, cote, nouvelle_cote, ensemble_id, type_id, annotation_id, addition_id, support_id, numbered_id, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, publie, dossier_id, numerise, numerise_info, commentaire) VALUES ('$title', '$archive', '$new_archive', '$cluster', '$type', $optional_annotation, $optional_addition, '$support', $optional_numbered, '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$publie', '$dossier', '$digitize', '$numerise_info', '$comment')";
 
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps

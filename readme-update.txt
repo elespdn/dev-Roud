@@ -190,8 +190,14 @@ Add table (à changer dans l'interface)
 	Autres instruments d'écriture (varchar 300)
 	DONE (all files)
 	
+	
+## _________________ Content UPDATE 28 Aout 2017 ___________________ ##
 
-
+Add column 	
+	numerise_info (varchar)
+	Pas visualizé dans la Recherche!
+	
+	
 	
 
 

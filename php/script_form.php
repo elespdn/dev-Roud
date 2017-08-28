@@ -46,7 +46,7 @@ echo "</select></td>
 
 			<hr class='separation_form'/>
 
-			<h2>Déscription materielle</h2>
+			<h2>Description materielle</h2>
 
 			<table class='table_insert'>
 				<tr>
@@ -125,7 +125,7 @@ echo "				</td>
 						<textarea rows='3' cols='50' name='support_info'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Suggestions: étendue, quantité de feuillets, recto/verso, taille du cahier, papier (si particulier), couleur des pages (si particulier), coverture.</span>
+						<span class='suggest'>Suggestions: étendue, quantité de feuillets, recto/verso, taille du cahier, papier (si particulier), couleur des pages (si particulière), couverture.</span>
 					</td>
 				</tr>
 
@@ -165,7 +165,7 @@ echo "					</select>
 						<textarea rows='3' cols='50' name='other_tool'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Suggestions : spécifier si l'instrument a été utilisé pour des annotations ou adjonctions ; utiliser les mêmes termes que dans l'onglet en dessus (crayon, machine à écrire, etc.).</span>
+						<span class='suggest'>Suggestions : spécifier si l'instrument a été utilisé pour des annotations ou adjonctions ; utiliser les mêmes termes que dans l'onglet au-dessus (crayon, machine à écrire, etc.).</span>
 					</td>
 				</tr>
 
@@ -185,7 +185,8 @@ echo "					</select>
 				<!-- Aggiungere una casellina per decidere se è Date o Datation, e constraints per inserire la data nel modo giusto con js! -->
 					<td>
 						<input type='text' id='date' name='date' pattern='^\d\d\d\d(.)*|^\?(.)*'></input>
-						<br/>
+					</td>
+					<td>
 						<span class='suggest'>S'il s'agit d'une datation, ajouter un ast&#233;risque apr&#232;s une espace, par exemple '1956 *', '1945-06 *'.</span>
 						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY', '?'. Tous les mots ('avant', 'apr&#232;s', 'vers', etc.) vont apr&#232;s la date, par exemple '1965-04 avant'. Pour les cas particuliers, considerer le commentaire.</span>
   					
@@ -194,8 +195,7 @@ echo "					</select>
 
 				<tr>
 					<td><legend>Genre </legend></td>
-					<td><select name='genre'>
-						<option> </option>"; 
+					<td><select name='genre'>"; 
 
 $sql = "SELECT * FROM genre";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
@@ -245,7 +245,7 @@ echo "	</select></td>
 				<tr>
 					<td><legend>Version publiée </legend></td> 
 					<td>
-						<textarea rows='1' cols='50' name='publie'></textarea> 
+						<textarea rows='3' cols='30' name='publie'></textarea> 
 					</td>
 				</tr>   
 
@@ -260,12 +260,20 @@ echo "	</select></td>
 			<table class='table_insert'>
 				<tr>
 					<td><legend>Numeriser </legend></td>
-				<!-- numerise, ajouter numero id nelle opzioni dell html -->
 					<td><select name='digitize'>
-						<option value='oui'>Oui</option>
-						<option value='non'>Non</option>
-						<option value='peut-etre'>Eventuellement</option>
-					</select></td>
+							<option value='oui'>Oui</option>
+							<option value='non'>Non</option>
+							<option value='eventuellement'>Eventuellement</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>		
+						<legend>Notes pour le site </legend>
+					</td>
+					<td>
+						<textarea rows='4' cols='50' name='numerise_info'></textarea>
+					</td>
 				<tr/>
 			</table>
 
