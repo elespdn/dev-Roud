@@ -39,7 +39,12 @@ $numerise_info = $_POST['numerise_info'];
 $numerise_info = trim($numerise_info);
 $numerise_info = str_replace("'", "''", $numerise_info);
 
+$dossierplus = $_POST['dossierplus'];
+$dossierplus = trim($dossierplus);
+$dossierplus = str_replace("'", "''", $dossierplus);
+
 $cluster = $_POST['cluster'];
+$photocopy = $_POST['photocopy'];
 $type = $_POST['type'];
 $annotation = $_POST['annotation'];
 $addition = $_POST['addition'];
@@ -66,28 +71,21 @@ $comment = str_replace("'","''",$comment);
 
 
 // ##### for OPTIONAL VALUES
-// attention to double quotes, otherwise it does not work. In the Sql, there are no quotes corresponding to the optional values, otherwise NULL is not accepted -- because cannot INSERT 'NULL', but only INSERT NULL
+/* NOT NEEDED ANYMORE because deleted the table addition, annotation and numbered (and changed the fields in addition_id > addition, annotation_id > annotation, numbered_id > numbered)
+
+Attention to double quotes, otherwise it does not work. In the Sql, there are no quotes corresponding to the optional values, otherwise NULL is not accepted -- because cannot INSERT 'NULL', but only INSERT NULL
+
 if ($annotation != '') {
 		$optional_annotation = "$annotation";  
 	} else {
 		$optional_annotation = 'NULL';
 }
 
-if ($addition != '') {
-		$optional_addition = "$addition";
-	} else {
-		$optional_addition = 'NULL';
-}
-
-if ($numbered != '') {
-		$optional_numbered = "$numbered";
-	} else {
-		$optional_numbered = 'NULL';
-}
+same for addition and numbered
+*/
 
 
-
-$sql = "INSERT INTO fiche_texte (titre, cote, nouvelle_cote, ensemble_id, type_id, annotation_id, addition_id, support_id, numbered_id, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, publie, dossier_id, numerise, numerise_info, commentaire) VALUES ('$title', '$archive', '$new_archive', '$cluster', '$type', $optional_annotation, $optional_addition, '$support', $optional_numbered, '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$publie', '$dossier', '$digitize', '$numerise_info', '$comment')";
+$sql = "INSERT INTO fiche_texte (titre, cote, nouvelle_cote, ensemble_id, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, publie, dossier_id, dossierplus, numerise, numerise_info, commentaire, photocopy) VALUES ('$title', '$archive', '$new_archive', '$cluster', '$type', '$annotation', '$addition', '$support', '$numbered', '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$publie', '$dossier', '$dossierplus', '$digitize', '$numerise_info', '$comment', '$photocopy')";
 
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps

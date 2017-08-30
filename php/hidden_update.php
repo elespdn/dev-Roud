@@ -42,7 +42,12 @@ $numerise_info = $_POST['numerise_info'];
 $numerise_info = trim($numerise_info);
 $numerise_info = str_replace("'", "''", $numerise_info);
 
+$dossierplus = $_POST['dossierplus'];
+$dossierplus = trim($dossierplus);
+$dossierplus = str_replace("'", "''", $dossierplus);
+
 $cluster = $_POST['cluster'];
+$photocopy = $_POST['photocopy'];
 $type = $_POST['type'];
 $annotation = $_POST['annotation'];
 $addition = $_POST['addition'];
@@ -69,29 +74,22 @@ $comment = str_replace("'","''",$comment);
 
 
 // ##### for OPTIONAL VALUES
-// attention to double quotes, otherwise it does not work. In the Sql, there are no quotes corresponding to the optional values, otherwise NULL is not accepted -- because cannot INSERT 'NULL', but only INSERT NULL
+/* NOT NEEDED ANYMORE because deleted the table addition, annotation and numbered (and changed the fields in addition_id > addition, annotation_id > annotation, numbered_id > numbered)
+
+Attention to double quotes, otherwise it does not work. In the Sql, there are no quotes corresponding to the optional values, otherwise NULL is not accepted -- because cannot INSERT 'NULL', but only INSERT NULL
+
 if ($annotation != '') {
 		$optional_annotation = "$annotation";  
 	} else {
 		$optional_annotation = 'NULL';
 }
 
-if ($addition != '') {
-		$optional_addition = "$addition";
-	} else {
-		$optional_addition = 'NULL';
-}
-
-
-if ($numbered != '') {
-		$optional_numbered = "$numbered";
-	} else {
-		$optional_numbered = 'NULL';
-}
+same for addition and numbered
+*/
 
 
 
-$sql = "UPDATE fiche_texte SET titre = '$title', cote='$archive', nouvelle_cote='$new_archive', ensemble_id='$cluster', type_id='$type', annotation_id=$optional_annotation, addition_id=$optional_addition, support_id='$support', numbered_id=$optional_numbered, support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool', statut_id='$status', genre_id='$genre', dates='$date', dossier_id='$dossier', publie='$publie', numerise='$digitize', numerise_info='$numerise_info', commentaire='$comment' WHERE id='$record_id'";
+$sql = "UPDATE fiche_texte SET titre = '$title', cote='$archive', nouvelle_cote='$new_archive', ensemble_id='$cluster', type_id='$type', annotation='$annotation', addition='$addition', support_id='$support', numbered='$numbered', support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool', statut_id='$status', genre_id='$genre', dates='$date', dossier_id='$dossier', dossierplus='$dossierplus', publie='$publie', numerise='$digitize', numerise_info='$numerise_info', commentaire='$comment', photocopy='$photocopy' WHERE id='$record_id'";
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps
 if (mysqli_multi_query($con, $sql)) {

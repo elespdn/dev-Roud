@@ -195,8 +195,19 @@ Add table (à changer dans l'interface)
 
 Add column 	
 	numerise_info (varchar)
-	Pas visualizé dans la Recherche!
+	DONE (all files)
+	Pas visualizé dans la Recherche
 	
+	
+## ________________ Content UPDATE 30 Aout 2017 ____________________ ##
+
+Delete tables addition, annotation, numbered
+	same info stored directly in fiche_texte
+	DONE (all files)
+	
+Add column photocopy in fiche_texte
+	DONE (all files)
+	Pas visualizé dans la Recherche
 	
 	
 
@@ -208,23 +219,27 @@ Add column
 	
 ## _________________ FOR USERS ________________ ##
 
-- Use a browser with char encoding Unicode.
+Guide pour l'utilisateur:
+	- utiliser un navigateur avec 'char encoding' Unicode.
+	- pas d'italique, de gras, de sousligné. Utiliser plutot des guillemets, pour les titres, et des guillemets en chevron, pour les citations. Dans les citations, signaler les retours à la ligne avec '|'.  ?? check ??
+	- dans un meme champ texte, separer les elements par une virgule ou point-virgule. Dans le cas d'un texte dans un recueil : 'Texte', dans 'Recueil'.
+	- mots et expressions frequent-e-s à utiliser: adjonction, vd. (à la place de 'aller voire' et simil), f. ou ff. (à la place de feuillet ou feuillets), recto/verso, texte inédit, transcrit, 
+	- eliminer une fiche est possible
+	
+
 - It is not responsive.
-- Valori obbligatori?
-- Ordine.
-- Titre bold nella tabella search??
-- Oui/non o intitutlé plus parlant? (importante anche nella ricerca)
-- Passare in rassegna tutti i campi e vedere quali sono opzionali (null in fiche_texte)
+- Oui/non o intitulé plus parlant? (importante anche nella ricerca)
+- Passare in rassegna tutti i campi e vedere quali sono opzionali (null in fiche_texte e leftjoin in sql)
 - Stabilire parole da usare nel Commentaire (es. adjonctions)
+- Version publié: prendere direttamente da Bibliography ?
+- Dossier: tenere quelli che ci sono e aumentarli pian piano se serve.
+- Un solo ensemble editorial
 
 
 ## _____________________ TO DO ___________________ ##
 
-- check presenza/assenza di freccettine che indicano ordine delle colonne (vd. background-image: url("DataTables-1.10.15/images/sort_both.png"); in CSS, che non c'è! non abbiamo images dentro css/DataTable .. !
-
-- aggiungere field nouvelle cote
-
-
+- add first 10 items Julien and Alessio
+- bibliography ? For Dossier and for Version Publié
 
 
 

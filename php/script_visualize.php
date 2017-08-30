@@ -8,7 +8,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 $record_id = $_POST['record_id'];
 
 
-$visualize = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, type.type, annotation.annotation, addition.addition, support.support, numbered.numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, publie, numerise, numerise_info, commentaire FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id LEFT JOIN annotation ON fiche_texte.annotation_id = annotation.id LEFT JOIN addition ON fiche_texte.addition_id = addition.id INNER JOIN support ON fiche_texte.support_id = support.id LEFT JOIN numbered ON fiche_texte.numbered_id = numbered.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id WHERE fiche_texte.id = '$record_id' ";
+$visualize = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, photocopy, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, numerise_info, commentaire FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id WHERE fiche_texte.id = '$record_id' ";
 
 if ($fiche = mysqli_query($con, $visualize)) {
 	while ($row=mysqli_fetch_array($fiche)) {
@@ -24,6 +24,8 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['nouvelle_cote'];
 		echo "</td></tr><tr><td>Ensemble</td><td>";
 		echo $row['ensemble'];
+		echo "</td></tr><tr><td>Photocopie</td><td>";
+		echo $row['photocopy'];
 		echo "</td></tr><tr><td>Type de document</td><td>";
 		echo $row['type'];
 		echo "</td></tr><tr><td>Annoté</td><td>";
@@ -38,18 +40,22 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['support_info'];
 		echo "</td></tr><tr><td>Instrument d'&#233;criture</td><td>";
 		echo $row['instrument'];
-		echo "&nbsp;";
+		echo ",&nbsp;";
 		echo $row['color'];
 		echo "</td></tr><tr><td>Autre(s) instrument(s)</td><td>";
 		echo $row['other_tool'];
-		echo "</td></tr><tr><td>Etape</td><td>";
-		echo $row['statut'];
-		echo "</td></tr><tr><td>Genre</td><td>";
-		echo $row['genre'];
 		echo "</td></tr><tr><td>Date / Datation</td><td>";
 		echo $row['dates'];
+		echo "</td></tr><tr><td>Genre</td><td>";
+		echo $row['genre'];
 		echo "</td></tr><tr><td>Dossier</td><td>";
 		echo $row['dossier'];
+		if ($row['dossierplus'] != '') {
+			echo ",&nbsp;";
+			echo $row['dossierplus'];
+		} 		
+		echo "</td></tr><tr><td>Etape</td><td>";
+		echo $row['statut'];
 		echo "</td></tr><tr><td>Version publiée</td><td>";
 		echo $row['publie'];
 		echo "</td></tr><tr><td>Numeriser</td><td>";

@@ -30,20 +30,35 @@
 
 			    // CHECK ALL NUMEBERS!!!
 			    // variables for better handing the buttons for show/hide columns
+			    var col_titre = table.column(1);
 			    var col_cote = table.column(2);
-			    var col_ensemble = table.column(3);
-			    var col_type = table.column(4);
-			    var col_annote = table.column(5);
-			    var col_adjonction = table.column(6);
-			    var col_support = table.column(7);
-			    var col_numerote = table.column(8);
-			    var col_infosupport = table.column(9);
-			    var col_numeriser = table.column(16);
-			    var col_genre = table.column(12);
+			    var col_nouvellecote = table.column(3);
+			    var col_ensemble = table.column(4);
+			    var col_type = table.column(5);
+			    var col_annote = table.column(6);
+			    var col_adjonction = table.column(7);
+			    var col_support = table.column(8);
+			    var col_numerote = table.column(9);
+			    var col_infosupport = table.column(10);
+			    var col_instrument = table.column(11);
+			    var col_autreinstrument = table.column(12);
+			    var col_date = table.column(13);
+			    var col_genre = table.column(14);
+			    var col_dossier = table.column(15);
+			    var col_etape = table.column(16);
+			    var col_publie = table.column(17);
+			    var col_numeriser = table.column(18);
+			    var col_comm = table.column(19);
 
 			    // scripts for show/hide each column
+			    $("#check_titre").click(function(){
+				    col_titre.visible(!col_titre.visible());
+				});
 			    $("#check_cote").click(function(){
 				    col_cote.visible(!col_cote.visible());
+				});
+				$("#check_nouvellecote").click(function(){
+				    col_nouvellecote.visible(!col_nouvellecote.visible());
 				});
 				$("#check_ensemble").click(function(){
 				    col_ensemble.visible(!col_ensemble.visible());
@@ -66,8 +81,23 @@
 				$("#check_infosupport").click(function(){
 				    col_infosupport.visible(!col_infosupport.visible());
 				});
+				$("#check_instrument").click(function(){
+				    col_instrument.visible(!col_instrument.visible());
+				});
+				$("#check_autreinstrument").click(function(){
+				    col_autreinstrument.visible(!col_autreinstrument.visible());
+				});
+				$("#check_date").click(function(){
+				    col_date.visible(!col_date.visible());
+				});
 				$("#check_genre").click(function(){
 				    col_genre.visible(!col_genre.visible());
+				});
+				$("#check_dossier").click(function(){
+				    col_dossier.visible(!col_dossier.visible());
+				});
+				$("#check_etape").click(function(){
+				    col_etape.visible(!col_etape.visible());
 				});
 				$("#check_publie").click(function(){
 				    col_publie.visible(!col_publie.visible());
@@ -75,9 +105,31 @@
 				$("#check_numeriser").click(function(){
 				    col_numeriser.visible(!col_numeriser.visible());
 				});
+				$("#check_comm").click(function(){
+				    col_comm.visible(!col_comm.visible());
+				});
 
 
 			} );
+
+
+			function checkAll(ele) {
+			     var checkboxes = document.getElementsByTagName('input');
+			     if (ele.checked) {
+			         for (var i = 0; i < checkboxes.length; i++) {
+			             if (checkboxes[i].type == 'checkbox') {
+			                 checkboxes[i].checked = true;
+			             }
+			         }
+			     } else {
+			         for (var i = 0; i < checkboxes.length; i++) {
+			             console.log(i)
+			             if (checkboxes[i].type == 'checkbox') {
+			                 checkboxes[i].checked = false;
+			             }
+			         }
+			     }
+			 }
 
 			
 		</script>
@@ -110,7 +162,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 
 // LEFT JOIN if join includes NULL values
-$visualizeall = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, type.type, annotation.annotation, addition.addition, support.support, numbered.numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, publie, numerise, commentaire FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id LEFT JOIN annotation ON fiche_texte.annotation_id = annotation.id LEFT JOIN addition ON fiche_texte.addition_id = addition.id INNER JOIN support ON fiche_texte.support_id = support.id LEFT JOIN numbered ON fiche_texte.numbered_id = numbered.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id";
+$visualizeall = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, commentaire FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id";
 
 if ($query = mysqli_query($con, $visualizeall)) {
 
@@ -151,7 +203,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		$row_id = $row['id'];
 
 		echo "<tr><td>";
-		echo "<form action='record.php' method='post'><input type='submit' name='record_id' value='$row_id'/></form>"; 
+		echo "<form action='record.php' method='post'><input id='search_id' type='submit' name='record_id' value='$row_id'/></form>"; 
 		// echo $row_id;
 		echo "</td><td>";
 		echo $row['titre'];
@@ -175,7 +227,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo $row['support_info'];
 		echo "</td><td>";
 		echo $row['instrument'];
-		echo "&nbsp;";
+		echo ",&nbsp;";
 		echo $row['color'];
 		echo "</td><td>";
 		echo $row['other_tool'];
@@ -185,6 +237,10 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo $row['genre'];
 		echo "</td><td>";
 		echo $row['dossier'];
+		if ($row['dossierplus'] != '') {
+			echo ",&nbsp;";
+			echo $row['dossierplus'];
+		} 	
 		echo "</td><td>";
 		echo $row['statut'];
 		echo "</td><td>";		
@@ -210,20 +266,29 @@ mysqli_close($con);
 
 			<div id="col_toggle"> <!-- show / hide columns -->
 				<h3>Afficher / cacher une colonne</h3>
-				<input type="checkbox" id="check_cote" name="check_cote"> Cote</input>
-				<input type="checkbox" id="check_ensemble" name="check_ensemble"> Ensemble</input>
-				<br/><br/>
-				<input type="checkbox" id="check_type" name="check_type"> Type de document</input>
-				<input type="checkbox" id="check_annote" name="check_annote"> Annoté</input>
-				<input type="checkbox" id="check_adjonction" name="check_adjonction"> Avec adjonctions</input>
-				<input type="checkbox" id="check_support" name="check_support"> Support</input>
-				<input type="checkbox" id="check_numerote" name="check_numerote"> Numéroté</input>
-				<input type="checkbox" id="check_infosupport" name="check_infosupport"> Info support</input>
-				<br/><br/>
-				<input type="checkbox" id="check_genre" name="check_genre"> Genre</input>
-				<input type="checkbox" id="check_publie" name="check_publie"> Version publiée</input>
-				<input type="checkbox" id="check_numeriser" name="check_numeriser"> Numeriser</input>
-				<p>Select / Deselect all</p>
+				<div id="col_toggle_intern">
+					<input type="checkbox" id="check_titre" name="check_titre" checked> Titre</input>
+					<input type="checkbox" id="check_cote" name="check_cote"> Cote</input>
+					<input type="checkbox" id="check_nouvellecote" name="check_nouvellecote"> Nouvelle cote</input>
+					<input type="checkbox" id="check_ensemble" name="check_ensemble" checked> Ensemble editorial</input>
+					<br/><br/>
+					<input type="checkbox" id="check_type" name="check_type" checked> Type de document</input>
+					<input type="checkbox" id="check_annote" name="check_annote"> Annoté</input>
+					<input type="checkbox" id="check_adjonction" name="check_adjonction"> Avec adjonctions</input>
+					<input type="checkbox" id="check_support" name="check_support" checked> Support</input>
+					<input type="checkbox" id="check_numerote" name="check_numerote"> Numéroté</input>
+					<input type="checkbox" id="check_infosupport" name="check_infosupport"> Info support</input>
+					<input type="checkbox" id="check_instrument" name="check_instrument" checked> Instrument</input>
+					<input type="checkbox" id="check_autreinstrument" name="check_autreinstrument"> Autre(s) instrument(s)</input>
+					<br/><br/>
+					<input type="checkbox" id="check_date" name="check_date" checked> Date</input>
+					<input type="checkbox" id="check_genre" name="check_genre"> Genre</input>
+					<input type="checkbox" id="check_dossier" name="check_dossier" checked> Dossier</input>
+					<input type="checkbox" id="check_publie" name="check_publie"> Version publiée</input>
+					<input type="checkbox" id="check_etape" name="check_etape" checked> Etape</input>
+					<input type="checkbox" id="check_numeriser" name="check_numeriser"> Numeriser</input>
+					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
+				</div>
 			</div>
 
 		</div> <!-- fin content -->

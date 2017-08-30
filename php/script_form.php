@@ -49,6 +49,14 @@ echo "</select></td>
 			<h2>Description materielle</h2>
 
 			<table class='table_insert'>
+				
+				<tr>
+					<td>
+						<legend>Photocopie </legend>
+						<input type='checkbox' name='photocopy' value='oui'>
+					</td>
+				</tr>
+
 				<tr>
 					<td>
 						<legend>Type de document </legend>
@@ -67,30 +75,17 @@ echo "					</select>
 					</td>
 					
 					<td>
-						<legend>Annoté </legend>";
+						<legend>Annoté </legend>
+						<input type='checkbox' name='annotation' value='oui'>			
+					</td>
 
-$sql = "SELECT * FROM annotation";
-$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
-while ($row = mysqli_fetch_array($query)) 
-{  
-echo "					<input type='checkbox' name='annotation' value='". $row['id']."'>";
-} 
-
-
-echo "				</td>
 				
-					<td><legend>Avec adjonction(s) </legend>";
+					<td><legend>Avec adjonction(s) </legend>
+						<input type='checkbox' name='addition' value='oui'>
+					</td>
 
-$sql = "SELECT * FROM addition";
-$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
-while ($row = mysqli_fetch_array($query)) 
-{  
-echo "					<input type='checkbox' name='addition' value='". $row['id']."'>";
-} 
-
-
-echo "				</td>
 				</tr>    
+
 
 				<tr>
 					<td><legend>Support </legend></td>
@@ -107,17 +102,9 @@ echo "					</select>
 					</td>
 
 					<td>
-						<legend>Numeroté </legend>";
-
-$sql = "SELECT * FROM numbered";
-$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
-while ($row = mysqli_fetch_array($query)) 
-{  
-echo "					<input type='checkbox' name='numbered' value='". $row['id']."'/>";
-} 
-
-
-echo "				</td>
+						<legend>Numeroté </legend>
+						<input type='checkbox' name='numbered' value='oui'>
+					</td>
 				</tr> 
 				<tr>
 					<td><legend>Plus d'info sur le support </legend></td>
@@ -125,7 +112,7 @@ echo "				</td>
 						<textarea rows='3' cols='50' name='support_info'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Suggestions: étendue, quantité de feuillets, recto/verso, taille du cahier, papier (si particulier), couleur des pages (si particulière), couverture.</span>
+						<span class='suggest'>Suggestions: étendue, quantité de feuillets, recto/verso, taille du cahier, papier particulier (bleu, pelure, de qualité, enveloppe), couleur des pages (si pas blanc), couverture.</span>
 					</td>
 				</tr>
 
@@ -188,7 +175,7 @@ echo "					</select>
 					</td>
 					<td>
 						<span class='suggest'>S'il s'agit d'une datation, ajouter un ast&#233;risque apr&#232;s une espace, par exemple '1956 *', '1945-06 *'.</span>
-						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY', '?'. Tous les mots ('avant', 'apr&#232;s', 'vers', etc.) vont apr&#232;s la date, par exemple '1965-04 avant'. Pour les cas particuliers, considerer le commentaire.</span>
+						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY', '?'. Tous les mots ('avant', 'apr&#232;s', 'vers', etc.) vont apr&#232;s la date (avec virgule), par exemple '1965-04, avant'. Pour les cas particuliers, considerer le commentaire.</span>
   					
   					</td>
 				</tr>    
@@ -211,8 +198,7 @@ echo "</select></td>
 
 				<tr>
 					<td><legend>Dossier </legend></td>
-					<td><select name='dossier'>
-						<option> </option>";
+					<td><select name='dossier'>";
 					
 
 $sql = "SELECT * FROM dossier";
@@ -223,6 +209,9 @@ echo "<option value='". $row['id']."'>".$row['dossier']. '</option>';
 } 
 
 echo "</select></td>
+					<td>
+						<textarea rows='2' cols='50' name='dossierplus'></textarea>
+					</td>
 				</tr>
 
 
@@ -244,9 +233,24 @@ echo "	</select></td>
 
 				<tr>
 					<td><legend>Version publiée </legend></td> 
+					
+					<!--
 					<td>
 						<textarea rows='3' cols='30' name='publie'></textarea> 
 					</td>
+					-->
+					<td>
+						<select name='publie'>";
+
+$sql = "SELECT Auteur, Titre, Lieu FROM biblio_ouvrages";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+{  
+echo "<option value='". $row['id']."'>".$row['Auteur'].", <i>".$row['Titre']."</i>, ".$row['Lieu']."</option>";
+} 
+
+echo "					</select>
+					<td>
 				</tr>   
 
 			</table>
