@@ -26,7 +26,7 @@
 			    } );
 
 			    // visibility of columns by default - mind the S 'column(s)' for single or multiple cols chosen
-			    table.columns( [2, 3, 6, 7, 9, 10, 12, 14, 17, 18, 19] ).visible( false );
+			    table.columns( [2, 3, 6, 7, 9, 10, 12, 14, 17, 18, 19, 20] ).visible( false );
 
 			    // CHECK ALL NUMEBERS!!!
 			    // variables for better handing the buttons for show/hide columns
@@ -49,6 +49,7 @@
 			    var col_publie = table.column(17);
 			    var col_numeriser = table.column(18);
 			    var col_comm = table.column(19);
+			    var col_resp = table.column(20);
 
 			    // scripts for show/hide each column
 			    $("#check_titre").click(function(){
@@ -108,6 +109,9 @@
 				$("#check_comm").click(function(){
 				    col_comm.visible(!col_comm.visible());
 				});
+				$("#check_resp").click(function(){
+				    col_resp.visible(!col_resp.visible());
+				});
 
 
 			} );
@@ -162,7 +166,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 
 // LEFT JOIN if join includes NULL values
-$visualizeall = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, commentaire FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id";
+$visualizeall = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, commentaire, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id";
 
 if ($query = mysqli_query($con, $visualizeall)) {
 
@@ -194,6 +198,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Version publiée</th>
 						<th>Numeriser</th>
 						<th>Commentaire</th>
+						<th>Resp</th>
 					</tr>
 				</thead>
 				<tbody>";
@@ -249,6 +254,8 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo $row['numerise'];
 		echo "</td><td>";
 		echo $row['commentaire'];
+		echo "</td><td>";
+		echo $row['resp'];
 		echo "</td></tr>";
 	    } 
 
@@ -288,6 +295,7 @@ mysqli_close($con);
 					<input type="checkbox" id="check_etape" name="check_etape" checked> Etape</input>
 					<input type="checkbox" id="check_numeriser" name="check_numeriser"> Numeriser</input>
 					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
+					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>
 				</div>
 			</div>
 

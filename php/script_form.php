@@ -234,23 +234,10 @@ echo "	</select></td>
 				<tr>
 					<td><legend>Version publiée </legend></td> 
 					
-					<!--
+					
 					<td>
 						<textarea rows='3' cols='30' name='publie'></textarea> 
 					</td>
-					-->
-					<td>
-						<select name='publie'>";
-
-$sql = "SELECT Auteur, Titre, Lieu FROM biblio_ouvrages";
-$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
-while ($row = mysqli_fetch_array($query)) 
-{  
-echo "<option value='". $row['id']."'>".$row['Auteur'].", <i>".$row['Titre']."</i>, ".$row['Lieu']."</option>";
-} 
-
-echo "					</select>
-					<td>
 				</tr>   
 
 			</table>
@@ -290,6 +277,26 @@ echo "					</select>
 					<td><legend>Commentaire </legend></td> 
 					<td>
 						<textarea rows='5' cols='50' name='comment'></textarea> 
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<legend>Responsable </legend>
+					</td>
+					<td>
+						<select name='resp'>";
+					
+
+$sql = "SELECT * FROM resp";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+{  
+echo "<option value='". $row['id']."'>".$row['resp']. '</option>';
+} 
+
+
+echo "					</select>
 					</td>
 				</tr>
 

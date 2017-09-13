@@ -209,6 +209,8 @@ Add column photocopy in fiche_texte
 	DONE (all files)
 	Pas visualizé dans la Recherche
 	
+Add table Biblio_ouvrages
+	
 	
 
 
@@ -222,15 +224,20 @@ Add column photocopy in fiche_texte
 Guide pour l'utilisateur:
 	- utiliser un navigateur avec 'char encoding' Unicode.
 	- pas d'italique, de gras, de sousligné. Utiliser plutot des guillemets, pour les titres, et des guillemets en chevron, pour les citations. Dans les citations, signaler les retours à la ligne avec '|'.  ?? check ??
-	- dans un meme champ texte, separer les elements par une virgule ou point-virgule. Dans le cas d'un texte dans un recueil : 'Texte', dans 'Recueil'.
-	- mots et expressions frequent-e-s à utiliser: adjonction, vd. (à la place de 'aller voire' et simil), f. ou ff. (à la place de feuillet ou feuillets), recto/verso, texte inédit, transcrit, 
+	- dans un meme champ texte, separer les elements par une virgule ou point-virgule. 
+	- mots et expressions frequent-e-s à utiliser: adjonction, vd. (à la place de 'aller voire' et simil), f. ou ff. (à la place de feuillet ou feuillets), recto/verso, texte inédit, (re?)transcrit, 
 	- eliminer une fiche est possible
+	- crayon est toujours gris?
+	- journal (genre? étape?)
+	- inédit: dossier? un dossier a parte? o 'divers'?
+	- premiere lettre en rouge? Dans autres instrument? Titre en rouge?
+	- qu'est-ce que ça veut dire 'fragment'? 1 (fragment) ?
+	
 	
 
 - It is not responsive.
 - Oui/non o intitulé plus parlant? (importante anche nella ricerca)
 - Passare in rassegna tutti i campi e vedere quali sono opzionali (null in fiche_texte e leftjoin in sql)
-- Stabilire parole da usare nel Commentaire (es. adjonctions)
 - Version publié: prendere direttamente da Bibliography ?
 - Dossier: tenere quelli che ci sono e aumentarli pian piano se serve.
 - Un solo ensemble editorial
@@ -241,6 +248,9 @@ Guide pour l'utilisateur:
 - add first 10 items Julien and Alessio
 - bibliography ? For Dossier and for Version Publié
 
+
+
+Laura Saggiorato 
 
 
 

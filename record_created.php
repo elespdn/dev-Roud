@@ -42,7 +42,7 @@ require "php/script_update.php";
 					<td>
 
 						<div>
-							<img id="imagerandom" src="" width="500px" />
+							<img id="imagerandomrecord" class="imagerandom" src="" width="500px" />
 						</div>
 					</td>
 				</tr>

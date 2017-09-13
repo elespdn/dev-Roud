@@ -65,6 +65,12 @@ body {
 	padding: 50px;
 }
 
+#imagerandomindex {
+	padding: 30px 0 10px 0;
+}
+
+
+
 
 
 
@@ -178,7 +184,7 @@ input[type=checkbox]
 	font-weight: bold;
 }
 
-#imagerandom {
+#imagerandomrecord {
 	display: block;
 	margin: 0 0 200px 200px;
 }
