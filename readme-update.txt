@@ -196,6 +196,7 @@ Guide pour l'utilisateur:
 
 - bibliography ? For Dossier and for Version Publié
 - rename form_insert > insert e form_update > update
+- add photocopy to research page checkbox for visualize
 
 
 

@@ -200,12 +200,7 @@ echo "					</select>
 
 					<td>
 						<legend>Numeroté </legend>";
-						if ($numbered_record_id=='oui') { 
-            				$checked = 'checked';  
-					        }
-					    else {		
-					            $checked = '';			
-					    }
+						
 					    echo "<input type='checkbox' name='numbered' value='oui' ". $checked .">";
 
 			echo "	</td>
@@ -389,11 +384,22 @@ echo "	</select></td>
 
 			<table class='table_insert'>
 				<tr>
-					<td><legend>Numeriser</legend></td>
-					<td><select name='digitize'>
+					<td><legend>Numériser</legend></td>";
+
+			echo "	<td><select name='digitize'>
 							<option value='oui'>Oui</option>
-							<option value='non'>Non</option>
-							<option value='eventuellement'>Eventuellement</option>
+							<option value='non' ";
+							if ($numerise_record_id=='non') {
+								echo "selected";
+							}
+
+							echo ">Non</option>
+							<option value='eventuellement' ";
+							if ($numerise_record_id=='eventuellement') {
+								echo "selected";
+							}
+
+							echo ">Eventuellement</option>
 						</select>
 					</td>
 				</tr>
