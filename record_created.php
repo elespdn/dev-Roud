@@ -33,7 +33,7 @@
 <?php  
 
 require "php/script_visualize.php";
-require "php/script_update.php";
+require "php/command_update.php";
 
 ?>  
 						</div>

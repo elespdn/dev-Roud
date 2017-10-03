@@ -30,7 +30,7 @@ $record_id = $_POST['record_id'];
 echo "<h3>Fiche n° $record_id</h3><div>";
 
 require "php/script_visualize.php";
-require "php/script_update.php";
+require "php/command_update.php";
 
 ?>
 
