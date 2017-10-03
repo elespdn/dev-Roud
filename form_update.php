@@ -49,7 +49,7 @@ require "php/script_visualize.php";
 
 
 <?php
-require "php/script_insert.php";
+require "php/script_update.php";  // it was script_insert.php !!
 
 echo "
 							<input type='hidden' name='record_id' value='$record_id'/>

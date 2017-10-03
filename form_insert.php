@@ -29,7 +29,7 @@ require 'php/script_insert.php';
 
 				<div id="submit">
 					<input type='submit' value='Envoyer'/> 
-				<div/> 
+				</div> 
 
 			</form> 
 

@@ -1,10 +1,12 @@
 
+<?php  
+
+
 // %%%%%%%%%%%%%%
 // Ce file contient le formulaire à remplir pour inserer des données
 // %%%%%%%%%%%%%%
 
 
-<?php  
 
 // Données de connexion placées dans un fichier externe  
 require "connection.php";
@@ -271,7 +273,7 @@ echo "	</select></td>
 					<td>
 						<textarea rows='4' cols='50' name='numerise_info'></textarea>
 					</td>
-				<tr/>
+				</tr>
 			</table>
 
 

@@ -1,40 +1,86 @@
 
+
+<?php  
+
+
 // %%%%%%%%%%%%%%
 // Ce file contient le formulaire à remplir pour modifier des données à partir de celles qui sont déjà là pour une entrée spécifique
 // %%%%%%%%%%%%%%
 
 
-<?php  
 
 // Données de connexion placées dans un fichier externe  
 require "connection.php";
 mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec les accents
 
+$record_id = $_POST['record_id'];
+
+
+
+$visualize = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, ensemble.ensemble, photocopy, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id WHERE fiche_texte.id = '$record_id' ";
+
+$query = mysqli_query($con, $visualize) or die ("impossible de VISUALISER Les données");  
+while ($row = mysqli_fetch_array($query)) 
+	{
+
+		$id_record_id = $row['id'];
+		$titre_record_id = $row['titre'];
+		$cote_record_id = $row['cote'];
+		$nouvelle_cote_record_id = $row['nouvelle_cote'];
+		$ensemble_id_record_id = $row['ensemble_id'];
+		$ensemble_record_id = $row['ensemble'];
+		$photocopy_record_id = $row['photocopy'];
+		$type_record_id = $row['type'];
+		$annotation_record_id = $row['annotation'];
+		$addition_record_id = $row['addition'];
+		$support_record_id = $row['support'];
+		$numbered_record_id = $row['numbered'];
+		$support_info_record_id = $row['support_info'];
+		$instrument_record_id = $row['instrument'];
+		$color_record_id = $row['color'];
+		$other_tool_record_id = $row['other_tool'];
+		$dates_record_id = $row['dates'];
+		$genre_record_id = $row['genre'];
+		$dossier_record_id = $row['dossier'];
+		$dossierplus_record_id = $row['dossierplus'];
+		$statut_record_id = $row['statut'];
+		$publie_record_id = $row['publie'];
+		$numerise_record_id = $row['numerise'];
+		$numerise_info_record_id = $row['numerise_info'];
+		$commentaire_record_id = $row['commentaire'];
+		$resp_record_id = $row['resp'];
+	}
+
+echo $record_id;
+
 echo "		<table class='table_insert'>
 				<tr>
 					<td><legend>Titre </legend></td> 
 					<td>
-						<textarea rows='1' cols='50' name='title'></textarea> 
+						<textarea rows='1' cols='50' name='title'>". $titre_record_id ."</textarea> 
 					</td>
 				</tr>    
 
 				<tr>
 					<td><legend>Cote </legend></td>
 					<td>
-						<textarea rows='1' cols='50' name='archive'></textarea> 
+						<textarea rows='1' cols='50' name='archive'>". $cote_record_id ."</textarea> 
 					</td>
 				</tr>    
 
 				<tr>
 					<td><legend>Nouvelle cote </legend></td>
 					<td>
-						<textarea rows='1' cols='50' name='new_archive'></textarea> 
+						<textarea rows='1' cols='50' name='new_archive'>".$nouvelle_cote_record_id ."</textarea> 
 					</td>
 				</tr>    
 
 				<tr>
-					<td><legend>Ensemble éditorial </legend></td>
-					<td><select name='cluster'>"; 
+					<td><legend>Ensemble éditorial</legend></td>
+					<td><select name='cluster'>
+						<option value='". $ensemble_id_record_id . "' selected>". $ensemble_record_id . "</option>"; 
+
+
 						
 
 
@@ -307,6 +353,10 @@ echo "					</select>
 				</tr>
 
 			</table>";
+
+
+
+
 
 
 mysqli_close($con); 

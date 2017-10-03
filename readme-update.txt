@@ -195,6 +195,7 @@ Guide pour l'utilisateur:
 ## _____________________ TO DO ___________________ ##
 
 - bibliography ? For Dossier and for Version Publié
+- rename form_insert > insert e form_update > update
 
 
 
