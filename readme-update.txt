@@ -1,5 +1,29 @@
 
+ToC
+- General info
+- Update history
+- For users
+- To do
+
+
+
+
 ## _________________ GENERAL INFO ________________ ##
+
+
+STRUCTURE SITE
+
+form_insert.php	[php/script_insert.php]
+--> 
+php/hidden_insert.php 
+--> 
+record_created.php [php/script_visualize.php]
+
+form_update.php	[php/script_visualize.php & php/script_form.php] 
+--> 
+php/hidden_update.php
+--> 
+record_updated.php [php/script_visualize.php]
 
 
 FOLDER ORGANIZATION
@@ -9,7 +33,7 @@ FOLDER ORGANIZATION
 			--> record_created.php
 			--> record_update.php
 			--> form_update.php		
-		script_form.php = form for insertion
+		script_insert.php = form for insertion
 			--> form_insert.php
 			--> form_update.php
 		command_update.php = code with button 'Modifier la fiche ... ?'
@@ -47,6 +71,9 @@ WHEN UPDATING FIELDS, CHANGE
 	script_form.php
 	hidden_insert.php, hidden_update.php (POST variables can be copy-pasted from one to the other, see comments)
 	
+
+
+
 
 
 ## _________________ Content UPDATE 22 Aout 2017 ________________ ##
@@ -128,14 +155,15 @@ Add column photocopy in fiche_texte
 	Pas visualizé dans la Recherche
 	
 Add table Biblio_ouvrages
+
+
+## ________________ Content UPDATE after ____________________ ##
+
+Vd. Github
 	
-	
 
 
 
-
-
-	
 	
 ## _________________ FOR USERS ________________ ##
 
@@ -159,6 +187,9 @@ Guide pour l'utilisateur:
 - Version publié: prendere direttamente da Bibliography ?
 - Dossier: tenere quelli che ci sono e aumentarli pian piano se serve.
 - Un solo ensemble editorial
+
+
+
 
 
 ## _____________________ TO DO ___________________ ##

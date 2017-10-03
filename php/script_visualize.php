@@ -1,3 +1,8 @@
+
+// %%%%%%%%%%%%%%
+// Ce file produit une tableau pour visualiser les données d'une entrée spécifique
+// %%%%%%%%%%%%%%
+
 <?php  
 
 // Données de connexion placées dans un fichier externe  

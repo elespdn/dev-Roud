@@ -1,3 +1,9 @@
+
+// %%%%%%%%%%%%%%
+// Ce file contient le formulaire à remplir pour modifier des données à partir de celles qui sont déjà là pour une entrée spécifique
+// %%%%%%%%%%%%%%
+
+
 <?php  
 
 // Données de connexion placées dans un fichier externe  

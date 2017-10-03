@@ -24,7 +24,7 @@
 
 
 <?php
-require 'php/script_form.php';
+require 'php/script_insert.php';
 ?>
 
 				<div id="submit">
