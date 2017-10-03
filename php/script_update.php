@@ -17,9 +17,9 @@ $record_id = $_POST['record_id'];
 
 
 
-$visualize = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, ensemble.ensemble, photocopy, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id WHERE fiche_texte.id = '$record_id' ";
+$select2prefill = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, photocopy, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id WHERE fiche_texte.id = '$record_id' ";
 
-$query = mysqli_query($con, $visualize) or die ("impossible de VISUALISER Les données");  
+$query = mysqli_query($con, $select2prefill) or die ("impossible de VISUALISER Les données");  
 while ($row = mysqli_fetch_array($query)) 
 	{
 
@@ -27,8 +27,7 @@ while ($row = mysqli_fetch_array($query))
 		$titre_record_id = $row['titre'];
 		$cote_record_id = $row['cote'];
 		$nouvelle_cote_record_id = $row['nouvelle_cote'];
-		$ensemble_id_record_id = $row['ensemble_id'];
-		$ensemble_record_id = $row['ensemble'];
+		$ensemble_record_id = $row['ensemble_id'];
 		$photocopy_record_id = $row['photocopy'];
 		$type_record_id = $row['type'];
 		$annotation_record_id = $row['annotation'];
@@ -77,18 +76,32 @@ echo "		<table class='table_insert'>
 
 				<tr>
 					<td><legend>Ensemble éditorial</legend></td>
-					<td><select name='cluster'>
-						<option value='". $ensemble_id_record_id . "' selected>". $ensemble_record_id . "</option>"; 
-
-
-						
+					<td><select name='cluster'>"; 
 
 
 $sql = "SELECT * FROM ensemble";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
 while ($row = mysqli_fetch_array($query)) 
-{  
-echo "<option value='". $row['id']."'>".$row['ensemble']. '</option>';
+{	
+	// if the ID from the array is the same to $ensemble_record_id (from query $select2prefill)
+	if ($row['id']==$ensemble_record_id) {  		
+
+			// add attribute 'selected' (using variable $selected)
+            $selected = 'selected="selected"';  
+        }
+        else {	
+
+        	// otherwise do not add anything (variable $selected is empty)				
+            $selected = '';			
+        }   
+
+        // normal array, plus the variable $selected, which gives a different output following what defined above
+        echo "<option value='". $row['id']."' ". $selected .">".$row['ensemble']. '</option>'; 
+
+
+
+
+// echo "<option value='". $row['id']."'>".$row['ensemble']. '</option>';
 } 
 
 echo "</select></td>
