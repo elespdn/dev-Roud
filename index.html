@@ -1,0 +1,27 @@
+<html> 
+
+	<head> 
+
+		<title>Home</title>
+		<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/general.css">
+		<script type="text/javascript" src="js/imagerandom.js"></script>  <!-- ne doit PAS etre <script/> (vide), sinon il ne marche pas. La function choosePic() est chargé ONLOAD dans le body -->
+		
+	</head> 
+
+
+	<body id="index" onload="choosePic()"> 
+
+		<h1>Fonds Gustave Roud</h1>
+		<!-- <img src="images/landscape.jpeg" width="30%"> -->	
+		<img id="imagerandomindex" class="imagerandom" src="" width="30%" />
+
+		<div class="menu" id="menu_index">
+			<ul>
+				<li><a href="search.php">recherche</a></li>|
+				<li><a href="form_insert.php">remplir fiche</a></li>
+			</ul>
+		</div>
+
+	</body>
+</html>
