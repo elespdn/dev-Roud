@@ -26,7 +26,7 @@
 			    } );
 
 			    // visibility of columns by default - mind the S 'column(s)' for single or multiple cols chosen
-			    table.columns( [2, 3, 6, 7, 9, 10, 12, 14, 17, 18, 19, 20] ).visible( false );
+			    table.columns( [2, 3, 5, 7, 8, 10, 11, 13, 15, 18, 19, 20, 21, 22] ).visible( false );
 
 			    // CHECK ALL NUMEBERS!!!
 			    // variables for better handing the buttons for show/hide columns
@@ -34,22 +34,24 @@
 			    var col_cote = table.column(2);
 			    var col_nouvellecote = table.column(3);
 			    var col_ensemble = table.column(4);
-			    var col_type = table.column(5);
-			    var col_annote = table.column(6);
-			    var col_adjonction = table.column(7);
-			    var col_support = table.column(8);
-			    var col_numerote = table.column(9);
-			    var col_infosupport = table.column(10);
-			    var col_instrument = table.column(11);
-			    var col_autreinstrument = table.column(12);
-			    var col_date = table.column(13);
-			    var col_genre = table.column(14);
-			    var col_dossier = table.column(15);
-			    var col_etape = table.column(16);
-			    var col_publie = table.column(17);
-			    var col_numeriser = table.column(18);
-			    var col_comm = table.column(19);
-			    var col_resp = table.column(20);
+			    var col_photocopy = table.column(5);
+			    var col_type = table.column(6);
+			    var col_annote = table.column(7);
+			    var col_adjonction = table.column(8);
+			    var col_support = table.column(9);
+			    var col_numerote = table.column(10);
+			    var col_infosupport = table.column(11);
+			    var col_instrument = table.column(12);
+			    var col_autreinstrument = table.column(13);
+			    var col_date = table.column(14);
+			    var col_genre = table.column(15);
+			    var col_dossier = table.column(16);
+			    var col_etape = table.column(17);
+			    var col_publie = table.column(18);
+			    var col_numeriser = table.column(19);
+			    var col_comm = table.column(20);
+			    var col_numerise_info = table.column(21);
+			    var col_resp = table.column(22);
 
 			    // scripts for show/hide each column
 			    $("#check_titre").click(function(){
@@ -112,6 +114,12 @@
 				$("#check_resp").click(function(){
 				    col_resp.visible(!col_resp.visible());
 				});
+				$("#check_photocopy").click(function(){
+				    col_photocopy.visible(!col_photocopy.visible());
+				});
+				$("#check_numerise_info").click(function(){
+				    col_numerise_info.visible(!col_numerise_info.visible());
+				});
 
 
 			} );
@@ -166,7 +174,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 
 // LEFT JOIN if join includes NULL values
-$visualizeall = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, commentaire, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id";
+$visualizeall = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, type.type, photocopy, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, numerise, commentaire, numerise_info, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id";
 
 if ($query = mysqli_query($con, $visualizeall)) {
 
@@ -183,6 +191,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Cote</th>
 						<th>Nouvelle cote</th>
 						<th>Ensemble</th>
+						<th>Photocopie</th>
 						<th>Type de document</th>
 						<th>Annoté</th>
 						<th>Adjonction(s)</th>
@@ -198,6 +207,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Version publiée</th>
 						<th>Numeriser</th>
 						<th>Commentaire</th>
+						<th>Cuisine interne</th>
 						<th>Resp</th>
 					</tr>
 				</thead>
@@ -218,6 +228,8 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo $row['nouvelle_cote'];
 		echo "</td><td>";
 		echo $row['ensemble'];
+		echo "</td><td>";
+		echo $row['photocopy'];
 		echo "</td><td>";
 		echo $row['type'];
 		echo "</td><td>";
@@ -255,6 +267,8 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo "</td><td>";
 		echo $row['commentaire'];
 		echo "</td><td>";
+		echo $row['numerise_info'];
+		echo "</td><td>";
 		echo $row['resp'];
 		echo "</td></tr>";
 	    } 
@@ -279,6 +293,7 @@ mysqli_close($con);
 					<input type="checkbox" id="check_nouvellecote" name="check_nouvellecote"> Nouvelle cote</input>
 					<input type="checkbox" id="check_ensemble" name="check_ensemble" checked> Ensemble editorial</input>
 					<br/><br/>
+					<input type="checkbox" id="check_photocopy" name="check_photocopy"> Photocopie</input>
 					<input type="checkbox" id="check_type" name="check_type" checked> Type de document</input>
 					<input type="checkbox" id="check_annote" name="check_annote"> Annoté</input>
 					<input type="checkbox" id="check_adjonction" name="check_adjonction"> Avec adjonctions</input>
@@ -295,6 +310,7 @@ mysqli_close($con);
 					<input type="checkbox" id="check_etape" name="check_etape" checked> Etape</input>
 					<input type="checkbox" id="check_numeriser" name="check_numeriser"> Numeriser</input>
 					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
+					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Cuisine interne</input>
 					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>
 				</div>
 			</div>

@@ -70,10 +70,10 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['alreadydigitized'];
 		echo "</td></tr><tr><td>À numeriser</td><td>";
 		echo $row['numerise'];
-		echo "</td></tr><tr><td>Cuisine interne</td><td>";
-		echo $row['numerise_info'];
 		echo "</td></tr><tr><td>Commentaire</td><td>";
 		echo $row['commentaire'];
+		echo "</td></tr><tr><td>Cuisine interne</td><td>";
+		echo $row['numerise_info'];
 		echo "</td></tr><tr><td>Responsable</td><td>";
 		echo $row['resp'];
 		echo "</td></tr></tbody></table>";

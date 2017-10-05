@@ -47,28 +47,31 @@ COLUMN NUMBER in visualization search.php (don't correspond to fiche_texte)
 	2	cote
 	3	nouvelle cote
 	4	ensemble edit	
-	5	type de doc	
-	6	annote
-	7	avec adjonctions
-	8	support
-	9	numeroté
-	10	info support
-	11	instrument
-	12	autres instrument	
-	13	date
-	14	genre
-	15	dossier
-	16	etape
-	17	version publiée
-	18	numeriser
-	19	commentaire
+	5	photocopie
+	6	type de doc	
+	7	annote
+	8	avec adjonctions
+	9	support
+	10	numeroté
+	11	info support
+	12	instrument
+	13	autres instrument	
+	14	date
+	15	genre
+	16	dossier
+	17	etape
+	18	version publiée
+	19	numeriser
+	20	commentaire
+	21	resp
 
 
 
-WHEN UPDATING FIELDS, CHANGE
+WHEN UPDATING FIELDS in the DB, CHANGE
 	search.php
 	script_visualize.php
-	script_form.php
+	script_insert.php
+	script_update.php
 	hidden_insert.php, hidden_update.php (POST variables can be copy-pasted from one to the other, see comments)
 	
 
@@ -196,7 +199,6 @@ Guide pour l'utilisateur:
 
 - bibliography ? For Dossier and for Version Publié
 - rename form_insert > insert e form_update > update
-- add photocopy and alreadydigitized to research page checkbox for visualize
 
 
 
