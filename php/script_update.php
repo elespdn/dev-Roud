@@ -17,7 +17,7 @@ $record_id = $_POST['record_id'];
 
 
 
-$select2prefill = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, photocopy, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, dossier_id, dossierplus, publie, numerise, numerise_info, commentaire, resp_id FROM fiche_texte WHERE fiche_texte.id = '$record_id' ";
+$select2prefill = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, photocopy, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, dossier_id, dossierplus, publie, alreadydigitized, numerise, numerise_info, commentaire, resp_id FROM fiche_texte WHERE fiche_texte.id = '$record_id' ";
 
 $query = mysqli_query($con, $select2prefill) or die ("impossible de VISUALISER Les données");  
 while ($row = mysqli_fetch_array($query)) 
@@ -45,6 +45,7 @@ while ($row = mysqli_fetch_array($query))
 		$statut_record_id = $row['statut_id'];
 		$publie_record_id = $row['publie'];
 		$numerise_record_id = $row['numerise'];
+		$alreadydigitized_record_id = $row['alreadydigitized'];
 		$numerise_info_record_id = $row['numerise_info'];
 		$commentaire_record_id = $row['commentaire'];
 		$resp_record_id = $row['resp_id'];
@@ -384,10 +385,30 @@ echo "	</select></td>
 
 			<table class='table_insert'>
 				<tr>
-					<td><legend>Numériser</legend></td>";
+					<td><legend>Déjà numérisé </legend></td>
+					<td>";
+
+						if ($alreadydigitized_record_id=='oui') { 
+            				$checked = 'checked';  
+					        }
+					    else {		
+					            $checked = '';			
+					    }
+					    echo "<input type='checkbox' name='alreadydigitized' value='oui' ". $checked .">";
+					    echo "
+					</td>
+				</tr>
+				<tr>
+					<td><legend>À numériser</legend></td>";
 
 			echo "	<td><select name='digitize'>
-							<option value='oui'>Oui</option>
+							<option value=''></option>
+							<option value='oui' ";
+							if ($numerise_record_id=='oui') {
+								echo "selected";
+							}
+
+							echo ">Oui</option>
 							<option value='non' ";
 							if ($numerise_record_id=='non') {
 								echo "selected";
@@ -403,14 +424,7 @@ echo "	</select></td>
 						</select>
 					</td>
 				</tr>
-				<tr>
-					<td>		
-						<legend>Notes pour le site </legend>
-					</td>
-					<td>
-						<textarea rows='4' cols='50' name='numerise_info'>". $numerise_info_record_id ."</textarea>
-					</td>
-				<tr/>
+				
 			</table>
 
 
@@ -424,6 +438,14 @@ echo "	</select></td>
 						<textarea rows='5' cols='50' name='comment'>". $commentaire_record_id ."</textarea> 
 					</td>
 				</tr>
+				<tr>
+					<td>		
+						<legend>Cuisine interne </legend>
+					</td>
+					<td>
+						<textarea rows='4' cols='50' name='numerise_info'>". $numerise_info_record_id ."</textarea>
+					</td>
+				<tr/>
 
 				<tr>
 					<td>

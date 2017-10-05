@@ -258,22 +258,21 @@ echo "	</select></td>
 
 			<table class='table_insert'>
 				<tr>
-					<td><legend>Numeriser </legend></td>
+					<td><legend>Déjà numérisé </legend></td>
+					<td>
+						<input type='checkbox' name='alreadydigitized' value='oui'>
+					</td>
+				</tr>
+				<tr>
+					<td><legend>À numeriser </legend></td>
 					<td><select name='digitize'>
+							<option value=''></option>
 							<option value='oui'>Oui</option>
 							<option value='non'>Non</option>
 							<option value='eventuellement'>Eventuellement</option>
 						</select>
 					</td>
-				</tr>
-				<tr>
-					<td>		
-						<legend>Notes pour le site </legend>
-					</td>
-					<td>
-						<textarea rows='4' cols='50' name='numerise_info'></textarea>
-					</td>
-				</tr>
+				</tr>				
 			</table>
 
 
@@ -285,6 +284,15 @@ echo "	</select></td>
 					<td><legend>Commentaire </legend></td> 
 					<td>
 						<textarea rows='5' cols='50' name='comment'></textarea> 
+					</td>
+				</tr>
+
+				<tr>
+					<td>		
+						<legend>Cuisine interne </legend>
+					</td>
+					<td>
+						<textarea rows='4' cols='50' name='numerise_info'></textarea>
 					</td>
 				</tr>
 

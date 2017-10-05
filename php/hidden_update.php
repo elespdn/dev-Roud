@@ -59,6 +59,7 @@ $status = $_POST['status'];
 $genre = $_POST['genre'];
 $dossier = $_POST['dossier'];
 $resp = $_POST['resp'];
+$alreadydigitized = $_POST['alreadydigitized'];
 
 $date = $_POST['date'];
 $date = trim($date);
@@ -90,7 +91,7 @@ same for addition and numbered
 
 
 
-$sql = "UPDATE fiche_texte SET titre = '$title', cote='$archive', nouvelle_cote='$new_archive', ensemble_id='$cluster', type_id='$type', annotation='$annotation', addition='$addition', support_id='$support', numbered='$numbered', support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool', statut_id='$status', genre_id='$genre', dates='$date', dossier_id='$dossier', dossierplus='$dossierplus', publie='$publie', numerise='$digitize', numerise_info='$numerise_info', commentaire='$comment', photocopy='$photocopy', resp_id='$resp' WHERE id='$record_id'";
+$sql = "UPDATE fiche_texte SET titre = '$title', cote='$archive', nouvelle_cote='$new_archive', ensemble_id='$cluster', type_id='$type', annotation='$annotation', addition='$addition', support_id='$support', numbered='$numbered', support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool', statut_id='$status', genre_id='$genre', dates='$date', dossier_id='$dossier', dossierplus='$dossierplus', publie='$publie', alreadydigitized='$alreadydigitized', numerise='$digitize', numerise_info='$numerise_info', commentaire='$comment', photocopy='$photocopy', resp_id='$resp' WHERE id='$record_id'";
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps
 if (mysqli_multi_query($con, $sql)) {
