@@ -87,17 +87,20 @@ body {
 }
 
 #col_toggle {
-	background-color: #99f69966;
-	padding: 20px;
 	margin-top: 50px;
 }
-#col_toggle input {
-	margin-left: 30px;
+#col_toggle_intern {
+	padding-top: 20px;
+}
+
+.eye {
+	padding-bottom: -5px;
 }
 
 #search_id {
 	font-size: 0.8em;
 }
+
 
 
 

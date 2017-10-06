@@ -63,7 +63,8 @@ COLUMN NUMBER in visualization search.php (don't correspond to fiche_texte)
 	18	version publiée
 	19	numeriser
 	20	commentaire
-	21	resp
+	21	cuisine interne
+	22	resp
 
 
 
