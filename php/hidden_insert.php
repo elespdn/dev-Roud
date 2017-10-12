@@ -61,6 +61,9 @@ $alreadydigitized = $_POST['alreadydigitized'];
 $date = $_POST['date'];
 $date = trim($date);
 
+$biblio = $_POST['biblio'];
+$biblio = trim($biblio);
+
 $publie = $_POST['publie'];
 $publie = trim($publie);
 $publie = str_replace("'","''",$publie);
@@ -87,7 +90,7 @@ same for addition and numbered
 */
 
 
-$sql = "INSERT INTO fiche_texte (titre, cote, nouvelle_cote, ensemble_id, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, publie, dossier_id, dossierplus, alreadydigitized, numerise, numerise_info, commentaire, photocopy, resp_id) VALUES ('$title', '$archive', '$new_archive', '$cluster', '$type', '$annotation', '$addition', '$support', '$numbered', '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$publie', '$dossier', '$dossierplus', '$alreadydigitized', '$digitize', '$numerise_info', '$comment', '$photocopy', '$resp')";
+$sql = "INSERT INTO fiche_texte (titre, cote, nouvelle_cote, ensemble_id, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, biblio_id, publie, dossier_id, dossierplus, alreadydigitized, numerise, numerise_info, commentaire, photocopy, resp_id) VALUES ('$title', '$archive', '$new_archive', '$cluster', '$type', '$annotation', '$addition', '$support', '$numbered', '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$biblio', '$publie', '$dossier', '$dossierplus', '$alreadydigitized', '$digitize', '$numerise_info', '$comment', '$photocopy', '$resp')";
 
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps

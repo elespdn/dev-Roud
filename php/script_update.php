@@ -17,7 +17,7 @@ $record_id = $_POST['record_id'];
 
 
 
-$select2prefill = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, photocopy, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, dossier_id, dossierplus, publie, alreadydigitized, numerise, numerise_info, commentaire, resp_id FROM fiche_texte WHERE fiche_texte.id = '$record_id' ";
+$select2prefill = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, photocopy, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, dossier_id, dossierplus, biblio.type, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
 
 $query = mysqli_query($con, $select2prefill) or die ("impossible de VISUALISER Les données");  
 while ($row = mysqli_fetch_array($query)) 
@@ -43,6 +43,14 @@ while ($row = mysqli_fetch_array($query))
 		$dossier_record_id = $row['dossier_id'];
 		$dossierplus_record_id = $row['dossierplus'];
 		$statut_record_id = $row['statut_id'];
+		$bibliotype_record_id = $row['type'];
+		$bibliocreator_record_id = $row['creator'];
+		$bibliotitle_record_id = $row['title'];
+		$bibliotitlepub_record_id = $row['title_pub'];
+		$biblionumber_record_id = $row['number'];
+		$bibliopublisher_record_id = $row['publisher'];
+		$bibliodate_record_id = $row['date'];
+		$biblioid_record_id = $row['biblioid'];
 		$publie_record_id = $row['publie'];
 		$numerise_record_id = $row['numerise'];
 		$alreadydigitized_record_id = $row['alreadydigitized'];
@@ -369,9 +377,47 @@ echo "	</select></td>
 				<tr>
 					<td><legend>Version publiée </legend></td> 
 					
+					<td><p class='suggest'>Insérer le numéro de l'<a href='biblio.php' target='_blank'>entrée bibliographique</a>.</p> 
+						<textarea rows='1' cols='10' name='biblio'>". $biblioid_record_id ."</textarea> 
+					<br/>";
+
+					echo $bibliocreator_record_id;
+						if ($bibliotype_record_id != 'Article') {
+							echo ",&nbsp;<i>";
+							echo $bibliotitle_record_id;
+							echo "</i>";
+						} else {
+							echo ",&nbsp;'";
+							echo $bibliotitle_record_id;
+							echo "'";			
+						}
+						if ($bibliotitlepub_record_id != '') {
+							echo ",&nbsp;<i>";
+							echo $bibliotitlepub_record_id;
+							echo "</i>";
+						} 
+						if ($biblionumber_record_id != '') {
+							echo ",&nbsp;";
+							echo $biblionumber_record_id;
+						} 
+						if ($bibliopublisher_record_id != '') {
+							echo ",&nbsp;";
+							echo $bibliopublisher_record_id;
+						} 
+						if ($bibliodate_record_id != '') {
+							echo ",&nbsp;";
+							echo $bibliodate_record_id;
+						} 
+						echo ". [n°&nbsp;";
+						echo $biblioid_record_id;
+						echo "]";
+
+					echo "
+					</td>
 					
 					<td>
-						<textarea rows='3' cols='30' name='publie'>". $publie_record_id ."</textarea> 
+						<p class='suggest'>Spécifier les pages ou autre reférence bibliographique.</p>
+						<textarea rows='3' cols='30' name='publie'>". $publie_record_id ."</textarea>
 					</td>
 				</tr>   
 

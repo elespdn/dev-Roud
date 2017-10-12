@@ -242,8 +242,11 @@ echo "	</select></td>
 				<tr>
 					<td><legend>Version publiée </legend></td> 
 					
-					
+					<td><p class='suggest'>Insérer le numéro de l'<a href='biblio.php' target='_blank'>entrée bibliographique</a>.</p> 
+						<textarea rows='1' cols='10' name='biblio'></textarea> 
+					</td>
 					<td>
+						<p class='suggest'>Spécifier les pages ou autre reférence bibliographique.</p>
 						<textarea rows='3' cols='30' name='publie'></textarea> 
 					</td>
 				</tr>   
@@ -284,6 +287,9 @@ echo "	</select></td>
 					<td><legend>Commentaire </legend></td> 
 					<td>
 						<textarea rows='5' cols='50' name='comment'></textarea> 
+					</td>
+					<td>
+						<p class='suggest'>Comment écrire les commentaires (à voir ensemble)</p>
 					</td>
 				</tr>
 
