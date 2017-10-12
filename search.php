@@ -221,7 +221,7 @@ mysqli_close($con);
 			<br/><br/><br/>
 
 			<div id="instructions_toggle"> <!-- show / hide columns -->
-				<h3 style="display: inline">Conseils pour visualiser les données&nbsp;&nbsp;&nbsp;</h3>
+				<h3 style="display: inline">Indications pour visualiser les données&nbsp;&nbsp;&nbsp;</h3>
 				<img src="img/eyeopen.png" width="20px" id="eyeopen_instructions" class="eye" />
 				<div style="display: none" id="col_toggle_instructions">
 					<ul>
