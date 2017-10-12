@@ -1,6 +1,6 @@
 <html>  
 	<head>  
-		<title>Recherche</title>  
+		<title>Biblio</title>  
 		<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/general.css"/>
 
@@ -9,46 +9,26 @@
 			Selected options: 
 				Main libraries
 					jQuery 1.x   DataTables styling   DataTables core  
-				Extensions
-					AutoFill[not for us]  Buttons  Column visibility[has to be set from the start]  HTML5 export  JSZip  pdfmake  Print view  ColReorder[enabled!]  RowReorder[enabled!]  Scroller[useless for us]
-				Packaging options
-					Debug   Single file   CDN
+				Extensions 
 		-->
-		
-		<link rel="stylesheet" type="text/css" href="css/datatables.css"/>
-		<script type="text/javascript" src="js/datatables.js"></script>
-		<script type="text/javascript" src="js/column_visibility.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.3/jqc-1.12.3/dt-1.10.16/b-1.4.2/cr-1.4.1/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.3/jqc-1.12.3/dt-1.10.16/b-1.4.2/cr-1.4.1/datatables.min.js"></script>
+
+		<script> // initialize datatables - NECESSARY
+			    $(document).ready(function(){
+					    $('#table_id').DataTable({
+					    	colReorder: true
+					    });
+					});
+		</script>
+
 		<script type="text/javascript">
-
-			
 			$(document).ready(function(){
-				
-				$("#eyeopen_col").click(function(){
-				    $("#col_toggle_intern").toggle();
-				}); 
-
 				$("#eyeopen_instructions").click(function(){
 				    $("#col_toggle_instructions").toggle();
 				}); 
 			});
-
-/* this does not work
-			$(document).ready(function(){
-				$("#eyeopen").click(function(){
-				    $("#col_toggle_intern").show();
-				    document.getElementById("eyeopen").src = "img/eyeclosed.png";
-				    document.getElementById("eyeopen").id = "eyeclosed";
-				}); 
-
-
-				$("#eyeclosed").click(function(){
-				    $("#col_toggle_intern").hide();
-				    document.getElementById("eyeclosed").src = "img/eyeopen.png";
-				    document.getElementById("eyeclosed").id = "eyeopen";
-				});
-			});*/
-			
-			
 		</script>
 		
 
@@ -78,7 +58,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 
 // LEFT JOIN if join includes NULL values
-$visualizeall = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, type.type, photocopy, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, biblio.type, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, numerise, commentaire, numerise_info, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id";
+$visualizeall = "SELECT * FROM biblio";
 
 if ($query = mysqli_query($con, $visualizeall)) {
 
@@ -86,28 +66,20 @@ if ($query = mysqli_query($con, $visualizeall)) {
 				<thead>
 					<tr>
 						<th>N°</th>
+						<th>Type</th>
+						<th>Auteur</th>
 						<th>Titre</th>
-						<th>Cote</th>
-						<th>Nouvelle cote</th>
-						<th>Ensemble</th>
-						<th>Photocopie</th>
-						<th>Type de document</th>
-						<th>Annoté</th>
-						<th>Adjonction(s)</th>
-						<th>Support</th>
-						<th>Numéroté</th>
-						<th>Info support</th>
-						<th>Instrument d'&#233;criture</th>
-						<th>Autre(s) instrument(s)</th>
-						<th>Date / Datation</th>
-						<th>Genre</th>
-						<th>Dossier</th>
-						<th>Etape</th>
-						<th>Version publiée</th>
-						<th>Numeriser</th>
-						<th>Commentaire</th>
-						<th>Cuisine interne</th>
-						<th>Resp</th>
+						<th>Publication</th>
+						<th>Dir./éd./trad.</th>
+						<th>Numéro</th>
+						<th>Lieu</th>
+						<th>Maison d'édition</th>
+						<th>Date</th>
+						<th>Pages</th>
+						<th>Repris</th>
+						<th>Retranscription</th>
+						<th>Intérêt pour le site</th>
+						<th>Déjà numérisé</th>
 					</tr>
 				</thead>
 				<tbody>";
@@ -117,91 +89,35 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		$row_id = $row['id'];
 
 		echo "<tr><td>";
-		echo "<form action='record.php' method='post'><input id='search_id' type='submit' name='record_id' value='$row_id'/></form>"; 
-		// echo $row_id;
-		echo "</td><td>";
-		echo $row['titre'];
-		echo "</td><td>";
-		echo $row['cote'];
-		echo "</td><td>";
-		echo $row['nouvelle_cote'];
-		echo "</td><td>";
-		echo $row['ensemble'];
-		echo "</td><td>";
-		echo $row['photocopy'];
+		echo $row['id'];
 		echo "</td><td>";
 		echo $row['type'];
 		echo "</td><td>";
-		echo $row['annotation'];
-		echo "</td><td>";
-		echo $row['addition'];
-		echo "</td><td>";
-		echo $row['support'];
-		echo "</td><td>";
-		echo $row['numbered'];
-		echo "</td><td>";
-		echo $row['support_info'];
-		echo "</td><td>";
-		echo $row['instrument'];
-		echo ",&nbsp;";
-		echo $row['color'];
-		echo "</td><td>";
-		echo $row['other_tool'];
-		echo "</td><td>";
-		echo $row['dates'];
-		echo "</td><td>";
-		echo $row['genre'];
-		echo "</td><td>";
-		echo $row['dossier'];
-		if ($row['dossierplus'] != '') {
-			echo ",&nbsp;";
-			echo $row['dossierplus'];
-		} 	
-		echo "</td><td>";
-		echo $row['statut'];
-		echo "</td><td>";	
 		echo $row['creator'];
-		if ($row['type'] != 'Article') {
-			echo ",&nbsp;<i>";
-			echo $row['title'];
-			echo "</i>";
-		} else {
-			echo ",&nbsp;'";
-			echo $row['title'];
-			echo "'";			
-		}
-		if ($row['title_pub'] != '') {
-			echo ",&nbsp;<i>";
-			echo $row['title_pub'];
-			echo "</i>";
-		} 
-		if ($row['number'] != '') {
-			echo ",&nbsp;";
-			echo $row['number'];
-		} 
-		if ($row['publisher'] != '') {
-			echo ",&nbsp;";
-			echo $row['publisher'];
-		} 
-		if ($row['date'] != '') {
-			echo ",&nbsp;";
-			echo $row['date'];
-		} 
-		echo ". [n°&nbsp;";
-		echo $row['biblioid'];
-		echo "]";
-		if ($row['publie'] != '') {
-			echo "&nbsp;-&nbsp;";
-			echo $row['publie'];
-		} 
 		echo "</td><td>";
-		echo $row['numerise'];
+		echo $row['title'];
 		echo "</td><td>";
-		echo $row['commentaire'];
+		echo $row['title_pub'];
 		echo "</td><td>";
-		echo $row['numerise_info'];
+		echo $row['contributor'];
 		echo "</td><td>";
-		echo $row['resp'];
+		echo $row['number'];
+		echo "</td><td>";
+		echo $row['place'];
+		echo "</td><td>";
+		echo $row['publisher'];
+		echo "</td><td>";
+		echo $row['date'];
+		echo "</td><td>";
+		echo $row['format'];
+		echo "</td><td>";
+		echo $row['reused'];
+		echo "</td><td>";
+		echo $row['transcribed'];
+		echo "</td><td>";
+		echo $row['website_interest'];
+		echo "</td><td>";
+		echo $row['digitized'];
 		echo "</td></tr>";
 	    } 
 
@@ -212,7 +128,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		}
 
 	$num_rows = mysqli_num_rows($query);
-	echo"<h3 style='float:right'>Total : " .$num_rows. " fiches</h3>";
+	echo"<h3 style='float:right'>Total : " .$num_rows. " entrée</h3>";
 
 
 mysqli_close($con); 
@@ -220,7 +136,7 @@ mysqli_close($con);
 ?>  
 			</div>
 
-			<div id="col_toggle"> <!-- show / hide columns -->
+<!--			<div id="col_toggle"> <!-- show / hide columns 
 				<h3 style="display: inline">Afficher / cacher une colonne&nbsp;&nbsp;&nbsp;</h3>
 				<img src="img/eyeopen.png" width="20px" id="eyeopen_col" class="eye" />
 
@@ -252,9 +168,9 @@ mysqli_close($con);
 				</div>
 			</div>
 
-			<br/><br/><br/>
+ 			<br/><br/><br/>
 
-			<div id="instructions_toggle"> <!-- show / hide columns -->
+			<div id="instructions_toggle"> <!-- show / hide columns --
 				<h3 style="display: inline">Indications pour visualiser les données&nbsp;&nbsp;&nbsp;</h3>
 				<img src="img/eyeopen.png" width="20px" id="eyeopen_instructions" class="eye" />
 				<div style="display: none" id="col_toggle_instructions">
@@ -263,7 +179,7 @@ mysqli_close($con);
 						<li>Déplacer les colonnes et changer leur ordre avec drag&amp;drop (glisser-déposer).</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 
 		</div> <!-- fin content -->
 	</body>  

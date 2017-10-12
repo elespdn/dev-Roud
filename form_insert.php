@@ -12,7 +12,8 @@
 			<h2 id="home"><a href=".">Fonds</a></h2>
 			<ul>
 				<li><a href="search.php">recherche</a></li>|
-				<li><a href="#">remplir fiche</a></li>
+				<li><a href="#">remplir fiche</a></li>|
+				<li><a href="biblio.php">bibliographie</a></li>
 			</ul>
 		</div>
 

@@ -16,7 +16,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 $record_id = $_POST['record_id'];
 
 
-$visualize = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, photocopy, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, publie, alreadydigitized, numerise, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id WHERE fiche_texte.id = '$record_id' ";
+$visualize = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble.ensemble, photocopy, type.type, annotation, addition, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, biblio.type, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
 
 if ($fiche = mysqli_query($con, $visualize)) {
 	while ($row=mysqli_fetch_array($fiche)) {
@@ -65,7 +65,40 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo "</td></tr><tr><td>Etape</td><td>";
 		echo $row['statut'];
 		echo "</td></tr><tr><td>Version publiée</td><td>";
-		echo $row['publie'];
+		echo $row['creator'];
+		if ($row['type'] != 'Article') {
+			echo ",&nbsp;<i>";
+			echo $row['title'];
+			echo "</i>";
+		} else {
+			echo ",&nbsp;'";
+			echo $row['title'];
+			echo "'";			
+		}
+		if ($row['title_pub'] != '') {
+			echo ",&nbsp;<i>";
+			echo $row['title_pub'];
+			echo "</i>";
+		} 
+		if ($row['number'] != '') {
+			echo ",&nbsp;";
+			echo $row['number'];
+		} 
+		if ($row['publisher'] != '') {
+			echo ",&nbsp;";
+			echo $row['publisher'];
+		} 
+		if ($row['date'] != '') {
+			echo ",&nbsp;";
+			echo $row['date'];
+		} 
+		echo ". [n°&nbsp;";
+		echo $row['biblioid'];
+		echo "]";
+		if ($row['publie'] != '') {
+			echo "&nbsp;-&nbsp;";
+			echo $row['publie'];
+		} 
 		echo "</td></tr><tr><td>Déjà numérisé</td><td>";
 		echo $row['alreadydigitized'];
 		echo "</td></tr><tr><td>À numeriser</td><td>";
