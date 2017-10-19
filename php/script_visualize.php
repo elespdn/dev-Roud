@@ -42,7 +42,7 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['addition'];
 		echo "</td></tr><tr><td>Support</td><td>";
 		echo $row['support'];
-		echo "</td></tr><tr><td>Numeroté</td><td>";
+		echo "</td></tr><tr><td>Numéroté</td><td>";
 		echo $row['numbered'];
 		echo "</td></tr><tr><td>Info support</td><td>";
 		echo $row['support_info'];
@@ -62,19 +62,28 @@ if ($fiche = mysqli_query($con, $visualize)) {
 			echo ",&nbsp;";
 			echo $row['dossierplus'];
 		} 		
-		echo "</td></tr><tr><td>Etape</td><td>";
+		echo "</td></tr><tr><td>Étape</td><td>";
 		echo $row['statut'];
 		echo "</td></tr><tr><td>Version publiée</td><td>";
-		echo $row['creator'];
-		if ($row['type'] != 'Article') {
+		
+		if ($row['creator'] != '') {
+			echo $row['creator'];
+		} 
+
+		if ($row['type'] != '') {
+
+			if ($row['type'] != 'Article') {
 			echo ",&nbsp;<i>";
 			echo $row['title'];
 			echo "</i>";
-		} else {
-			echo ",&nbsp;'";
-			echo $row['title'];
-			echo "'";			
+			} else {
+				echo ",&nbsp;'";
+				echo $row['title'];
+				echo "'";			
+			}
+
 		}
+
 		if ($row['title_pub'] != '') {
 			echo ",&nbsp;<i>";
 			echo $row['title_pub'];
@@ -92,16 +101,21 @@ if ($fiche = mysqli_query($con, $visualize)) {
 			echo ",&nbsp;";
 			echo $row['date'];
 		} 
-		echo ". [n°&nbsp;";
-		echo $row['biblioid'];
-		echo "]";
+		
+		if ($row['biblioid'] != '') {
+			echo ". [n°&nbsp;";
+			echo $row['biblioid'];
+			echo "]";
+		}
+		
 		if ($row['publie'] != '') {
 			echo "&nbsp;-&nbsp;";
 			echo $row['publie'];
 		} 
+		
 		echo "</td></tr><tr><td>Déjà numérisé</td><td>";
 		echo $row['alreadydigitized'];
-		echo "</td></tr><tr><td>À numeriser</td><td>";
+		echo "</td></tr><tr><td>À numériser</td><td>";
 		echo $row['numerise'];
 		echo "</td></tr><tr><td>Commentaire</td><td>";
 		echo $row['commentaire'];

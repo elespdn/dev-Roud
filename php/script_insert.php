@@ -110,7 +110,7 @@ echo "					</select>
 					</td>
 
 					<td>
-						<legend>Numeroté </legend>
+						<legend>Numéroté </legend>
 						<input type='checkbox' name='numbered' value='oui'>
 					</td>
 				</tr> 
@@ -182,8 +182,9 @@ echo "					</select>
 						<input type='text' id='date' name='date' pattern='^\d\d\d\d(.)*|^\?(.)*'></input>
 					</td>
 					<td>
-						<span class='suggest'>S'il s'agit d'une datation, ajouter un ast&#233;risque apr&#232;s une espace, par exemple '1956 *', '1945-06 *'.</span>
-						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY', '?'. Tous les mots ('avant', 'apr&#232;s', 'vers', etc.) vont apr&#232;s la date (avec virgule), par exemple '1965-04, avant'. Pour les cas particuliers, considerer le commentaire.</span>
+						<span class='suggest'>S'il n'y a pas de date, ne rien écrire (pas de point d'interrogation). 
+						 S'il s'agit d'une datation (pas de date dans le document original), ajouter un ast&#233;risque apr&#232;s une espace, par exemple '1956 *', '1945-06 *'.</span>
+						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY'. Tous les mots ('avant', 'apr&#232;s', 'vers', etc.) vont apr&#232;s la date (avec virgule), par exemple '1965-04, avant'. Pour les cas particuliers, considerer le commentaire.</span>
   					
   					</td>
 				</tr>    
@@ -224,7 +225,7 @@ echo "</select></td>
 
 
 				<tr>
-					<td><legend>Etapes du processus d'écriture </legend></td>
+					<td><legend>Étapes du processus d'écriture </legend></td>
 					<td><select name='status'>";
 					
 
@@ -246,7 +247,7 @@ echo "	</select></td>
 						<textarea rows='1' cols='10' name='biblio'></textarea> 
 					</td>
 					<td>
-						<p class='suggest'>Spécifier les pages ou autre reférence bibliographique.</p>
+						<p class='suggest'>Spécifier les pages ou autre reférence bibliographique. Pas de point à la fin. Les pages sont indiquées avec un ou deux 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'pp. 24-37').</p>
 						<textarea rows='3' cols='30' name='publie'></textarea> 
 					</td>
 				</tr>   
@@ -267,12 +268,12 @@ echo "	</select></td>
 					</td>
 				</tr>
 				<tr>
-					<td><legend>À numeriser </legend></td>
+					<td><legend>À numériser </legend></td>
 					<td><select name='digitize'>
 							<option value=''></option>
 							<option value='oui'>Oui</option>
 							<option value='non'>Non</option>
-							<option value='eventuellement'>Eventuellement</option>
+							<option value='eventuellement'>Éventuellement</option>
 						</select>
 					</td>
 				</tr>				

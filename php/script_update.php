@@ -208,7 +208,7 @@ echo "					</select>
 					</td>
 
 					<td>
-						<legend>Numeroté </legend>";
+						<legend>Numéroté </legend>";
 						
 					    echo "<input type='checkbox' name='numbered' value='oui' ". $checked .">";
 
@@ -296,7 +296,8 @@ echo "					</select>
 						<input type='text' id='date' name='date' pattern='^\d\d\d\d(.)*|^\?(.)*' value='". $dates_record_id ."'></input>
 					</td>
 					<td>
-						<span class='suggest'>S'il s'agit d'une datation, ajouter un ast&#233;risque apr&#232;s une espace, par exemple '1956 *', '1945-06 *'.</span>
+						<span class='suggest'>S'il n'y a pas de date, ne rien écrire (pas de point d'interrogation). 
+						 S'il s'agit d'une datation (pas de date dans le document original), ajouter un ast&#233;risque apr&#232;s une espace, par exemple '1956 *', '1945-06 *'.</span>
 						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY', '?'. Tous les mots ('avant', 'apr&#232;s', 'vers', etc.) vont apr&#232;s la date (avec virgule), par exemple '1965-04, avant'. Pour les cas particuliers, considerer le commentaire.</span>
   					
   					</td>
@@ -352,7 +353,7 @@ echo "</select></td>
 
 
 				<tr>
-					<td><legend>Etapes du processus d'écriture </legend></td>
+					<td><legend>Étapes du processus d'écriture </legend></td>
 					<td><select name='status'>";
 					
 
@@ -381,42 +382,51 @@ echo "	</select></td>
 						<textarea rows='1' cols='10' name='biblio'>". $biblioid_record_id ."</textarea> 
 					<br/>";
 
-					echo $bibliocreator_record_id;
+
+					if ($bibliocreator_record_id != '') {
+						echo $bibliocreator_record_id;
+					} 
+					if ($bibliotype_record_id != '') {
 						if ($bibliotype_record_id != 'Article') {
-							echo ",&nbsp;<i>";
-							echo $bibliotitle_record_id;
-							echo "</i>";
+						echo ",&nbsp;<i>";
+						echo $bibliotype_record_id;
+						echo "</i>";
 						} else {
 							echo ",&nbsp;'";
-							echo $bibliotitle_record_id;
+							echo $bibliotype_record_id;
 							echo "'";			
 						}
-						if ($bibliotitlepub_record_id != '') {
-							echo ",&nbsp;<i>";
-							echo $bibliotitlepub_record_id;
-							echo "</i>";
-						} 
-						if ($biblionumber_record_id != '') {
-							echo ",&nbsp;";
-							echo $biblionumber_record_id;
-						} 
-						if ($bibliopublisher_record_id != '') {
-							echo ",&nbsp;";
-							echo $bibliopublisher_record_id;
-						} 
-						if ($bibliodate_record_id != '') {
-							echo ",&nbsp;";
-							echo $bibliodate_record_id;
-						} 
+					}						
+					if ($bibliotitlepub_record_id != '') {
+						echo ",&nbsp;<i>";
+						echo $bibliotitlepub_record_id;
+						echo "</i>";
+					} 
+					if ($biblionumber_record_id != '') {
+						echo ",&nbsp;";
+						echo $biblionumber_record_id;
+					} 
+					if ($bibliopublisher_record_id != '') {
+						echo ",&nbsp;";
+						echo $bibliopublisher_record_id;
+					} 
+					if ($bibliodate_record_id != '') {
+						echo ",&nbsp;";
+						echo $bibliodate_record_id;
+					}
+
+					if ($biblioid_record_id != '') {
 						echo ". [n°&nbsp;";
 						echo $biblioid_record_id;
 						echo "]";
+					}
+						
 
 					echo "
 					</td>
 					
 					<td>
-						<p class='suggest'>Spécifier les pages ou autre reférence bibliographique.</p>
+						<p class='suggest'>Spécifier les pages ou autre reférence bibliographique. Pas de point à la fin. Les pages sont indiquées avec un ou deux 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'pp. 24-37').</p>
 						<textarea rows='3' cols='30' name='publie'>". $publie_record_id ."</textarea>
 					</td>
 				</tr>   

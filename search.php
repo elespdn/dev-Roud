@@ -102,7 +102,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Date / Datation</th>
 						<th>Genre</th>
 						<th>Dossier</th>
-						<th>Etape</th>
+						<th>Étape</th>
 						<th>Version publiée</th>
 						<th>Numeriser</th>
 						<th>Commentaire</th>
@@ -160,16 +160,25 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo "</td><td>";
 		echo $row['statut'];
 		echo "</td><td>";	
-		echo $row['creator'];
-		if ($row['type'] != 'Article') {
+		
+		if ($row['creator'] != '') {
+			echo $row['creator'];
+		} 
+
+		if ($row['type'] != '') {
+
+			if ($row['type'] != 'Article') {
 			echo ",&nbsp;<i>";
 			echo $row['title'];
 			echo "</i>";
-		} else {
-			echo ",&nbsp;'";
-			echo $row['title'];
-			echo "'";			
+			} else {
+				echo ",&nbsp;'";
+				echo $row['title'];
+				echo "'";			
+			}
+
 		}
+
 		if ($row['title_pub'] != '') {
 			echo ",&nbsp;<i>";
 			echo $row['title_pub'];
@@ -187,9 +196,14 @@ if ($query = mysqli_query($con, $visualizeall)) {
 			echo ",&nbsp;";
 			echo $row['date'];
 		} 
-		echo ". [n°&nbsp;";
-		echo $row['biblioid'];
-		echo "]";
+		
+		if ($row['biblioid'] != '') {
+			echo ". [n°&nbsp;";
+			echo $row['biblioid'];
+			echo "]";
+		}
+
+
 		if ($row['publie'] != '') {
 			echo "&nbsp;-&nbsp;";
 			echo $row['publie'];
@@ -228,7 +242,7 @@ mysqli_close($con);
 					<input type="checkbox" id="check_titre" name="check_titre" checked> Titre</input>
 					<input type="checkbox" id="check_cote" name="check_cote"> Cote</input>
 					<input type="checkbox" id="check_nouvellecote" name="check_nouvellecote"> Nouvelle cote</input>
-					<input type="checkbox" id="check_ensemble" name="check_ensemble" checked> Ensemble editorial</input>
+					<input type="checkbox" id="check_ensemble" name="check_ensemble" checked> Ensemble Éditorial</input>
 					<br/><br/>
 					<input type="checkbox" id="check_photocopy" name="check_photocopy"> Photocopie</input>
 					<input type="checkbox" id="check_type" name="check_type" checked> Type de document</input>
@@ -244,8 +258,8 @@ mysqli_close($con);
 					<input type="checkbox" id="check_genre" name="check_genre"> Genre</input>
 					<input type="checkbox" id="check_dossier" name="check_dossier" checked> Dossier</input>
 					<input type="checkbox" id="check_publie" name="check_publie"> Version publiée</input>
-					<input type="checkbox" id="check_etape" name="check_etape" checked> Etape</input>
-					<input type="checkbox" id="check_numeriser" name="check_numeriser"> Numeriser</input>
+					<input type="checkbox" id="check_etape" name="check_etape" checked> Étape</input>
+					<input type="checkbox" id="check_numeriser" name="check_numeriser"> À numériser</input>
 					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
 					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Cuisine interne</input>
 					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>
@@ -259,7 +273,7 @@ mysqli_close($con);
 				<img src="img/eyeopen.png" width="20px" id="eyeopen_instructions" class="eye" />
 				<div style="display: none" id="col_toggle_instructions">
 					<ul>
-						<li>Ordonner les données de chaque colonne en faisant click sur le titre de la colonne.</li>
+						<li>Ordonner les données de chaque colonne en cliquant sur le titre de la colonne.</li>
 						<li>Déplacer les colonnes et changer leur ordre avec drag&amp;drop (glisser-déposer).</li>
 					</ul>
 				</div>

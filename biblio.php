@@ -136,50 +136,21 @@ mysqli_close($con);
 ?>  
 			</div>
 
-<!--			<div id="col_toggle"> <!-- show / hide columns 
-				<h3 style="display: inline">Afficher / cacher une colonne&nbsp;&nbsp;&nbsp;</h3>
-				<img src="img/eyeopen.png" width="20px" id="eyeopen_col" class="eye" />
+			<br/><br/><br/>
 
-				<div style="display: none" id="col_toggle_intern">
-					<input type="checkbox" id="check_titre" name="check_titre" checked> Titre</input>
-					<input type="checkbox" id="check_cote" name="check_cote"> Cote</input>
-					<input type="checkbox" id="check_nouvellecote" name="check_nouvellecote"> Nouvelle cote</input>
-					<input type="checkbox" id="check_ensemble" name="check_ensemble" checked> Ensemble editorial</input>
-					<br/><br/>
-					<input type="checkbox" id="check_photocopy" name="check_photocopy"> Photocopie</input>
-					<input type="checkbox" id="check_type" name="check_type" checked> Type de document</input>
-					<input type="checkbox" id="check_annote" name="check_annote"> Annoté</input>
-					<input type="checkbox" id="check_adjonction" name="check_adjonction"> Avec adjonctions</input>
-					<input type="checkbox" id="check_support" name="check_support" checked> Support</input>
-					<input type="checkbox" id="check_numerote" name="check_numerote"> Numéroté</input>
-					<input type="checkbox" id="check_infosupport" name="check_infosupport"> Info support</input>
-					<input type="checkbox" id="check_instrument" name="check_instrument" checked> Instrument</input>
-					<input type="checkbox" id="check_autreinstrument" name="check_autreinstrument"> Autre(s) instrument(s)</input>
-					<br/><br/>
-					<input type="checkbox" id="check_date" name="check_date" checked> Date</input>
-					<input type="checkbox" id="check_genre" name="check_genre"> Genre</input>
-					<input type="checkbox" id="check_dossier" name="check_dossier" checked> Dossier</input>
-					<input type="checkbox" id="check_publie" name="check_publie"> Version publiée</input>
-					<input type="checkbox" id="check_etape" name="check_etape" checked> Etape</input>
-					<input type="checkbox" id="check_numeriser" name="check_numeriser"> Numeriser</input>
-					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
-					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Cuisine interne</input>
-					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>
-				</div>
-			</div>
-
- 			<br/><br/><br/>
-
-			<div id="instructions_toggle"> <!-- show / hide columns --
+			<div id="instructions_toggle"> <!-- show / hide columns -->
 				<h3 style="display: inline">Indications pour visualiser les données&nbsp;&nbsp;&nbsp;</h3>
 				<img src="img/eyeopen.png" width="20px" id="eyeopen_instructions" class="eye" />
 				<div style="display: none" id="col_toggle_instructions">
 					<ul>
-						<li>Ordonner les données de chaque colonne en faisant click sur le titre de la colonne.</li>
+						<li>Ordonner les données de chaque colonne en cliquant sur le titre de la colonne.</li>
 						<li>Déplacer les colonnes et changer leur ordre avec drag&amp;drop (glisser-déposer).</li>
 					</ul>
 				</div>
-			</div> -->
+			</div>
+
+			<br/><br/><br/>
+
 
 		</div> <!-- fin content -->
 	</body>  
