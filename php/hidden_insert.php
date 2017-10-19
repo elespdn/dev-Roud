@@ -17,31 +17,31 @@ mysqli_set_charset($con, "utf8"); // ##---##---## encodage utf8 assuré, pas de 
 // TRIM pour eliminer les espaces blancs avant et apres, STR_REPLACE pour remplacer les apostrophes ' avec '' (sinon, ils ne sont pas bien processés)  
 $title = $_POST['title'];
 $title = trim($title);
-$title = str_replace("'","''",$title);
+$title = str_replace("'","&rsquo;",$title);
 
 $archive = $_POST['archive'];
 $archive = trim($archive);
-$archive = str_replace("'","''",$archive);
+$archive = str_replace("'","&rsquo;",$archive);
 
 $new_archive = $_POST['new_archive'];
 $new_archive = trim($new_archive);
-$new_archive = str_replace("'","''",$new_archive);
+$new_archive = str_replace("'","&rsquo;",$new_archive);
 
 $support_info = $_POST['support_info'];
 $support_info = trim($support_info);
-$support_info = str_replace("'","''",$support_info);
+$support_info = str_replace("'","&rsquo;",$support_info);
 
 $other_tool = $_POST['other_tool'];
 $other_tool = trim($other_tool);
-$other_tool = str_replace("'", "''", $other_tool);
+$other_tool = str_replace("'", "&rsquo;", $other_tool);
 
 $numerise_info = $_POST['numerise_info'];
 $numerise_info = trim($numerise_info);
-$numerise_info = str_replace("'", "''", $numerise_info);
+$numerise_info = str_replace("'", "&rsquo;", $numerise_info);
 
 $dossierplus = $_POST['dossierplus'];
 $dossierplus = trim($dossierplus);
-$dossierplus = str_replace("'", "''", $dossierplus);
+$dossierplus = str_replace("'", "&rsquo;", $dossierplus);
 
 $cluster = $_POST['cluster'];
 $photocopy = $_POST['photocopy'];
@@ -64,15 +64,16 @@ $date = trim($date);
 $biblio = $_POST['biblio'];
 $biblio = trim($biblio);
 
+
 $publie = $_POST['publie'];
 $publie = trim($publie);
-$publie = str_replace("'","''",$publie);
+$publie = str_replace("'","&rsquo;",$publie);
 
 $digitize = $_POST['digitize'];
 
 $comment = $_POST['comment'];
 $comment = trim($comment);
-$comment = str_replace("'","''",$comment);
+$comment = str_replace("'","&rsquo;",$comment);
 
 
 // ##### for OPTIONAL VALUES

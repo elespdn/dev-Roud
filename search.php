@@ -118,7 +118,9 @@ if ($query = mysqli_query($con, $visualizeall)) {
 
 		echo "<tr><td>";
 		echo "<form action='record.php' method='post'><input id='search_id' type='submit' name='record_id' value='$row_id'/></form>"; 
-		// echo $row_id;
+		
+		echo "<span style='display:none'>". $row_id ."</span>";
+
 		echo "</td><td>";
 		echo $row['titre'];
 		echo "</td><td>";
