@@ -164,7 +164,10 @@ Add table Biblio_ouvrages
 ## ________________ Content UPDATE after ____________________ ##
 
 Vd. Github
-	
+
+## ________________ Content UPDATE only DataBase ____________________ ##
+
+Tutti ' trasformati in &rsquo; (apostrofi). La ricerca sembra funzionare lo stesso
 
 
 
@@ -198,9 +201,10 @@ Guide pour l'utilisateur:
 
 ## _____________________ TO DO ___________________ ##
 
-- bibliography ? For Dossier and for Version Publié
+- dossier
 - rename form_insert > insert e form_update > update
-
+- da Update back to Record
+- add Update button top of the page
 
 
 
