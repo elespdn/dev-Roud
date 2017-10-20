@@ -421,7 +421,7 @@ echo "	</select></td>
 					}
 
 					if ($biblioid_record_id != '') {
-						echo ". [n°&nbsp;";
+						echo ". [Biblio&nbsp;";
 						echo $biblioid_record_id;
 						echo "]";
 					}

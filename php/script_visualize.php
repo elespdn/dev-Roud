@@ -103,7 +103,7 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		} 
 		
 		if ($row['biblioid'] != '') {
-			echo ". [n°&nbsp;";
+			echo ". [Biblio&nbsp;";
 			echo $row['biblioid'];
 			echo "]";
 		}

@@ -200,7 +200,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		} 
 		
 		if ($row['biblioid'] != '') {
-			echo ". [n°&nbsp;";
+			echo ". [Biblio&nbsp;";
 			echo $row['biblioid'];
 			echo "]";
 		}
