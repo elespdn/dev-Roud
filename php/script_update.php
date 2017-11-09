@@ -17,7 +17,7 @@ $record_id = $_POST['record_id'];
 
 
 
-$select2prefill = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, photocopy, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, dossier_id, dossierplus, biblio.type, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
+$select2prefill = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, photocopy, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, dossier_id, dossierplus, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
 
 $query = mysqli_query($con, $select2prefill) or die ("impossible de VISUALISER Les données");  
 while ($row = mysqli_fetch_array($query)) 
@@ -43,7 +43,7 @@ while ($row = mysqli_fetch_array($query))
 		$dossier_record_id = $row['dossier_id'];
 		$dossierplus_record_id = $row['dossierplus'];
 		$statut_record_id = $row['statut_id'];
-		$bibliotype_record_id = $row['type'];
+		$bibliotype_record_id = $row['bibliotype'];
 		$bibliocreator_record_id = $row['creator'];
 		$bibliotitle_record_id = $row['title'];
 		$bibliotitlepub_record_id = $row['title_pub'];
