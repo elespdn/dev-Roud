@@ -205,6 +205,7 @@ Guide pour l'utilisateur:
 - rename form_insert > insert e form_update > update
 - da Update back to Record
 - add Update button top of the page
+- create link to bibliography record GET method, first prepare git branch
 
 
 
