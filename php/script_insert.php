@@ -120,10 +120,12 @@ echo "					</select>
 						<textarea rows='3' cols='50' name='support_info'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Suggestions: 
+						<span class='suggest'>Indications : 
 						<ul>
-							<li>étendue, quantité de feuillets et recto/verso où nécessaire. Indiquer la quantité, f. ou ff. et recto/verso, sans virgule au milieu. Ex. 1 f. recto, 15 ff. recto/verso;</li>
-							<li>taille du cahier, papier particulier (bleu, pelure, de qualité, enveloppe), couleur des pages (si pas blanc), couverture.</li>
+							<li>Obligatoire. Indiquer la quantité, f. ou ff.</li>
+							<li>Ex. : 2 ff.</li>
+							<li>Le cas écheant. Papier particulier (bleu, pelure, de qualité, page d'agenda, page de cahier), couleur des pages (si pas blanc).</li>
+							<li>Ex. : Dans le cas de deux pages dans un cahier, choisir Support: cahier et spécifier l'étendue dans Info support : 2 ff.<br/>Dans le cas de deux pages arrachés, choisir Support : feuillet et spécifier l'étendue dans Info support : 2 f. r/v. Page de cahier (à la ligne).</li>
 						</ul>
 						</span>
 					</td>
@@ -165,7 +167,7 @@ echo "					</select>
 						<textarea rows='3' cols='50' name='other_tool'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Suggestions : spécifier si l'instrument a été utilisé pour des annotations ou adjonctions ; utiliser les mêmes termes que dans l'onglet au-dessus (crayon, machine à écrire, etc.).</span>
+						<span class='suggest'>Indications : spécifier l'instrument et la couleur des annotations(utiliser les mêmes termes que dans le menu déroulant au-dessus). Ex. : annotations au stylo rouge.</span>
 					</td>
 				</tr>
 
