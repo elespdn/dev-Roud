@@ -14,25 +14,51 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 echo "		<table class='table_insert'>
 				<tr>
-					<td><legend>Titre </legend></td> 
+					<td><legend>Titre</legend></td> 
 					<td>
 						<textarea rows='1' cols='50' name='title'></textarea> 
 					</td>
-				</tr>    
+					<td>
+						<span class='suggest'>Pas de guillemets, pas d’italique. Les titres-incipit sont donnés entre crochets, avec trois points à la fin (alt + .).</span>
+
+					</td>
+				</tr>   
 
 				<tr>
+					<td><legend>Fonds </legend></td>
+					<td><select name='archive'>"; 
+						
+
+
+$sql = "SELECT * FROM archive";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+{  
+echo "<option value='". $row['id']."'>".$row['archive']. '</option>';
+} 
+
+echo "</select></td>
+				<td>
+					<span class='suggest'>La liste des fonds n'est pas complète. Écrire à Elena pour ajouter un fonds à la liste (c'est rapide).</span>
+				</td>
+				</tr> 
+
+<tr>
 					<td><legend>Cote </legend></td>
 					<td>
-						<textarea rows='1' cols='50' name='archive'></textarea> 
+						<textarea rows='1' cols='50' name='cote'></textarea> 
 					</td>
 				</tr>    
 
 				<tr>
-					<td><legend>Nouvelle cote </legend></td>
+					<td><legend>Ancienne cote </legend></td>
 					<td>
-						<textarea rows='1' cols='50' name='new_archive'></textarea> 
+						<textarea rows='1' cols='50' name='oldcote'></textarea> 
 					</td>
-				</tr>    
+					<td>
+					<span class='suggest'>Seulement pour CRLR GR et pas obligatoirement non plus.</span>
+				</td>
+				</tr>   
 
 				<tr>
 					<td><legend>Ensemble éditorial </legend></td>
@@ -88,9 +114,6 @@ echo "					</select>
 					</td>
 
 				
-					<td><legend>Avec adjonction(s) </legend>
-						<input type='checkbox' name='addition' value='oui'>
-					</td>
 
 				</tr>    
 

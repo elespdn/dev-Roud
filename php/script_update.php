@@ -17,7 +17,7 @@ $record_id = $_POST['record_id'];
 
 
 
-$select2prefill = "SELECT fiche_texte.id, titre, cote, nouvelle_cote, ensemble_id, photocopy, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, dossier_id, dossierplus, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
+$select2prefill = "SELECT fiche_texte.id, titre, archive_id, oldcote, cote, ensemble_id, photocopy, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, dossier_id, dossierplus, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
 
 $query = mysqli_query($con, $select2prefill) or die ("impossible de VISUALISER Les données");  
 while ($row = mysqli_fetch_array($query)) 
@@ -25,8 +25,9 @@ while ($row = mysqli_fetch_array($query))
 
 		$id_record_id = $row['id'];
 		$titre_record_id = $row['titre'];
+		$archive_record_id = $row['archive'];
+		$oldcote_record_id = $row['oldcote'];
 		$cote_record_id = $row['cote'];
-		$nouvelle_cote_record_id = $row['nouvelle_cote'];
 		$ensemble_record_id = $row['ensemble_id'];
 		$photocopy_record_id = $row['photocopy'];
 		$type_record_id = $row['type_id'];
@@ -67,19 +68,45 @@ echo "		<table class='table_insert'>
 					<td>
 						<textarea rows='1' cols='50' name='title'>". $titre_record_id ."</textarea> 
 					</td>
-				</tr>    
-
-				<tr>
-					<td><legend>Cote </legend></td>
 					<td>
-						<textarea rows='1' cols='50' name='archive'>". $cote_record_id ."</textarea> 
+						<span class='suggest'>Pas de guillemets, pas d’italique. Les titres-incipit sont donnés entre crochets, avec trois points à la fin (alt + .).</span>
+
 					</td>
 				</tr>    
 
 				<tr>
-					<td><legend>Nouvelle cote </legend></td>
+					<td><legend>Fonds </legend></td>
+					<td><select name='archive'>"; 
+						
+
+
+$sql = "SELECT * FROM archive";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+{  
+echo "<option value='". $row['id']."'>".$row['archive']. '</option>';
+} 
+
+echo "</select></td>
+				<td>
+					<span class='suggest'>La liste des fonds n'est pas complète. Écrire à Elena pour ajouter un fonds à la liste (c'est rapide).</span>
+				</td>
+				</tr> 
+
+				<tr>
+					<td><legend>Cote </legend></td>
 					<td>
-						<textarea rows='1' cols='50' name='new_archive'>".$nouvelle_cote_record_id ."</textarea> 
+						<textarea rows='1' cols='50' name='cote'>".$cote_record_id ."</textarea> 
+					</td>
+				</tr>  
+
+				<tr>
+					<td><legend>Ancienne cote </legend></td>
+					<td>
+						<textarea rows='1' cols='50' name='oldcote'>". $oldcote_record_id ."</textarea> 
+					</td>
+					<td>
+						<span class='suggest'>Seulement pour CRLR GR et pas obligatoirement non plus.</span>
 					</td>
 				</tr>    
 
@@ -171,17 +198,7 @@ echo "					</select>
 			echo "	</td>
 
 				
-					<td><legend>Avec adjonction(s) </legend>
-						<legend>Annoté </legend>";
-						if ($addition_record_id=='oui') { 
-            				$checked = 'checked';  
-					        }
-					    else {		
-					            $checked = '';			
-					    }
-					    echo "<input type='checkbox' name='addition' value='oui' ". $checked .">";
-			echo "	</td>
-
+					
 				</tr>    
 
 

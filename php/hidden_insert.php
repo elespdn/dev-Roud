@@ -8,7 +8,7 @@
 
 
 // ##---##---## Données de connexion placées dans un fichier externe  
-require "connection.php";
+require "connection.php"; 
 mysqli_set_charset($con, "utf8"); // ##---##---## encodage utf8 assuré, pas de probleme avec les accents
 
 
@@ -19,13 +19,13 @@ $title = $_POST['title'];
 $title = trim($title);
 $title = str_replace("'","&rsquo;",$title);
 
-$archive = $_POST['archive'];
-$archive = trim($archive);
-$archive = str_replace("'","&rsquo;",$archive);
+$oldcote = $_POST['oldcote'];
+$oldcote = trim($oldcote);
+$oldcote = str_replace("'","&rsquo;",$oldcote);
 
-$new_archive = $_POST['new_archive'];
-$new_archive = trim($new_archive);
-$new_archive = str_replace("'","&rsquo;",$new_archive);
+$cote = $_POST['cote'];
+$cote = trim($cote);
+$cote = str_replace("'","&rsquo;",$cote);
 
 $support_info = $_POST['support_info'];
 $support_info = trim($support_info);
@@ -43,11 +43,11 @@ $dossierplus = $_POST['dossierplus'];
 $dossierplus = trim($dossierplus);
 $dossierplus = str_replace("'", "&rsquo;", $dossierplus);
 
+$archive = $_POST['archive'];
 $cluster = $_POST['cluster'];
 $photocopy = $_POST['photocopy'];
 $type = $_POST['type'];
 $annotation = $_POST['annotation'];
-$addition = $_POST['addition'];
 $support = $_POST['support'];
 $numbered = $_POST['numbered'];
 $tool = $_POST['tool'];
@@ -91,7 +91,7 @@ same for addition and numbered
 */
 
 
-$sql = "INSERT INTO fiche_texte (titre, cote, nouvelle_cote, ensemble_id, type_id, annotation, addition, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, biblio_id, publie, dossier_id, dossierplus, alreadydigitized, numerise, numerise_info, commentaire, photocopy, resp_id) VALUES ('$title', '$archive', '$new_archive', '$cluster', '$type', '$annotation', '$addition', '$support', '$numbered', '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$biblio', '$publie', '$dossier', '$dossierplus', '$alreadydigitized', '$digitize', '$numerise_info', '$comment', '$photocopy', '$resp')";
+$sql = "INSERT INTO fiche_texte (titre, archive_id, oldcote, cote, ensemble_id, type_id, annotation, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, biblio_id, publie, dossier_id, dossierplus, alreadydigitized, numerise, numerise_info, commentaire, photocopy, resp_id) VALUES ('$title', '$archive', '$oldcote', '$cote', '$cluster', '$type', '$annotation', '$support', '$numbered', '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$biblio', '$publie', '$dossier', '$dossierplus', '$alreadydigitized', '$digitize', '$numerise_info', '$comment', '$photocopy', '$resp')";
 
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps
