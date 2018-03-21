@@ -16,8 +16,11 @@
 		-->
 		
 		<link rel="stylesheet" type="text/css" href="css/datatables.css"/>
+
 		<script type="text/javascript" src="js/datatables.js"></script>
+
 		<script type="text/javascript" src="js/column_visibility.js"></script>
+		
 		<script type="text/javascript">
 
 			
@@ -32,24 +35,9 @@
 				}); 
 			});
 
-/* this does not work
-			$(document).ready(function(){
-				$("#eyeopen").click(function(){
-				    $("#col_toggle_intern").show();
-				    document.getElementById("eyeopen").src = "img/eyeclosed.png";
-				    document.getElementById("eyeopen").id = "eyeclosed";
-				}); 
-
-
-				$("#eyeclosed").click(function(){
-				    $("#col_toggle_intern").hide();
-				    document.getElementById("eyeclosed").src = "img/eyeopen.png";
-				    document.getElementById("eyeclosed").id = "eyeopen";
-				});
-			});*/
 			
 			
-		</script>
+		</script> 
 		
 
 	</head>
@@ -78,7 +66,8 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 
 // LEFT JOIN if join includes NULL values
-$visualizeall = "SELECT fiche_texte.id, titre, archive.archive, cote, oldcote, ensemble.ensemble, type.type, photocopy, annotation, support.support, support_info, instrument.instrument, color.color, other_tool, statut.statut, dates, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, commentaire, numerise_info, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id";
+
+$visualizeall = "SELECT fiche_texte.id, titre, archive.archive, cote, oldcote, ensemble.ensemble, photocopy, type.type, annotation, support.support, support_info, instrument.instrument, color.color, other_tool,dates, datationlist.datationlist, datation, datationcomment, statut.statut, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, commentaire, alreadydigitized, ocrtranscribed, auteurtraduit.surname, numerise_info, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id LEFT JOIN auteurtraduit ON fiche_texte.auteurtraduit_id = auteurtraduit.id LEFT JOIN datationlist ON fiche_texte.datationlist_id = datationlist.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id";
 
 if ($query = mysqli_query($con, $visualizeall)) {
 
@@ -95,15 +84,18 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Type de document</th>
 						<th>Annoté</th>
 						<th>Support</th>
-						<th>Numéroté</th>
 						<th>Info support</th>
 						<th>Instrument d'&#233;criture</th>
 						<th>Autre(s) instrument(s)</th>
-						<th>Date / Datation</th>
+						<th>Date</th>
+						<th>Datation</th>
 						<th>Étape</th>
 						<th>Version publiée</th>
 						<th>Commentaire</th>
-						<th>Cuisine interne</th>
+						<th>Déjà numérisé</th>
+						<th>Déjà rétranscrit ou ocrizé</th>
+						<th>Auteur traduit</th>
+						<th>Commentaire interne</th>
 						<th>Resp</th>
 					</tr>
 				</thead>
@@ -137,8 +129,6 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo "</td><td>";
 		echo $row['support'];
 		echo "</td><td>";
-		echo $row['numbered'];
-		echo "</td><td>";
 		echo $row['support_info'];
 		echo "</td><td>";
 		echo $row['instrument'];
@@ -149,58 +139,78 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo "</td><td>";
 		echo $row['dates'];
 		echo "</td><td>";
+
+
+		echo $row['datationlist'];
+		echo "&nbsp;";
+		echo $row['datation'];
+
+		if ($row['datationcomment'] != '') {
+			echo ". &nbsp;";
+			echo $row['datationcomment'];
+		} 
+		
+
+		echo "</td><td>";
 		echo $row['statut'];
 		echo "</td><td>";	
 		
-		if ($row['creator'] != '') {
-			echo $row['creator'];
-		} 
+		if ($row['biblioid'] != '') {	
+			if ($row['creator'] != '') {
+				echo $row['creator'];
+			} 
 
-		if ($row['bibliotype'] != '') {
+			if ($row['type'] != '') {
 
-			if ($row['bibliotype'] != 'Article') {
-			echo ",&nbsp;<i>";
-			echo $row['title'];
-			echo "</i>";
-			} else {
-				echo ",&nbsp;'";
+				if ($row['type'] != 'Article') {
+				echo ",&nbsp;<i>";
 				echo $row['title'];
-				echo "'";			
+				echo "</i>";
+				} else {
+					echo ",&nbsp;'";
+					echo $row['title'];
+					echo "'";			
+				}
+
 			}
 
+			if ($row['title_pub'] != '') {
+				echo ",&nbsp;<i>";
+				echo $row['title_pub'];
+				echo "</i>";
+			} 
+			if ($row['number'] != '') {
+				echo ",&nbsp;";
+				echo $row['number'];
+			} 
+			if ($row['publisher'] != '') {
+				echo ",&nbsp;";
+				echo $row['publisher'];
+			} 
+			if ($row['date'] != '') {
+				echo ",&nbsp;";
+				echo $row['date'];
+			} 
+			
+			if ($row['biblioid'] != '') {
+				echo ". [Biblio&nbsp;";
+				echo $row['biblioid'];
+				echo "]";
+			}
 		}
-
-		if ($row['title_pub'] != '') {
-			echo ",&nbsp;<i>";
-			echo $row['title_pub'];
-			echo "</i>";
-		} 
-		if ($row['number'] != '') {
-			echo ",&nbsp;";
-			echo $row['number'];
-		} 
-		if ($row['publisher'] != '') {
-			echo ",&nbsp;";
-			echo $row['publisher'];
-		} 
-		if ($row['date'] != '') {
-			echo ",&nbsp;";
-			echo $row['date'];
-		} 
-		
-		if ($row['biblioid'] != '') {
-			echo ". [Biblio&nbsp;";
-			echo $row['biblioid'];
-			echo "]";
-		}
-
-
+			
 		if ($row['publie'] != '') {
 			echo "&nbsp;-&nbsp;";
 			echo $row['publie'];
 		} 
 		echo "</td><td>";
 		echo $row['commentaire'];
+		echo "</td><td>";
+		echo $row['alreadydigitized'];
+		echo "</td><td>";
+		echo $row['ocrtranscribed'];
+		echo "</td><td>";
+		echo $row['surname'];
 		echo "</td><td>";
 		echo $row['numerise_info'];
 		echo "</td><td>";
@@ -223,13 +233,11 @@ mysqli_close($con);
 ?>  
 			</div>
 
-			<!-- UPDATE THIS --> 
-
 			<div id="col_toggle"> <!-- show / hide columns -->
 				<h3 style="display: inline">Afficher / cacher une colonne&nbsp;&nbsp;&nbsp;</h3>
 				<img src="img/eyeopen.png" width="20px" id="eyeopen_col" class="eye" />
 
-				<div style="display: none" id="col_toggle_intern">
+				<div id="col_toggle_intern">  <!--  style="display: none" -->
 					<input type="checkbox" id="check_titre" name="check_titre" checked> Titre</input>
 					<input type="checkbox" id="check_fonds" name="check_fonds"> Fonds</input>
 					<input type="checkbox" id="check_cote" name="check_cote"> Cote</input>
@@ -245,11 +253,16 @@ mysqli_close($con);
 					<input type="checkbox" id="check_autreinstrument" name="check_autreinstrument"> Autre(s) instrument(s)</input>
 					<br/><br/>
 					<input type="checkbox" id="check_date" name="check_date" checked> Date</input>
-					<input type="checkbox" id="check_publie" name="check_publie"> Version publiée</input>
+					<input type="checkbox" id="check_datation" name="check_datation" checked> Datation</input>
 					<input type="checkbox" id="check_etape" name="check_etape" checked> Étape</input>
+					<input type="checkbox" id="check_publie" name="check_publie" checked> Version publiée</input>
 					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
-					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Cuisine interne</input>
-					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>
+					<br/><br/>
+					<input type="checkbox" id="check_alreadydigitized" name="check_alreadydigitized"> Déjà numérisé</input>
+					<input type="checkbox" id="check_ocrtranscribed" name="check_ocrtranscribed"> Déjà rétranscrit ou ocrizé</input>
+					<input type="checkbox" id="check_auteurtraduit" name="check_auteurtraduit"> Auteur traduit</input>
+					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Commentaire interne</input>
+					<input type="checkbox" id="check_resp" name="check_resp" checked> Responsable</input>
 				</div>
 			</div>
 
@@ -258,7 +271,7 @@ mysqli_close($con);
 			<div id="instructions_toggle"> <!-- show / hide columns -->
 				<h3 style="display: inline">Indications pour visualiser les données&nbsp;&nbsp;&nbsp;</h3>
 				<img src="img/eyeopen.png" width="20px" id="eyeopen_instructions" class="eye" />
-				<div style="display: none" id="col_toggle_instructions">
+				<div id="col_toggle_instructions"> <!--  style="display: none" -->
 					<ul>
 						<li>Ordonner les données de chaque colonne en cliquant sur le titre de la colonne.</li>
 						<li>Déplacer les colonnes et changer leur ordre avec drag&amp;drop (glisser-déposer).</li>

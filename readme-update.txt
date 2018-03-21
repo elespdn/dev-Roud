@@ -41,7 +41,7 @@ FOLDER ORGANIZATION
 			--> record_created.php
 
 		
-COLUMN NUMBER in visualization search.php (don't correspond to fiche_texte)
+COLUMN NUMBER in visualization search.php (doesn't correspond to fiche_texte)
 	0	id
 	1	title
 	2	fonds
@@ -56,14 +56,15 @@ COLUMN NUMBER in visualization search.php (don't correspond to fiche_texte)
 	11	instrument
 	12	autres instrument	
 	13	date
-	14	genre
-	15	dossier
-	16	etape
-	17	version publiée
-	18	numeriser
-	19	commentaire
-	20	cuisine interne
-	21	resp
+	14	datation
+	15	etape
+	16	version publiée
+	17	commentaire
+	18	deja numerise
+	19	deja retranscrit
+	20	auteur traduit
+	21	commentaire interne
+	22	resp
 
 
 

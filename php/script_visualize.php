@@ -16,7 +16,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 $record_id = $_POST['record_id'];
 
 
-$visualize = "SELECT fiche_texte.id, titre, archive.archive, oldcote, cote, ensemble.ensemble, photocopy, type.type, annotation, support.support, support_info, instrument.instrument, color.color, other_tool, statut.statut, dates, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
+$visualize = "SELECT fiche_texte.id, titre, archive.archive, oldcote, cote, ensemble.ensemble, photocopy, type.type, annotation, support.support, support_info, instrument.instrument, color.color, other_tool, statut.statut, dates, datationlist.datationlist, datation, datationcomment, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, ocrtranscribed, auteurtraduit.surname, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN auteurtraduit ON fiche_texte.auteurtraduit_id = auteurtraduit.id LEFT JOIN datationlist ON fiche_texte.datationlist_id = datationlist.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
 
 if ($fiche = mysqli_query($con, $visualize)) {
 	while ($row=mysqli_fetch_array($fiche)) {
@@ -28,10 +28,10 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['titre'];
 		echo "</td></tr><tr><td>Titre</td><td>";
 		echo $row['archive'];
-		echo "</td></tr><tr><td>Cote</td><td>";
-		echo $row['oldcote'];
 		echo "</td></tr><tr><td>Nouvelle cote</td><td>";
 		echo $row['cote'];
+		echo "</td></tr><tr><td>Cote</td><td>";
+		echo $row['oldcote'];
 		echo "</td></tr><tr><td>Ensemble</td><td>";
 		echo $row['ensemble'];
 		echo "</td></tr><tr><td>Photocopie</td><td>";
@@ -50,63 +50,87 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['color'];
 		echo "</td></tr><tr><td>Autre(s) instrument(s)</td><td>";
 		echo $row['other_tool'];
-		echo "</td></tr><tr><td>Date / Datation</td><td>";
+		echo "</td></tr><tr><td>Date</td><td>";
 		echo $row['dates'];
-		echo "</td></tr><tr><td>Étape</td><td>";
+		echo "</td></tr><td>Datation</td>
+
+
+		<td>";
+
+		echo $row['datationlist'];
+		echo "&nbsp;";
+		echo $row['datation'];
+
+		if ($row['datationcomment'] != '') {
+			echo ". &nbsp;";
+			echo $row['datationcomment'];
+		} 
+		
+		
+		echo "</td>
+
+
+		<tr><td>Étape</td><td>";
 		echo $row['statut'];
 		echo "</td></tr><tr><td>Version publiée</td><td>";
 		
-		if ($row['creator'] != '') {
-			echo $row['creator'];
-		} 
+		if ($row['biblioid'] != '') {	
+			if ($row['creator'] != '') {
+				echo $row['creator'];
+			} 
 
-		if ($row['type'] != '') {
+			if ($row['type'] != '') {
 
-			if ($row['type'] != 'Article') {
-			echo ",&nbsp;<i>";
-			echo $row['title'];
-			echo "</i>";
-			} else {
-				echo ",&nbsp;'";
+				if ($row['type'] != 'Article') {
+				echo ",&nbsp;<i>";
 				echo $row['title'];
-				echo "'";			
+				echo "</i>";
+				} else {
+					echo ",&nbsp;'";
+					echo $row['title'];
+					echo "'";			
+				}
+
 			}
 
+			if ($row['title_pub'] != '') {
+				echo ",&nbsp;<i>";
+				echo $row['title_pub'];
+				echo "</i>";
+			} 
+			if ($row['number'] != '') {
+				echo ",&nbsp;";
+				echo $row['number'];
+			} 
+			if ($row['publisher'] != '') {
+				echo ",&nbsp;";
+				echo $row['publisher'];
+			} 
+			if ($row['date'] != '') {
+				echo ",&nbsp;";
+				echo $row['date'];
+			} 
+			
+			if ($row['biblioid'] != '') {
+				echo ". [Biblio&nbsp;";
+				echo $row['biblioid'];
+				echo "]";
+			}
 		}
-
-		if ($row['title_pub'] != '') {
-			echo ",&nbsp;<i>";
-			echo $row['title_pub'];
-			echo "</i>";
-		} 
-		if ($row['number'] != '') {
-			echo ",&nbsp;";
-			echo $row['number'];
-		} 
-		if ($row['publisher'] != '') {
-			echo ",&nbsp;";
-			echo $row['publisher'];
-		} 
-		if ($row['date'] != '') {
-			echo ",&nbsp;";
-			echo $row['date'];
-		} 
-		
-		if ($row['biblioid'] != '') {
-			echo ". [Biblio&nbsp;";
-			echo $row['biblioid'];
-			echo "]";
-		}
-		
+			
 		if ($row['publie'] != '') {
 			echo "&nbsp;-&nbsp;";
 			echo $row['publie'];
 		} 
 		
-		echo "</td></tr><tr><td>Déjà numérisé</td><td>";
-		echo $row['alreadydigitized'];
 		echo "</td></tr><tr><td>Commentaire</td><td>";
 		echo $row['commentaire'];
+		echo "</td></tr><tr><td>Déjà numérisé</td><td>";
+		echo $row['alreadydigitized'];
+		echo "</td></tr><tr><td>Déjà rétranscrit ou OCRizé</td><td>";
+		echo $row['ocrtranscribed'];
+		echo "</td></tr><tr><td>Auteur traduit</td><td>";
+		echo $row['surname'];
 		echo "</td></tr><tr><td>Cuisine interne</td><td>";
 		echo $row['numerise_info'];
 		echo "</td></tr><tr><td>Responsable</td><td>";

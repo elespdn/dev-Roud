@@ -17,7 +17,7 @@ $record_id = $_POST['record_id'];
 
 
 
-$select2prefill = "SELECT fiche_texte.id, titre, archive_id, oldcote, cote, ensemble_id, photocopy, type_id, annotation, support_id, support_info, instrument_id, color_id, other_tool, statut_id, dates, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
+$select2prefill = "SELECT fiche_texte.id, titre, archive_id, oldcote, cote, ensemble_id, photocopy, type_id, annotation, support_id, support_info, instrument_id, color_id, other_tool, statut_id, dates, datationlist_id, datation, datationcomment, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, ocrtranscribed, auteurtraduit_id, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
 
 $query = mysqli_query($con, $select2prefill) or die ("impossible de VISUALISER Les données");  
 while ($row = mysqli_fetch_array($query)) 
@@ -39,6 +39,9 @@ while ($row = mysqli_fetch_array($query))
 		$color_record_id = $row['color_id'];
 		$other_tool_record_id = $row['other_tool'];
 		$dates_record_id = $row['dates'];
+		$datationlist_record_id = $row['datationlist_id'];
+		$datation_record_id = $row['datation'];
+		$datationcomment_record_id = $row['datationcomment'];
 		$statut_record_id = $row['statut_id'];
 		$bibliotype_record_id = $row['bibliotype'];
 		$bibliocreator_record_id = $row['creator'];
@@ -50,6 +53,8 @@ while ($row = mysqli_fetch_array($query))
 		$biblioid_record_id = $row['biblioid'];
 		$publie_record_id = $row['publie'];
 		$alreadydigitized_record_id = $row['alreadydigitized'];
+		$ocrtranscribed_record_id = $row['ocrtranscribed'];
+		$auteurtraduit_record_id = $row['auteurtraduit_id'];
 		$numerise_info_record_id = $row['numerise_info'];
 		$commentaire_record_id = $row['commentaire'];
 		$resp_record_id = $row['resp_id'];
@@ -299,26 +304,62 @@ echo "					</select>
 
 			<hr class='separation_form'/>
 
-			<h2>Identification du texte</h2>
+			<h2>Description du contenu</h2>
 
 
 			<table class='table_insert'>
 
 				<tr>
-					<td><legend>Date / Datation </legend></td>
-				<!-- Aggiungere una casellina per decidere se è Date o Datation, e constraints per inserire la data nel modo giusto con js! -->
+					<td><legend>Date</legend></td>
 					<td>
 						<input type='text' id='date' name='date' pattern='^\d\d\d\d(.)*|^\?(.)*' value='". $dates_record_id ."'></input>
-					</td>
+					<span class='suggest'>Insérer la date comme elle compare dans le document. <br/>Laisser vide si le document n'a pas de date.
+						<br/>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY'. Si le champ devient rouge, ça va pas !
+						<br/>Dans le cas où le document a le jour et le mois, mais pas l'année, indiquer '????-MM-DD'. Ex. '????-04-27'.</span></td>
+				</tr>    
+
+				<tr style='padding_bottom:100px'>
+					<td><legend>Datation</legend></td>
 					<td>
-						<span class='suggest'>S'il n'y a pas de date, ne rien écrire (pas de point d'interrogation). 
-						 S'il s'agit d'une datation (pas de date dans le document original), ajouter un ast&#233;risque apr&#232;s une espace, par exemple '1956 *', '1945-06 *'.</span>
-						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY', '?'. Tous les mots ('avant', 'apr&#232;s', 'vers', etc.) vont apr&#232;s la date (avec virgule), par exemple '1965-04, avant'. Pour les cas particuliers, considerer le commentaire.</span>
+						<select name='datationlist'>";
+					
+
+$sql = "SELECT * FROM datationlist";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+{	
+	// see ensemble for more comments explaining this if
+	if ($row['id']==$datationlist_record_id) { 
+            $selected = 'selected="selected"';  
+        }
+        else {		
+            $selected = '';			
+        }
+        echo "<option value='". $row['id']."' ". $selected .">".$row['datationlist']. '</option>'; 
+	} 
+
+
+echo "	</select>
+
+				<input type='text' id='datation' name='datation' pattern='^\d\d\d\d(.)*|^\?(.)*' value='". $datation_record_id ."'></input>
+					
+						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY'. Si le champ devient rouge, ça va pas !</span>
   					
   					</td>
-				</tr>    
-				
 
+  					<td colspan='2'>
+						<textarea rows='5' cols='50' name='datationcomment'>". $datationcomment_record_id ."</textarea> 
+					
+						<span class='suggest'>Autres information sur la datation, par exemple datations divergentes.
+						<br/>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochets avec le mot Biblio (ex. 'Maggetti [Biblio 451] date le document au 1956, Jaquier [Biblio 367] au 1948' ).</span>
+  					
+  					</td>
+				</tr>   
+			</table>
+
+<br/><br/><br/>
+
+			<table class='table_insert'>
 				<tr>
 					<td><legend>Étapes du processus d'écriture </legend></td>
 					<td><select name='status'>";
@@ -413,7 +454,7 @@ echo "	</select></td>
 					</td>
 					<td style='width:30%'>
 						<span class='suggest'>
-						<br/>Attention ! Avant de modifier, fermer l'affiche jaune 'This domain is not registered'.
+						<br/>Attention ! Avant de modifier, fermer le message jaune 'This domain is not registered'.
 						<br/>Donner les termes ou repères qui n'apparaîtraient pas ailleurs dans la fiche et qui doivent néanmoins ressortir dans la recherche.
 						<br/>Donner les informations contextuelles sur le support, par exemple 'Au dos d'une traduction de Leisinger', 'À côté de la traduction du <i>Vatican</i>'.
 						<br/>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochets avec le mot Biblio (ex. 'comme expliqué dans [Biblio 451], Roud marche toute la nuit' ).
@@ -444,6 +485,49 @@ echo "	</select></td>
 				</tr>
 
 
+
+				<tr>
+					<td><legend>Déjà rétranscrit ou OCRizé </legend></td>
+					<td>";
+
+						if ($ocrtranscribed_record_id=='oui') { 
+            				$checked = 'checked';  
+					        }
+					    else {		
+					            $checked = '';			
+					    }
+					    echo "<input type='checkbox' name='ocrtranscribed' value='oui' ". $checked .">";
+					    echo "
+					</td>
+				</tr>
+
+
+				<td>
+						<legend>Auteur traduit </legend>
+					</td>
+					<td>
+						<select name='auteurtraduit'>";
+					
+
+$sql = "SELECT * FROM auteurtraduit";
+$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
+while ($row = mysqli_fetch_array($query)) 
+	{	
+	// see ensemble for more comments explaining this if
+	if ($row['id']==$auteurtraduit_record_id) { 
+            $selected = 'selected="selected"';  
+        }
+        else {		
+            $selected = '';			
+        }
+        echo "<option value='". $row['id']."' ". $selected .">".$row['surname']. '</option>'; 
+	} 
+
+
+echo "					</select>
+					</td>
+
+
 			
 				<tr>
 					<td>		
@@ -454,7 +538,7 @@ echo "	</select></td>
 					</td>
 					<td style='width:30%'>
 						<span class='suggest'>
-							<br/>Attention ! Avant de modifier, fermer l'affiche jaune 'This domain is not registered'.
+							<br/>Attention ! Avant de modifier, fermer le message jaune 'This domain is not registered'.
 							<br/>Spécifier si un document a une valeur esthétique particulière pour le site. 
 							<br/>Ce champ peut être utilisé pour des micro-transcriptions, par exemple dans le cas de quelques mots griffonnés. Dans les transcriptions, utiliser :
 								<br/>la barre / pour les retours à la ligne;

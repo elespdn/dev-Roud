@@ -7,7 +7,7 @@ $(document).ready(function () {
 			    } );
 
 			    // visibility of columns by default - mind the S 'column(s)' for single or multiple cols chosen
-			    table.columns( [2, 3, 4, 6, 8, 10, 11, 13, 15, 18, 19, 20, 21, 22] ).visible( false );
+			    table.columns( [2, 3, 4, 6, 8, 10, 12, 17, 18, 19, 20, 21, 22] ).visible( false );
 
 			    // CHECK ALL NUMBERS!!!
 			    // variables for better handing the buttons for show/hide columns
@@ -24,11 +24,15 @@ $(document).ready(function () {
 			    var col_instrument = table.column(11);
 			    var col_autreinstrument = table.column(12);
 			    var col_date = table.column(13);
+			    var col_datation = table.column(14);
 			    var col_etape = table.column(15);
 			    var col_publie = table.column(16);
-			    var col_comm = table.column(18);
-			    var col_numerise_info = table.column(19);
-			    var col_resp = table.column(20);
+			    var col_comm = table.column(17);
+			    var col_alreadydigitized = table.column(18);
+			    var col_ocrtranscribed = table.column(19);
+			    var col_auteurtraduit = table.column(20);
+			    var col_comminterne = table.column(21);
+			    var col_resp = table.column(22);
 
 			    // scripts for show/hide each column
 			    $("#check_titre").click(function(){
@@ -45,6 +49,9 @@ $(document).ready(function () {
 				});
 				$("#check_ensemble").click(function(){
 				    col_ensemble.visible(!col_ensemble.visible());
+				});
+				$("#check_photocopy").click(function(){
+				    col_photocopy.visible(!col_photocopy.visible());
 				});
 				$("#check_type").click(function(){
 				    col_type.visible(!col_type.visible());
@@ -67,6 +74,9 @@ $(document).ready(function () {
 				$("#check_date").click(function(){
 				    col_date.visible(!col_date.visible());
 				});
+				$("#check_datation").click(function(){
+				    col_datation.visible(!col_datation.visible());
+				});
 				$("#check_etape").click(function(){
 				    col_etape.visible(!col_etape.visible());
 				});
@@ -76,14 +86,20 @@ $(document).ready(function () {
 				$("#check_comm").click(function(){
 				    col_comm.visible(!col_comm.visible());
 				});
+				$("#check_alreadydigitized").click(function(){
+				    col_alreadydigitized.visible(!col_alreadydigitized.visible());
+				});
+				$("#check_ocrtranscribed").click(function(){
+				    col_ocrtranscribed.visible(!col_ocrtranscribed.visible());
+				});
+				$("#check_auteurtraduit").click(function(){
+				    col_auteurtraduit.visible(!col_auteurtraduit.visible());
+				});
+				$("#check_comminterne").click(function(){
+				    col_comminterne.visible(!col_comminterne.visible());
+				});
 				$("#check_resp").click(function(){
 				    col_resp.visible(!col_resp.visible());
-				});
-				$("#check_photocopy").click(function(){
-				    col_photocopy.visible(!col_photocopy.visible());
-				});
-				$("#check_numerise_info").click(function(){
-				    col_numerise_info.visible(!col_numerise_info.visible());
 				});
 
 
