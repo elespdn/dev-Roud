@@ -70,6 +70,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Auteur</th>
 						<th>Titre</th>
 						<th>Publication</th>
+						<th>Photo</th>
 						<th>Dir./éd./trad.</th>
 						<th>Numéro</th>
 						<th>Lieu</th>
@@ -80,6 +81,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Retranscription</th>
 						<th>Intérêt pour le site</th>
 						<th>Déjà numérisé</th>
+						<th>Dans fonds</th>
 					</tr>
 				</thead>
 				<tbody>";
@@ -98,6 +100,8 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo $row['title'];
 		echo "</td><td>";
 		echo $row['title_pub'];
+		echo "</td><td>";
+		echo $row['photo'];
 		echo "</td><td>";
 		echo $row['contributor'];
 		echo "</td><td>";
@@ -118,6 +122,8 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo $row['website_interest'];
 		echo "</td><td>";
 		echo $row['digitized'];
+		echo "</td><td>";
+		echo $row['fonds'];
 		echo "</td></tr>";
 	    } 
 
