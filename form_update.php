@@ -3,7 +3,15 @@
 		<title>Fiche</title>  
 		<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/general.css"/>
-
+		<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+		 <script>
+  tinymce.init({
+    selector: 'textarea.richtext' ,
+    toolbar : 'undo redo | bold italic underline | cut copy paste' ,
+	branding : false ,
+	menubar : false
+  });
+  </script>
 
 		<!-- Pas de jquery datatables ici, parce que c'est juste deux colomnes , pas de header, et on a pas besoin de toutes ces options. Note: jquery dt marche seulement si il y a thead tr th dans la table -->
 

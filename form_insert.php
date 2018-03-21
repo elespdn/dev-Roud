@@ -4,6 +4,15 @@
 		<title>Insert</title>
 		<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/general.css">
+		<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+		 <script>
+  tinymce.init({
+    selector: 'textarea.richtext' ,
+    toolbar : 'undo redo | bold italic underline | cut copy paste' ,
+	branding : false ,
+	menubar : false
+  });
+  </script>
 	</head> 
 	
 	<body> 

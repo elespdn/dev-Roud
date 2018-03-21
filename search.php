@@ -78,7 +78,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 
 // LEFT JOIN if join includes NULL values
-$visualizeall = "SELECT fiche_texte.id, titre, archive.archive, oldcote, cote, ensemble.ensemble, type.type, photocopy, annotation, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, numerise, commentaire, numerise_info, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id";
+$visualizeall = "SELECT fiche_texte.id, titre, archive.archive, cote, oldcote, ensemble.ensemble, type.type, photocopy, annotation, support.support, support_info, instrument.instrument, color.color, other_tool, statut.statut, dates, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, commentaire, numerise_info, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id";
 
 if ($query = mysqli_query($con, $visualizeall)) {
 
@@ -88,8 +88,8 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>N°</th>
 						<th>Titre</th>
 						<th>Fonds</th>
-						<th>Ancienne cote</th>
 						<th>Cote</th>
+						<th>Ancienne cote</th>
 						<th>Ensemble</th>
 						<th>Photocopie</th>
 						<th>Type de document</th>
@@ -100,11 +100,8 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Instrument d'&#233;criture</th>
 						<th>Autre(s) instrument(s)</th>
 						<th>Date / Datation</th>
-						<th>Genre</th>
-						<th>Dossier</th>
 						<th>Étape</th>
 						<th>Version publiée</th>
-						<th>Numeriser</th>
 						<th>Commentaire</th>
 						<th>Cuisine interne</th>
 						<th>Resp</th>
@@ -126,9 +123,9 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo "</td><td>";
 		echo $row['archive'];
 		echo "</td><td>";
-		echo $row['oldcote'];
-		echo "</td><td>";
 		echo $row['cote'];
+		echo "</td><td>";
+		echo $row['oldcote'];
 		echo "</td><td>";
 		echo $row['ensemble'];
 		echo "</td><td>";
@@ -151,14 +148,6 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo $row['other_tool'];
 		echo "</td><td>";
 		echo $row['dates'];
-		echo "</td><td>";
-		echo $row['genre'];
-		echo "</td><td>";
-		echo $row['dossier'];
-		if ($row['dossierplus'] != '') {
-			echo ",&nbsp;";
-			echo $row['dossierplus'];
-		} 	
 		echo "</td><td>";
 		echo $row['statut'];
 		echo "</td><td>";	
@@ -211,8 +200,6 @@ if ($query = mysqli_query($con, $visualizeall)) {
 			echo $row['publie'];
 		} 
 		echo "</td><td>";
-		echo $row['numerise'];
-		echo "</td><td>";
 		echo $row['commentaire'];
 		echo "</td><td>";
 		echo $row['numerise_info'];
@@ -244,25 +231,22 @@ mysqli_close($con);
 
 				<div style="display: none" id="col_toggle_intern">
 					<input type="checkbox" id="check_titre" name="check_titre" checked> Titre</input>
+					<input type="checkbox" id="check_fonds" name="check_fonds"> Fonds</input>
 					<input type="checkbox" id="check_cote" name="check_cote"> Cote</input>
-					<input type="checkbox" id="check_nouvellecote" name="check_nouvellecote"> Nouvelle cote</input>
+					<input type="checkbox" id="check_anciennecote" name="check_anciennecote"> Ancienne cote</input>
 					<input type="checkbox" id="check_ensemble" name="check_ensemble" checked> Ensemble Éditorial</input>
 					<br/><br/>
 					<input type="checkbox" id="check_photocopy" name="check_photocopy"> Photocopie</input>
 					<input type="checkbox" id="check_type" name="check_type" checked> Type de document</input>
 					<input type="checkbox" id="check_annote" name="check_annote"> Annoté</input>
 					<input type="checkbox" id="check_support" name="check_support" checked> Support</input>
-					<input type="checkbox" id="check_numerote" name="check_numerote"> Numéroté</input>
 					<input type="checkbox" id="check_infosupport" name="check_infosupport"> Info support</input>
 					<input type="checkbox" id="check_instrument" name="check_instrument" checked> Instrument</input>
 					<input type="checkbox" id="check_autreinstrument" name="check_autreinstrument"> Autre(s) instrument(s)</input>
 					<br/><br/>
 					<input type="checkbox" id="check_date" name="check_date" checked> Date</input>
-					<input type="checkbox" id="check_genre" name="check_genre"> Genre</input>
-					<input type="checkbox" id="check_dossier" name="check_dossier" checked> Dossier</input>
 					<input type="checkbox" id="check_publie" name="check_publie"> Version publiée</input>
 					<input type="checkbox" id="check_etape" name="check_etape" checked> Étape</input>
-					<input type="checkbox" id="check_numeriser" name="check_numeriser"> À numériser</input>
 					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
 					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Cuisine interne</input>
 					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>

@@ -1,5 +1,5 @@
 
-<?php  
+<?php   
 
 // %%%%%%%%%%%%%%
 // Ce file produit une tableau pour visualiser les données d'une entrée spécifique
@@ -16,7 +16,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 $record_id = $_POST['record_id'];
 
 
-$visualize = "SELECT fiche_texte.id, titre, archive.archive, oldcote, cote, ensemble.ensemble, photocopy, type.type, annotation, support.support, numbered, support_info, instrument.instrument, color.color, other_tool, statut.statut, genre.genre, dates, dossier.dossier, dossierplus, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id INNER JOIN genre ON fiche_texte.genre_id = genre.id LEFT JOIN dossier ON fiche_texte.dossier_id = dossier.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
+$visualize = "SELECT fiche_texte.id, titre, archive.archive, oldcote, cote, ensemble.ensemble, photocopy, type.type, annotation, support.support, support_info, instrument.instrument, color.color, other_tool, statut.statut, dates, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, numerise_info, commentaire, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id INNER JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
 
 if ($fiche = mysqli_query($con, $visualize)) {
 	while ($row=mysqli_fetch_array($fiche)) {
@@ -42,8 +42,6 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['annotation'];
 		echo "</td></tr><tr><td>Support</td><td>";
 		echo $row['support'];
-		echo "</td></tr><tr><td>Numéroté</td><td>";
-		echo $row['numbered'];
 		echo "</td></tr><tr><td>Info support</td><td>";
 		echo $row['support_info'];
 		echo "</td></tr><tr><td>Instrument d'&#233;criture</td><td>";
@@ -54,14 +52,6 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['other_tool'];
 		echo "</td></tr><tr><td>Date / Datation</td><td>";
 		echo $row['dates'];
-		echo "</td></tr><tr><td>Genre</td><td>";
-		echo $row['genre'];
-		echo "</td></tr><tr><td>Dossier</td><td>";
-		echo $row['dossier'];
-		if ($row['dossierplus'] != '') {
-			echo ",&nbsp;";
-			echo $row['dossierplus'];
-		} 		
 		echo "</td></tr><tr><td>Étape</td><td>";
 		echo $row['statut'];
 		echo "</td></tr><tr><td>Version publiée</td><td>";
@@ -115,8 +105,6 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		
 		echo "</td></tr><tr><td>Déjà numérisé</td><td>";
 		echo $row['alreadydigitized'];
-		echo "</td></tr><tr><td>À numériser</td><td>";
-		echo $row['numerise'];
 		echo "</td></tr><tr><td>Commentaire</td><td>";
 		echo $row['commentaire'];
 		echo "</td></tr><tr><td>Cuisine interne</td><td>";

@@ -42,22 +42,15 @@ $numerise_info = $_POST['numerise_info'];
 $numerise_info = trim($numerise_info);
 $numerise_info = str_replace("'", "&rsquo;", $numerise_info);
 
-$dossierplus = $_POST['dossierplus'];
-$dossierplus = trim($dossierplus);
-$dossierplus = str_replace("'", "&rsquo;", $dossierplus);
-
 $archive = $_POST['archive'];
 $cluster = $_POST['cluster'];
 $photocopy = $_POST['photocopy'];
 $type = $_POST['type'];
 $annotation = $_POST['annotation'];
 $support = $_POST['support'];
-$numbered = $_POST['numbered'];
 $tool = $_POST['tool'];
 $color = $_POST['color'];
 $status = $_POST['status'];
-$genre = $_POST['genre'];
-$dossier = $_POST['dossier'];
 $resp = $_POST['resp'];
 $alreadydigitized = $_POST['alreadydigitized'];
 
@@ -70,8 +63,6 @@ $biblio = trim($biblio);
 $publie = $_POST['publie'];
 $publie = trim($publie);
 $publie = str_replace("'","&rsquo;",$publie);
-
-$digitize = $_POST['digitize'];
 
 $comment = $_POST['comment'];
 $comment = trim($comment);
@@ -94,7 +85,7 @@ same for addition and numbered
 
 
 
-$sql = "UPDATE fiche_texte SET titre = '$title', archive_id='$archive', oldcote='$oldcote', cote='$cote', ensemble_id='$cluster', type_id='$type', annotation='$annotation', support_id='$support', numbered='$numbered', support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool', statut_id='$status', genre_id='$genre', dates='$date', dossier_id='$dossier', dossierplus='$dossierplus', biblio_id='$biblio', publie='$publie', alreadydigitized='$alreadydigitized', numerise='$digitize', numerise_info='$numerise_info', commentaire='$comment', photocopy='$photocopy', resp_id='$resp' WHERE id='$record_id'";
+$sql = "UPDATE fiche_texte SET titre = '$title', archive_id='$archive', oldcote='$oldcote', cote='$cote', ensemble_id='$cluster', type_id='$type', annotation='$annotation', support_id='$support', support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool', statut_id='$status', dates='$date', biblio_id='$biblio', publie='$publie', alreadydigitized='$alreadydigitized', numerise_info='$numerise_info', commentaire='$comment', photocopy='$photocopy', resp_id='$resp' WHERE id='$record_id'";
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps
 if (mysqli_multi_query($con, $sql)) {

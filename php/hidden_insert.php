@@ -39,22 +39,15 @@ $numerise_info = $_POST['numerise_info'];
 $numerise_info = trim($numerise_info);
 $numerise_info = str_replace("'", "&rsquo;", $numerise_info);
 
-$dossierplus = $_POST['dossierplus'];
-$dossierplus = trim($dossierplus);
-$dossierplus = str_replace("'", "&rsquo;", $dossierplus);
-
 $archive = $_POST['archive'];
 $cluster = $_POST['cluster'];
 $photocopy = $_POST['photocopy'];
 $type = $_POST['type'];
 $annotation = $_POST['annotation'];
 $support = $_POST['support'];
-$numbered = $_POST['numbered'];
 $tool = $_POST['tool'];
 $color = $_POST['color'];
 $status = $_POST['status'];
-$genre = $_POST['genre'];
-$dossier = $_POST['dossier'];
 $resp = $_POST['resp'];
 $alreadydigitized = $_POST['alreadydigitized'];
 
@@ -68,8 +61,6 @@ $biblio = trim($biblio);
 $publie = $_POST['publie'];
 $publie = trim($publie);
 $publie = str_replace("'","&rsquo;",$publie);
-
-$digitize = $_POST['digitize'];
 
 $comment = $_POST['comment'];
 $comment = trim($comment);
@@ -91,7 +82,7 @@ same for addition and numbered
 */
 
 
-$sql = "INSERT INTO fiche_texte (titre, archive_id, oldcote, cote, ensemble_id, type_id, annotation, support_id, numbered, support_info, instrument_id, color_id, other_tool, statut_id, genre_id, dates, biblio_id, publie, dossier_id, dossierplus, alreadydigitized, numerise, numerise_info, commentaire, photocopy, resp_id) VALUES ('$title', '$archive', '$oldcote', '$cote', '$cluster', '$type', '$annotation', '$support', '$numbered', '$support_info', '$tool', '$color', '$other_tool', '$status', '$genre', '$date', '$biblio', '$publie', '$dossier', '$dossierplus', '$alreadydigitized', '$digitize', '$numerise_info', '$comment', '$photocopy', '$resp')";
+$sql = "INSERT INTO fiche_texte (titre, archive_id, oldcote, cote, ensemble_id, type_id, annotation, support_id, support_info, instrument_id, color_id, other_tool, statut_id, dates, biblio_id, publie, alreadydigitized, numerise_info, commentaire, photocopy, resp_id) VALUES ('$title', '$archive', '$oldcote', '$cote', '$cluster', '$type', '$annotation', '$support', '$support_info', '$tool', '$color', '$other_tool', '$status', '$date', '$biblio', '$publie', '$alreadydigitized', '$numerise_info', '$comment', '$photocopy', '$resp')";
 
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps

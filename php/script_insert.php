@@ -1,5 +1,6 @@
 
-<?php  
+
+<?php   
 
 
 // %%%%%%%%%%%%%%
@@ -132,24 +133,22 @@ echo "<option value='". $row['id']."'>".$row['support']. '</option>';
 echo "					</select>
 					</td>
 
-					<td>
-						<legend>Numéroté </legend>
-						<input type='checkbox' name='numbered' value='oui'>
-					</td>
+					
 				</tr> 
 				<tr>
 					<td><legend>Plus d'info sur le support </legend></td>
 					<td colspan='2'>
-						<textarea rows='3' cols='50' name='support_info'></textarea> 
+						<textarea rows='5' cols='80' name='support_info'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Indications : 
-						<ul>
-							<li>Obligatoire. Indiquer la quantité, f. ou ff.</li>
-							<li>Ex. : 2 ff.</li>
-							<li>Le cas écheant. Papier particulier (bleu, pelure, de qualité, page d'agenda, page de cahier), couleur des pages (si pas blanc).</li>
-							<li>Ex. : Dans le cas de deux pages dans un cahier, choisir Support: cahier et spécifier l'étendue dans Info support : 2 ff.<br/>Dans le cas de deux pages arrachés, choisir Support : feuillet et spécifier l'étendue dans Info support : 2 f. r/v. Page de cahier (à la ligne).</li>
-						</ul>
+						<span class='suggest'> 
+							Obligatoire : indiquer la quantité, f. ou ff.</li>
+							<br/><b>Exemple</b> : 2 ff.
+							<br/>Le cas écheant : pages arrachées d'une agenda, pages arrachées d'un cahier, papier particulier (bleu, pelure, de qualité), couleur des pages (si pas blanc).
+							<br/><b>Exemples</b> : 
+							<br/>Dans le cas de deux pages dans un cahier, choisir 'Support : cahier' et 'Info support : 2 ff'.
+							<br/>Dans le cas de deux pages arrachés d'un cahier, choisir 'Support : feuillet' et 'Info support : 2 ff. Pages de cahier'.
+							<br/>Dans le cas d'un feuillet bleu, choisir 'Support : feuillet' et 'Info support: 1 f. Bleu'.
 						</span>
 					</td>
 				</tr>
@@ -187,10 +186,10 @@ echo "					</select>
 				<tr>
 					<td><legend>Autre(s) instrument(s) d'écriture </legend></td>
 					<td colspan='2'>
-						<textarea rows='3' cols='50' name='other_tool'></textarea> 
+						<textarea rows='5' cols='80' name='other_tool'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Indications : spécifier l'instrument et la couleur des annotations(utiliser les mêmes termes que dans le menu déroulant au-dessus). Ex. : annotations au stylo rouge.</span>
+						<span class='suggest'>Spécifier l'instrument et la couleur des annotations (utiliser les mêmes termes que dans le menu déroulant au-dessus). Exemple : 'annotations au stylo rouge'.</span>
 					</td>
 				</tr>
 
@@ -218,48 +217,16 @@ echo "					</select>
   					
   					</td>
 				</tr>    
-
-				<tr>
-					<td><legend>Genre </legend></td>
-					<td><select name='genre'>"; 
-
-$sql = "SELECT * FROM genre";
-$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
-while ($row = mysqli_fetch_array($query)) 
-{  
-echo "<option value='". $row['id']."'>".$row['genre']. '</option>';
-} 
-
-
-echo "</select></td>
-				</tr>
 				
 
-				<tr>
-					<td><legend>Dossier </legend></td>
-					<td><select name='dossier'>";
-					
-
-$sql = "SELECT * FROM dossier";
-$query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
-while ($row = mysqli_fetch_array($query)) 
-{  
-echo "<option value='". $row['id']."'>".$row['dossier']. '</option>';
-} 
-
-echo "</select></td>
-					<td>
-						<textarea rows='2' cols='50' name='dossierplus'></textarea>
-					</td>
-				</tr>
-
+				
 
 				<tr>
 					<td><legend>Étapes du processus d'écriture </legend></td>
 					<td><select name='status'>";
 					
 
-$sql = "SELECT * FROM statut";
+$sql = "SELECT * FROM statut ORDER BY orderformenu";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
 while ($row = mysqli_fetch_array($query)) 
 {  
@@ -287,59 +254,59 @@ echo "	</select></td>
 
 			<hr class='separation_form'/>
 
-			<h2>Numerisation et site web</h2>
-
+			<h2>Commentaire</h2>
 
 			<table class='table_insert'>
+				<tr>
+					<td><legend>Commentaire </legend></td> 
+					<td>
+						<textarea class='richtext' rows='10' cols='100' name='comment'></textarea> 
+					</td>
+					<td style='width:30%'>
+						<span class='suggest'>
+						<br/>Attention ! Avant de remplir, fermer l'affiche jaune 'This domain is not registered'.
+						<br/>Donner les termes ou repères qui n'apparaîtraient pas ailleurs dans la fiche et qui doivent néanmoins ressortir dans la recherche.
+						<br/>Donner les informations contextuelles sur le support, par exemple 'Au dos d'une traduction de Leisinger', 'À côté de la traduction du <i>Vatican</i>'.
+						<br/>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochets avec le mot Biblio (ex. 'comme expliqué dans [Biblio 451], Roud marche toute la nuit' ).
+						</p>
+					</td>
+				</tr>
+			</table>
+			
+
+
+			<hr class='separation_form'/>
+			<h2>Cuisine interne</h2>
+
+			<table class='table_insert'>
+
 				<tr>
 					<td><legend>Déjà numérisé </legend></td>
 					<td>
 						<input type='checkbox' name='alreadydigitized' value='oui'>
 					</td>
 				</tr>
-				<tr>
-					<td><legend>À numériser </legend></td>
-					<td><select name='digitize'>
-							<option value=''></option>
-							<option value='oui'>Oui</option>
-							<option value='non'>Non</option>
-							<option value='eventuellement'>Éventuellement</option>
-						</select>
-					</td>
-				</tr>				
-			</table>
 
+				
 
-			<hr class='separation_form'/>
-			<h2>Notes</h2>
-
-			<table class='table_insert'>
-				<tr>
-					<td><legend>Commentaire </legend></td> 
-					<td>
-						<textarea rows='5' cols='50' name='comment'></textarea> 
-					</td>
-					<td>
-						<p class='suggest'>Suggestions (valables aussi pour les autres champs de texte): les titres, incipit et noms de revues à rendre en italique sont encodés avec la balise &lt;i&gt; (ex. &lt;i&gt;Campagne perdue&lt;/i&gt;). Attention: la balise fermante a une barre.</p>
-						<p class='suggest'>Pour les titres d'articles, d'ouvrages collectifs et des documents (manuscrits originals ou autres) et pour les citations, utiliser les chevrons « ... » (il est possible de les copier-coller d'ici).</p>
-						<p class='suggest'>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochet avec le mot Biblio (ex. [Biblio 451]).</p>
-						<p class='suggest'>Dans les transcriptions, utiliser 
-							<ul class='suggest'>
-								<li>la barre / pour les retours à la ligne;</li> 
-								<li>les soufflets pour les hypothèses (ex. &lt;mot difficilement lisible&gt;);</li> 
-								<li>les crochets pour les ajoutes et les mots illisibles (ex. [mot ajouté], [mot ill.], [phrase ill.], [3 mots ill.]);</li> 
-								<li>la balise &lt;u&gt; pour les mots soulignés (ex. &lt;u&gt;mot souligné&lt;/u&gt;). Attention: la balise fermante a une barre.</li>
-							</ul>
-						</p>
-					</td>
-				</tr>
-
+			
 				<tr>
 					<td>		
-						<legend>Cuisine interne </legend>
+						<legend>Commentaire interne </legend>
 					</td>
 					<td>
-						<textarea rows='4' cols='50' name='numerise_info'></textarea>
+						<textarea class='richtext' rows='10' cols='100' name='numerise_info'></textarea>
+					</td>
+					<td style='width:30%'>
+						<span class='suggest'>
+							<br/>Attention ! Avant de remplir, fermer l'affiche jaune 'This domain is not registered'.
+							<br/>Spécifier si un document a une valeur esthétique particulière pour le site. 
+							<br/>Ce champ peut être utilisé pour des micro-transcriptions, par exemple dans le cas de quelques mots griffonnés. Dans les transcriptions, utiliser :
+								<br/>la barre / pour les retours à la ligne;
+								<br/>les soufflets pour les hypothèses (ex. &lt;mot difficilement lisible&gt;);
+								<br/>les crochets pour les ajoutes et les mots illisibles (ex. [mot ajouté], [mot ill.], [phrase ill.], [3 mots ill.]);
+								<br/>souligner les mots soulignés.
+						</span>
 					</td>
 				</tr>
 
@@ -351,7 +318,7 @@ echo "	</select></td>
 						<select name='resp'>";
 					
 
-$sql = "SELECT * FROM resp";
+$sql = "SELECT * FROM resp ORDER BY orderformenu";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
 while ($row = mysqli_fetch_array($query)) 
 {  
