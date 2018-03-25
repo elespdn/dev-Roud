@@ -160,16 +160,16 @@ if ($query = mysqli_query($con, $visualizeall)) {
 				echo $row['creator'];
 			} 
 
-			if ($row['type'] != '') {
+			if ($row['bibliotype'] != '') {
 
-				if ($row['type'] != 'Article') {
+				if ($row['bibliotype'] != 'Périodique' AND $row['bibliotype'] != 'Traduction') {
 				echo ",&nbsp;<i>";
 				echo $row['title'];
 				echo "</i>";
 				} else {
-					echo ",&nbsp;'";
+					echo ",&nbsp;« ";
 					echo $row['title'];
-					echo "'";			
+					echo " »";			
 				}
 
 			}

@@ -26,7 +26,7 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['id'];
 		echo "</td></tr><tr><td>Titre</td><td>";
 		echo $row['titre'];
-		echo "</td></tr><tr><td>Titre</td><td>";
+		echo "</td></tr><tr><td>Fonds</td><td>";
 		echo $row['archive'];
 		echo "</td></tr><tr><td>Nouvelle cote</td><td>";
 		echo $row['cote'];
@@ -79,16 +79,16 @@ if ($fiche = mysqli_query($con, $visualize)) {
 				echo $row['creator'];
 			} 
 
-			if ($row['type'] != '') {
+			if ($row['bibliotype'] != '') {
 
-				if ($row['type'] != 'Article') {
+				if ($row['bibliotype'] != 'Périodique' AND $row['bibliotype'] != 'Traduction') {
 				echo ",&nbsp;<i>";
 				echo $row['title'];
 				echo "</i>";
 				} else {
-					echo ",&nbsp;'";
+					echo ",&nbsp;« ";
 					echo $row['title'];
-					echo "'";			
+					echo " »";			
 				}
 
 			}

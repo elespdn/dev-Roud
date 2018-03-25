@@ -209,9 +209,11 @@ echo "					</select>
 					<td>
 						<input type='text' id='date' name='date' pattern='^\d\d\d\d(.)*|^\?(.)*'></input>
 					
-						<span class='suggest'>Insérer la date comme elle compare dans le document. <br/>Laisser vide si le document n'a pas de date.
+						<span class='suggest'>Insérer la date comme elle compare dans le document. 
+						<br/>Laisser vide si le document n'a pas de date.
 						<br/>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY'. Si le champ devient rouge, ça va pas !
-						<br/>Dans le cas où le document a le jour et le mois, mais pas l'année, indiquer '????-MM-DD'. Ex. '????-04-27'.</span>
+						<br/>Dans le cas où le document a le jour et le mois, mais pas l'année, indiquer '????-MM-DD'. Exemple '????-04-27'.
+						<br/>Dans le cas d'une fourchette, indiquer la première date, espace, tiret moyen (ou demi-cadratin), espace, la deuxième date; suivre les indication dessus pour chaque date. Exemple '1945-06-14 – 1950-09-21', '1956 – 1972'.</span>
   					
   					</td>
 				</tr>    
@@ -234,7 +236,10 @@ echo "	</select>
 					
 						<input type='text' id='datation' name='datation' pattern='^\d\d\d\d(.)*|^\?(.)*'></input>
 					
-						<span class='suggest'>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY'. Si le champ devient rouge, ça va pas !</span>
+						<span class='suggest'>La datation établie par le chercheur. 
+						<br/>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY'. Si le champ devient rouge, ça va pas !
+						<br/>Dans le cas où le document a le jour et le mois, mais pas l'année, indiquer '????-MM-DD'. Ex. '????-04-27'.
+						<br/>Dans le cas d'une fourchette, indiquer la première date, espace, tiret moyen (ou demi-cadratin), espace, la deuxième date; suivre les indication dessus pour chaque date. Exemple '1945-06-14 – 1950-09-21', '1956 – 1972'.</span>
   					
   					</td>
 				
@@ -274,7 +279,7 @@ echo "	</select></td>
 						<textarea rows='1' cols='10' name='biblio'></textarea> 
 					</td>
 					<td>
-						<p class='suggest'>Spécifier les pages ou autre reférence bibliographique. Pas de point à la fin. Les pages sont indiquées avec un ou deux 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'pp. 24-37').</p>
+						<span class='suggest'>Spécifier les pages ou autre reférence bibliographique. Pas de point à la fin. Les pages sont indiquées avec un 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'p. 24-37').</span>
 						<textarea rows='3' cols='30' name='publie'></textarea> 
 					</td>
 				</tr>   
