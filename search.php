@@ -262,7 +262,7 @@ mysqli_close($con);
 					<input type="checkbox" id="check_ocrtranscribed" name="check_ocrtranscribed"> Déjà rétranscrit ou ocrizé</input>
 					<input type="checkbox" id="check_auteurtraduit" name="check_auteurtraduit"> Auteur traduit</input>
 					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Commentaire interne</input>
-					<input type="checkbox" id="check_resp" name="check_resp" checked> Responsable</input>
+					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>
 				</div>
 			</div>
 
