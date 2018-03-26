@@ -28,9 +28,9 @@ if ($fiche = mysqli_query($con, $visualize)) {
 		echo $row['titre'];
 		echo "</td></tr><tr><td>Fonds</td><td>";
 		echo $row['archive'];
-		echo "</td></tr><tr><td>Nouvelle cote</td><td>";
-		echo $row['cote'];
 		echo "</td></tr><tr><td>Cote</td><td>";
+		echo $row['cote'];
+		echo "</td></tr><tr><td>Ancienne cote</td><td>";
 		echo $row['oldcote'];
 		echo "</td></tr><tr><td>Ensemble</td><td>";
 		echo $row['ensemble'];

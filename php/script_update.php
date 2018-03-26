@@ -400,14 +400,14 @@ echo "	</select></td>
 						echo $bibliocreator_record_id;
 					} 
 					if ($bibliotype_record_id != '') {
-						if ($bibliotype_record_id != 'Article') {
+						if ($bibliotype_record_id != 'Périodique' AND $bibliotype_record_id != 'Traduction') {
 						echo ",&nbsp;<i>";
-						echo $bibliotype_record_id;
+						echo $bibliotitle_record_id;
 						echo "</i>";
 						} else {
-							echo ",&nbsp;'";
-							echo $bibliotype_record_id;
-							echo "'";			
+							echo ",&nbsp;« ";
+							echo $bibliotitle_record_id;
+							echo " »";			
 						}
 					}						
 					if ($bibliotitlepub_record_id != '') {
@@ -439,7 +439,7 @@ echo "	</select></td>
 					</td>
 					
 					<td>
-						<span class='suggest'>Spécifier les pages ou autre reférence bibliographique. Pas de point à la fin. Les pages sont indiquées avec un 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'p. 24-37').</span>
+						<span class='suggest'>Spécifier les pages ou autre reférence bibliographique. Pas de point à la fin. Les pages sont indiquées avec un 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'p. 24-37'). <br/>Dans le cas de deux ou plus groupes de pages, utiliser 'et' (virgule et 'et' quand plus de deux). Exemple : 'p. 42-44 et 47-48', 'p. 23, 34-45 et 67'.</span>
 						<textarea rows='3' cols='30' name='publie'>". $publie_record_id ."</textarea>
 					</td>
 				</tr>   

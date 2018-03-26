@@ -170,6 +170,14 @@ Vd. Github
 Tutti ' trasformati in &rsquo; (apostrofi). La ricerca sembra funzionare lo stesso
 
 
+## ________________ UPDATE 20-21 March 2018 ____________________ ##
+
+Big update, see journal de bord
+
+
+
+
+
 
 	
 ## _________________ FOR USERS ________________ ##
