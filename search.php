@@ -257,7 +257,7 @@ mysqli_close($con);
 					<br/><br/>
 					<input type="checkbox" id="check_alreadydigitized" name="check_alreadydigitized"> Déjà numérisé</input>
 					<input type="checkbox" id="check_auteurtraduit" name="check_auteurtraduit"> Auteur traduit</input>
-					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Commentaire interne</input>
+					<input type="checkbox" id="check_comminterne" name="check_comminterne"> Commentaire interne</input>
 					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>
 				</div>
 			</div>
