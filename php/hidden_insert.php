@@ -50,7 +50,6 @@ $color = $_POST['color'];
 $status = $_POST['status'];
 $resp = $_POST['resp'];
 $alreadydigitized = $_POST['alreadydigitized'];
-$ocrtranscribed = $_POST['ocrtranscribed'];
 $auteurtraduit = $_POST['auteurtraduit'];
 
 $date = $_POST['date'];
@@ -93,7 +92,7 @@ same for addition and numbered
 */
 
 
-$sql = "INSERT INTO fiche_texte (titre, archive_id, oldcote, cote, ensemble_id, type_id, annotation, support_id, support_info, instrument_id, color_id, other_tool, statut_id, dates, datation, datationlist_id, datationcomment, biblio_id, publie, alreadydigitized, ocrtranscribed, auteurtraduit_id, numerise_info, commentaire, photocopy, resp_id) VALUES ('$title', '$archive', '$oldcote', '$cote', '$cluster', '$type', '$annotation', '$support', '$support_info', '$tool', '$color', '$other_tool', '$status', '$date', '$datation', '$datationlist', '$datationcomment', '$biblio', '$publie', '$alreadydigitized', '$ocrtranscribed', '$auteurtraduit', '$numerise_info', '$comment', '$photocopy', '$resp')";
+$sql = "INSERT INTO fiche_texte (titre, archive_id, oldcote, cote, ensemble_id, type_id, annotation, support_id, support_info, instrument_id, color_id, other_tool, statut_id, dates, datation, datationlist_id, datationcomment, biblio_id, publie, alreadydigitized, auteurtraduit_id, numerise_info, commentaire, photocopy, resp_id) VALUES ('$title', '$archive', '$oldcote', '$cote', '$cluster', '$type', '$annotation', '$support', '$support_info', '$tool', '$color', '$other_tool', '$status', '$date', '$datation', '$datationlist', '$datationcomment', '$biblio', '$publie', '$alreadydigitized', '$auteurtraduit', '$numerise_info', '$comment', '$photocopy', '$resp')";
 
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps

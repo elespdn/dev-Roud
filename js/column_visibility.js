@@ -7,7 +7,7 @@ $(document).ready(function () {
 			    } );
 
 			    // visibility of columns by default - mind the S 'column(s)' for single or multiple cols chosen
-			    table.columns( [2, 3, 4, 6, 8, 10, 12, 17, 18, 19, 20, 21, 22] ).visible( false );
+			    table.columns( [2, 3, 4, 6, 8, 10, 12, 17, 18, 19, 20, 21] ).visible( false );
 
 			    // CHECK ALL NUMBERS!!!
 			    // variables for better handing the buttons for show/hide columns
@@ -29,10 +29,9 @@ $(document).ready(function () {
 			    var col_publie = table.column(16);
 			    var col_comm = table.column(17);
 			    var col_alreadydigitized = table.column(18);
-			    var col_ocrtranscribed = table.column(19);
-			    var col_auteurtraduit = table.column(20);
-			    var col_comminterne = table.column(21);
-			    var col_resp = table.column(22);
+			    var col_auteurtraduit = table.column(19);
+			    var col_comminterne = table.column(20);
+			    var col_resp = table.column(21);
 
 			    // scripts for show/hide each column
 			    $("#check_titre").click(function(){
@@ -88,9 +87,6 @@ $(document).ready(function () {
 				});
 				$("#check_alreadydigitized").click(function(){
 				    col_alreadydigitized.visible(!col_alreadydigitized.visible());
-				});
-				$("#check_ocrtranscribed").click(function(){
-				    col_ocrtranscribed.visible(!col_ocrtranscribed.visible());
 				});
 				$("#check_auteurtraduit").click(function(){
 				    col_auteurtraduit.visible(!col_auteurtraduit.visible());

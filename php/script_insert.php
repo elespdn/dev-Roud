@@ -322,13 +322,6 @@ echo "	</select></td>
 					</td>
 				</tr>
 
-				<tr>
-					<td><legend>Déjà rétranscrit ou OCRizé </legend></td>
-					<td>
-						<input type='checkbox' name='ocrtranscribed' value='oui'>
-					</td>
-				</tr>
-
 				<td>
 						<legend>Auteur traduit </legend>
 					</td>

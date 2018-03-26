@@ -17,7 +17,7 @@ $record_id = $_POST['record_id'];
 
 
 
-$select2prefill = "SELECT fiche_texte.id, titre, archive_id, oldcote, cote, ensemble_id, photocopy, type_id, annotation, support_id, support_info, instrument_id, color_id, other_tool, statut_id, dates, datationlist_id, datation, datationcomment, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, ocrtranscribed, auteurtraduit_id, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
+$select2prefill = "SELECT fiche_texte.id, titre, archive_id, oldcote, cote, ensemble_id, photocopy, type_id, annotation, support_id, support_info, instrument_id, color_id, other_tool, statut_id, dates, datationlist_id, datation, datationcomment, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, alreadydigitized, auteurtraduit_id, numerise_info, commentaire, resp_id FROM fiche_texte LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id WHERE fiche_texte.id = '$record_id' ";
 
 $query = mysqli_query($con, $select2prefill) or die ("impossible de VISUALISER Les données");  
 while ($row = mysqli_fetch_array($query)) 
@@ -53,7 +53,6 @@ while ($row = mysqli_fetch_array($query))
 		$biblioid_record_id = $row['biblioid'];
 		$publie_record_id = $row['publie'];
 		$alreadydigitized_record_id = $row['alreadydigitized'];
-		$ocrtranscribed_record_id = $row['ocrtranscribed'];
 		$auteurtraduit_record_id = $row['auteurtraduit_id'];
 		$numerise_info_record_id = $row['numerise_info'];
 		$commentaire_record_id = $row['commentaire'];
@@ -492,22 +491,7 @@ echo "	</select></td>
 
 
 				<tr>
-					<td><legend>Déjà rétranscrit ou OCRizé </legend></td>
-					<td>";
-
-						if ($ocrtranscribed_record_id=='oui') { 
-            				$checked = 'checked';  
-					        }
-					    else {		
-					            $checked = '';			
-					    }
-					    echo "<input type='checkbox' name='ocrtranscribed' value='oui' ". $checked .">";
-					    echo "
-					</td>
-				</tr>
-
-
-				<td>
+					<td>
 						<legend>Auteur traduit </legend>
 					</td>
 					<td>
@@ -531,6 +515,7 @@ while ($row = mysqli_fetch_array($query))
 
 echo "					</select>
 					</td>
+				</tr>
 
 
 			

@@ -67,7 +67,7 @@ mysqli_set_charset($con, "utf8"); // encodage utf8 assuré, pas de probleme avec
 
 // LEFT JOIN if join includes NULL values
 
-$visualizeall = "SELECT fiche_texte.id, titre, archive.archive, cote, oldcote, ensemble.ensemble, photocopy, type.type, annotation, support.support, support_info, instrument.instrument, color.color, other_tool,dates, datationlist.datationlist, datation, datationcomment, statut.statut, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, commentaire, alreadydigitized, ocrtranscribed, auteurtraduit.surname, numerise_info, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id LEFT JOIN auteurtraduit ON fiche_texte.auteurtraduit_id = auteurtraduit.id LEFT JOIN datationlist ON fiche_texte.datationlist_id = datationlist.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id";
+$visualizeall = "SELECT fiche_texte.id, titre, archive.archive, cote, oldcote, ensemble.ensemble, photocopy, type.type, annotation, support.support, support_info, instrument.instrument, color.color, other_tool,dates, datationlist.datationlist, datation, datationcomment, statut.statut, biblio.type as bibliotype, biblio.creator, biblio.title, biblio.title_pub, biblio.number, biblio.publisher, biblio.date, biblio.id as biblioid, publie, commentaire, alreadydigitized, auteurtraduit.surname, numerise_info, resp.resp FROM fiche_texte INNER JOIN archive ON fiche_texte.archive_id = archive.id INNER JOIN ensemble ON fiche_texte.ensemble_id = ensemble.id INNER JOIN type ON fiche_texte.type_id = type.id INNER JOIN support ON fiche_texte.support_id = support.id INNER JOIN instrument ON fiche_texte.instrument_id = instrument.id LEFT JOIN color ON fiche_texte.color_id = color.id INNER JOIN statut ON fiche_texte.statut_id = statut.id LEFT JOIN auteurtraduit ON fiche_texte.auteurtraduit_id = auteurtraduit.id LEFT JOIN datationlist ON fiche_texte.datationlist_id = datationlist.id LEFT JOIN resp ON fiche_texte.resp_id = resp.id LEFT JOIN biblio ON fiche_texte.biblio_id = biblio.id";
 
 if ($query = mysqli_query($con, $visualizeall)) {
 
@@ -93,7 +93,6 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Version publiée</th>
 						<th>Commentaire</th>
 						<th>Déjà numérisé</th>
-						<th>Déjà rétranscrit ou ocrizé</th>
 						<th>Auteur traduit</th>
 						<th>Commentaire interne</th>
 						<th>Resp</th>
@@ -208,8 +207,6 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		echo "</td><td>";
 		echo $row['alreadydigitized'];
 		echo "</td><td>";
-		echo $row['ocrtranscribed'];
-		echo "</td><td>";
 		echo $row['surname'];
 		echo "</td><td>";
 		echo $row['numerise_info'];
@@ -259,7 +256,6 @@ mysqli_close($con);
 					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
 					<br/><br/>
 					<input type="checkbox" id="check_alreadydigitized" name="check_alreadydigitized"> Déjà numérisé</input>
-					<input type="checkbox" id="check_ocrtranscribed" name="check_ocrtranscribed"> Déjà rétranscrit ou ocrizé</input>
 					<input type="checkbox" id="check_auteurtraduit" name="check_auteurtraduit"> Auteur traduit</input>
 					<input type="checkbox" id="check_numerise_info" name="check_numerise_info"> Commentaire interne</input>
 					<input type="checkbox" id="check_resp" name="check_resp"> Responsable</input>

@@ -53,7 +53,6 @@ $color = $_POST['color'];
 $status = $_POST['status'];
 $resp = $_POST['resp'];
 $alreadydigitized = $_POST['alreadydigitized'];
-$ocrtranscribed = $_POST['ocrtranscribed'];
 $auteurtraduit = $_POST['auteurtraduit'];
 
 $date = $_POST['date'];
@@ -96,7 +95,7 @@ same for addition and numbered
 
 
 
-$sql = "UPDATE fiche_texte SET titre = '$title', archive_id='$archive', oldcote='$oldcote', cote='$cote', ensemble_id='$cluster', type_id='$type', annotation='$annotation', support_id='$support', support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool', statut_id='$status', dates='$date', datation='$datation', datationlist_id='$datationlist', datationcomment='$datationcomment', biblio_id='$biblio', publie='$publie', alreadydigitized='$alreadydigitized', ocrtranscribed='$ocrtranscribed', auteurtraduit_id='$auteurtraduit', numerise_info='$numerise_info', commentaire='$comment', photocopy='$photocopy', resp_id='$resp' WHERE id='$record_id'";
+$sql = "UPDATE fiche_texte SET titre = '$title', archive_id='$archive', oldcote='$oldcote', cote='$cote', ensemble_id='$cluster', type_id='$type', annotation='$annotation', support_id='$support', support_info='$support_info', instrument_id='$tool', color_id='$color', other_tool='$other_tool', statut_id='$status', dates='$date', datation='$datation', datationlist_id='$datationlist', datationcomment='$datationcomment', biblio_id='$biblio', publie='$publie', alreadydigitized='$alreadydigitized', auteurtraduit_id='$auteurtraduit', numerise_info='$numerise_info', commentaire='$comment', photocopy='$photocopy', resp_id='$resp' WHERE id='$record_id'";
 
 // ##---##---## mysqli_multi_query permet de inserer plusieurs requete sql au meme temps
 if (mysqli_multi_query($con, $sql)) {
