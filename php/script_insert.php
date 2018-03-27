@@ -279,7 +279,8 @@ echo "	</select></td>
 						<textarea rows='1' cols='10' name='biblio'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Spécifier les pages ou autre reférence bibliographique. Pas de point à la fin. Les pages sont indiquées avec un 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'p. 24-37'). <br/>Dans le cas de deux ou plus groupes de pages, utiliser 'et' (virgule et 'et' quand plus de deux). Exemple : 'p. 42-44 et 47-48', 'p. 23, 34-45 et 67'.</span>
+						<span class='suggest'>À remplir quand le texte même du document a donné lieu à une publication (par opposition à une note d'indication ou à un texte sur un texte).
+						<br/>Spécifier les pages ou autre info supplementaire. Pas de point à la fin. Les pages sont indiquées avec un 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'p. 24-37'). <br/>Dans le cas de deux ou plus groupes de pages, utiliser 'et' (virgule et 'et' quand plus de deux). Exemple : 'p. 42-44 et 47-48', 'p. 23, 34-45 et 67'.</span>
 						<textarea rows='3' cols='30' name='publie'></textarea> 
 					</td>
 				</tr>   

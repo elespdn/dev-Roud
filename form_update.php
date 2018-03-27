@@ -9,7 +9,9 @@
     selector: 'textarea.richtext' ,
     toolbar : 'undo redo | bold italic underline | cut copy paste' ,
 	branding : false ,
-	menubar : false
+	menubar : false,
+	plugins : "paste",
+	paste_as_text: true
   });
   </script>
 
