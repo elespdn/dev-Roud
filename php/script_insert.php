@@ -189,7 +189,7 @@ echo "					</select>
 						<textarea rows='5' cols='80' name='other_tool'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Spécifier l'instrument et la couleur des annotations (utiliser les mêmes termes que dans le menu déroulant au-dessus). Exemple : 'annotations au stylo rouge'.</span>
+						<span class='suggest'>Spécifier l'instrument et la couleur des annotations. Utiliser les mêmes termes que dans le menu déroulant au-dessus. Virgule entre l'instrument et la couleur (pas accordée). Exemple : 'annotations au stylo, rouge', 'plume, noir'.</span>
 					</td>
 				</tr>
 
