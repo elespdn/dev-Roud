@@ -245,8 +245,8 @@ echo "					</select>
 								<br/>Pages arrachées d'une agenda, pages arrachées d'un cahier, papier particulier (bleu, pelure, de qualité), couleur des pages (si pas blanc).
 								<br/><b>Exemples</b> : 
 								<br/>Dans le cas de deux pages dans un cahier, choisir 'Support : cahier' et 'Info support : 4r-5v'.
-								<br/>Dans le cas de deux pages arrachés d'un cahier, choisir 'Support : feuillet' et 'Info support : 2 ff. Pages de cahier'.
-								<br/>Dans le cas d'un feuillet bleu, choisir 'Support : feuillet' et 'Info support: 1 f. Bleu'.
+								<br/>Dans le cas de deux pages arrachés d'un cahier, choisir 'Support : feuillet' et 'Info support : 2 ff. <br/>Pages de cahier'.
+								<br/>Dans le cas d'un feuillet bleu, choisir 'Support : feuillet' et 'Info support: 1 f. <br/>Papier bleu'.
 							</p>
 						</span>
 						</span>
@@ -303,7 +303,7 @@ echo "					</select>
 						<textarea class='richtext' rows='6' cols='50' name='other_tool'>". $other_tool_record_id ."</textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Spécifier l'instrument et la couleur des annotations. Utiliser les mêmes termes que dans le menu déroulant au-dessus. Virgule entre l'instrument et la couleur (pas accordée). Exemple : 'annotations au stylo, rouge', 'plume, noir'.</span>
+						<span class='suggest'>Spécifier l'instrument et la couleur des annotations. Utiliser les mêmes termes que dans le menu déroulant au-dessus. Virgule entre l'instrument et la couleur (pas accordée). Quand il y en a plusieurs, retour à la ligne. <br/>Exemple : 'Annotations au stylo, rouge', 'Plume, noir', 'Plume, noir<br/>Plume, rouge'.</span>
 					</td>
 				</tr>
 
