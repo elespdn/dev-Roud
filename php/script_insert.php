@@ -309,8 +309,7 @@ echo "	</select></td>
 					</td>
 					<td style='width:30%'>
 						<span class='suggest'>
-						<br/>Attention ! Avant de remplir, fermer le message jaune 'This domain is not registered'.
-						<br/>Donner les termes ou repères qui n'apparaîtraient pas ailleurs dans la fiche et qui doivent néanmoins ressortir dans la recherche.
+						Donner les termes ou repères qui n'apparaîtraient pas ailleurs dans la fiche et qui doivent néanmoins ressortir dans la recherche.
 						<br/>Donner les informations contextuelles sur le support, par exemple 'Au dos d'une traduction de Leisinger', 'À côté de la traduction du <i>Vatican</i>'.
 						<br/>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochets avec le mot Biblio (ex. 'comme expliqué dans [Biblio 451], Roud marche toute la nuit' ).
 						</p>
@@ -362,8 +361,7 @@ echo "					</select>
 					</td>
 					<td style='width:30%'>
 						<span class='suggest'>
-							<br/>Attention ! Avant de remplir, fermer le message jaune 'This domain is not registered'.
-							<br/>Spécifier si un document a une valeur esthétique particulière pour le site. 
+							Spécifier si un document a une valeur esthétique particulière pour le site. 
 							<br/>Ce champ peut être utilisé pour des micro-transcriptions, par exemple dans le cas de quelques mots griffonnés. Dans les transcriptions, utiliser :
 								<br/>la barre / pour les retours à la ligne;
 								<br/>les soufflets pour les hypothèses (ex. &lt;mot difficilement lisible&gt;);
