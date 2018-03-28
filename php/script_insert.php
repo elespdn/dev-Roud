@@ -138,17 +138,26 @@ echo "					</select>
 				<tr>
 					<td><legend>Plus d'info sur le support </legend></td>
 					<td colspan='2'>
-						<textarea rows='5' cols='80' name='support_info'></textarea> 
+						<textarea class='richtext' rows='5' cols='80' name='support_info'></textarea> 
 					</td>
 					<td>
 						<span class='suggest'> 
-							Obligatoire : indiquer la quantité, f. ou ff.</li>
-							<br/><b>Exemple</b> : 2 ff.
-							<br/>Le cas écheant : pages arrachées d'une agenda, pages arrachées d'un cahier, papier particulier (bleu, pelure, de qualité), couleur des pages (si pas blanc).
-							<br/><b>Exemples</b> : 
-							<br/>Dans le cas de deux pages dans un cahier, choisir 'Support : cahier' et 'Info support : 2 ff'.
-							<br/>Dans le cas de deux pages arrachés d'un cahier, choisir 'Support : feuillet' et 'Info support : 2 ff. Pages de cahier'.
-							<br/>Dans le cas d'un feuillet bleu, choisir 'Support : feuillet' et 'Info support: 1 f. Bleu'.
+							<p>
+								<b>Obligatoire.</b>
+								<br/>Quand il s'agit de feuillets individuels, indiquer la quantité de feuillets (f. ou ff.).
+								<br/>Quand il s'agit d'un cahier, d'un carnet, d'une agenda ou d'une liasse de feuillets avec plusieurs textes, indiquer le feuillet de début et de fin (recto ou verso).
+								<br/><b>Exemple</b> : 
+								<br/>'2 ff.'
+								<br/>'1r-5v'
+							</p>
+							<p>
+								<b>Le cas écheant.</b>
+								<br/>Pages arrachées d'une agenda, pages arrachées d'un cahier, papier particulier (bleu, pelure, de qualité), couleur des pages (si pas blanc).
+								<br/><b>Exemples</b> : 
+								<br/>Dans le cas de deux pages dans un cahier, choisir 'Support : cahier' et 'Info support : 4r-5v'.
+								<br/>Dans le cas de deux pages arrachés d'un cahier, choisir 'Support : feuillet' et 'Info support : 2 ff. Pages de cahier'.
+								<br/>Dans le cas d'un feuillet bleu, choisir 'Support : feuillet' et 'Info support: 1 f. Bleu'.
+							</p>
 						</span>
 					</td>
 				</tr>
@@ -186,7 +195,7 @@ echo "					</select>
 				<tr>
 					<td><legend>Autre(s) instrument(s) d'écriture </legend></td>
 					<td colspan='2'>
-						<textarea rows='5' cols='80' name='other_tool'></textarea> 
+						<textarea class='richtext' rows='5' cols='80' name='other_tool'></textarea> 
 					</td>
 					<td>
 						<span class='suggest'>Spécifier l'instrument et la couleur des annotations. Utiliser les mêmes termes que dans le menu déroulant au-dessus. Virgule entre l'instrument et la couleur (pas accordée). Exemple : 'annotations au stylo, rouge', 'plume, noir'.</span>
