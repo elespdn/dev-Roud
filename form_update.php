@@ -3,12 +3,15 @@
 		<title>Fiche</title>  
 		<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/general.css"/>
-		<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
-		 <script>
+		
+		<!-- <script type="text/javascript" src="https://cloud.tinymce.com/stable/tinymce.min.js"></script> --> 
+		<script type="text/javascript" src='js/tinymce/tinymce.min.js'></script>
+		 <script type="text/javascript">
   tinymce.init({
     selector: 'textarea.richtext' ,
     toolbar : 'undo redo | bold italic underline | cut copy paste' ,
 	branding : false ,
+	statusbar : false,
 	menubar : false,
 	plugins : "paste",
 	paste_as_text: true

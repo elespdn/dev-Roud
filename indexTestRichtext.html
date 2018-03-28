@@ -6,6 +6,19 @@
 		<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/general.css">
 		<script type="text/javascript" src="js/imagerandom.js"></script>  <!-- ne doit PAS etre <script/> (vide), sinon il ne marche pas. La function choosePic() est chargé ONLOAD dans le body -->
+
+		<script type="text/javascript" src='js/tinymce/tinymce.min.js'></script>
+		 <script>
+  tinymce.init({
+    selector: 'textarea.richtext' ,
+    toolbar : 'undo redo | bold italic underline | cut copy paste' ,
+	branding : false ,
+	statusbar : false,
+	menubar : false,
+	plugins : "paste",
+	paste_as_text: true
+  });
+  </script>
 		
 	</head> 
 
@@ -22,6 +35,10 @@
 				<li><a href="form_insert.php">remplir fiche</a></li>|
 				<li><a href="biblio.php">bibliographie</a></li>
 			</ul>
+		</div>
+
+		<div>
+			<textarea class="richtext"></textarea>
 		</div>
 
 	</body>
