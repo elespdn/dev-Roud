@@ -105,7 +105,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 		$row_id = $row['id'];
 
 		echo "<tr><td>";
-		echo "<form action='record.php' method='post'><input id='search_id' type='submit' name='record_id' value='$row_id'/></form>"; 
+		echo "<form action='record.php' method='post' target='_blank'><input id='search_id' type='submit' name='record_id' value='$row_id'/></form>"; 
 		
 		echo "<span style='display:none'>". $row_id ."</span>";
 

@@ -198,7 +198,12 @@ echo "					</select>
 						<textarea class='richtext' rows='5' cols='80' name='other_tool'></textarea> 
 					</td>
 					<td>
-						<span class='suggest'>Spécifier l'instrument et la couleur des annotations. Utiliser les mêmes termes que dans le menu déroulant au-dessus. Virgule entre l'instrument et la couleur (pas accordée). Quand il y en a plusieurs, retour à la ligne. <br/>Exemple : 'Annotations au stylo, rouge', 'Plume, noir', 'Plume, noir<br/>Plume, rouge'.</span>
+						<span class='suggest'>Spécifier l'instrument et la couleur des annotations.
+						<br/>Utiliser les mêmes termes que dans le menu déroulant au-dessus.
+						<br/>Virgule entre l'instrument et la couleur (pas accordée).
+						<br/>Quand il y a plusieurs instruments et couleurs, retour à la ligne après chaque. Pas de point ou autre ponctuation à la fin de la ligne ; la ligne suivante commence avec majuscule.
+						<br/>Les signes (annotations, mots, etc.) allographes doivent être mentionnés seulement s'ils sont en lien avec le texte de Roud (corrections de Ramuz sur texte de Roud, OUI ; adresse allographe sur le dos d'une enveloppe sur laquelle Roud a écrit, NON). Indiquer entre parenthèses 'annotations allographes' et le nom de la personne si connue.
+						<br/>Exemple : 'Annotations au stylo, rouge'<br/>'Plume, noir'<br/>'Plume, noir<br/>Plume, rouge'<br/>'Crayon, violet (annotations allographes Ramuz)'</span>
 					</td>
 				</tr>
 
@@ -309,10 +314,16 @@ echo "	</select></td>
 					</td>
 					<td style='width:30%'>
 						<span class='suggest'>
-						Donner les termes ou repères qui n'apparaîtraient pas ailleurs dans la fiche et qui doivent néanmoins ressortir dans la recherche.
-						<br/>Donner les informations contextuelles sur le support, par exemple 'Au dos d'une traduction de Leisinger', 'À côté de la traduction du <i>Vatican</i>'.
-						<br/>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochets avec le mot Biblio (ex. 'comme expliqué dans [Biblio 451], Roud marche toute la nuit' ).
-						</p>
+							Donner les termes ou repères qui n'apparaîtraient pas ailleurs dans la fiche et qui doivent néanmoins ressortir dans la recherche.
+							<br/>Donner les informations contextuelles sur le support, par exemple 'Au dos d'une traduction de Leisinger', 'À côté de la traduction du <i>Vatican</i>'.
+							<br/>S'il y a des références bibliographiques, spécifier seulement entre crochets l'<a href='biblio.php' target='_blank'>identifiant</a> avec le mot Biblio, suivi quand nécessaire par une virgule et les numéros des pages. Les pages sont indiquées avec un 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'p. 24-37'). Dans le cas de deux ou plus groupes de pages, utiliser 'et' (virgule et 'et' quand plus de deux). Exemple : 'p. 42-44 et 47-48', 'p. 23, 34-45 et 67'.
+							<br/><b>Exemples</b> :
+							<br/>'Repris dans [Biblio 451, p. 42-44].'
+							<br/>'Roud à réuni ses poèmes parus dans [Biblio 24].'
+							<br/>'Version très proche de celle qui ouvre [Biblio 501].'
+							<br/>'En dehors de la première phrase, le texte figure dans [Biblio 304, p. 10].'
+							<br/>'Version intermédiaire entre [Biblio 207] et [Biblio 282].'
+						</span>
 					</td>
 				</tr>
 			</table>
@@ -367,6 +378,7 @@ echo "					</select>
 								<br/>les soufflets pour les hypothèses (ex. &lt;mot difficilement lisible&gt;);
 								<br/>les crochets pour les ajoutes et les mots illisibles (ex. [mot ajouté], [mot ill.], [phrase ill.], [3 mots ill.]);
 								<br/>souligner les mots soulignés.
+								<br/>S'il y a des références bibliographiques, voir Commentaire.
 						</span>
 					</td>
 				</tr>

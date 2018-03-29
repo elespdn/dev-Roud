@@ -41,6 +41,7 @@
 <?php  
 
 require "php/script_visualize.php";
+require "php/command_update.php"; 
 
 mysqli_close($con); 
 ?>  
