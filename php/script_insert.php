@@ -144,11 +144,10 @@ echo "					</select>
 						<span class='suggest'> 
 							<p>
 								<b>Obligatoire.</b>
-								<br/>Quand il s'agit de feuillets individuels, indiquer la quantité de feuillets (f. ou ff.).
-								<br/>Quand il s'agit d'un cahier, d'un carnet, d'une agenda ou d'une liasse de feuillets avec plusieurs textes, indiquer le feuillet de début et de fin (recto ou verso).
-								<br/><b>Exemple</b> : 
-								<br/>'2 ff.'
-								<br/>'1r-5v'
+								<br/>Quand il s'agit de feuillets individuels, indiquer la quantité de feuillets. Exemple : '1 f.', '5 ff.'
+								<br/>Quand il s'agit d'un cahier, d'un carnet, d'une agenda ou d'une liasse de feuillets avec plusieurs textes, indiquer le feuillet de début et de fin (recto ou verso). Exemple : '1r-5v', '2v-3r'
+								<br/>Quand il s'agit d'un imprimé (inclus originals corrigés), indiquer la quantité des pages. Exemple : '4 pp.', '1 p.'
+								<br/>S'il y a des annexes, indiquer la quantité de feuillets annexes. Exemple : '30 ff. + 2 ff. annexes'
 							</p>
 							<p>
 								<b>Le cas écheant.</b>
@@ -314,7 +313,8 @@ echo "	</select></td>
 					</td>
 					<td style='width:30%'>
 						<span class='suggest'>
-							Donner les termes ou repères qui n'apparaîtraient pas ailleurs dans la fiche et qui doivent néanmoins ressortir dans la recherche.
+							Point à la fin.
+							<br/>Donner les termes ou repères qui n'apparaîtraient pas ailleurs dans la fiche et qui doivent néanmoins ressortir dans la recherche.
 							<br/>Donner les informations contextuelles sur le support, par exemple 'Au dos d'une traduction de Leisinger', 'À côté de la traduction du <i>Vatican</i>'.
 							<br/>S'il y a des références bibliographiques, spécifier seulement entre crochets l'<a href='biblio.php' target='_blank'>identifiant</a> avec le mot Biblio, suivi quand nécessaire par une virgule et les numéros des pages. Les pages sont indiquées avec un 'p', suivis d'un point, d'un espace et des numéros, séparés par un petit trait (ex. 'p. 16', 'p. 24-37'). Dans le cas de deux ou plus groupes de pages, utiliser 'et' (virgule et 'et' quand plus de deux). Exemple : 'p. 42-44 et 47-48', 'p. 23, 34-45 et 67'.
 							<br/><b>Exemples</b> :
