@@ -25,7 +25,7 @@ while ($row = mysqli_fetch_array($query))
 
 		$id_record_id = $row['id'];
 		$titre_record_id = $row['titre'];
-		$archive_record_id = $row['archive'];
+		$archive_record_id = $row['archive_id'];
 		$oldcote_record_id = $row['oldcote'];
 		$cote_record_id = $row['cote'];
 		$ensemble_record_id = $row['ensemble_id'];
@@ -61,6 +61,7 @@ while ($row = mysqli_fetch_array($query))
 
 // %%%%%%%%% echo table same as form_insert.php, plus variables from the results of the query $select2prefill above
 
+
 echo "		<table class='table_insert'>
 				<tr>
 					<td><legend>Titre </legend></td> 
@@ -76,17 +77,32 @@ echo "		<table class='table_insert'>
 				<tr>
 					<td><legend>Fonds </legend></td>
 					<td><select name='archive'>"; 
-						
 
 
 $sql = "SELECT * FROM archive";
 $query = mysqli_query($con, $sql) or die ("impossible de sélectionner des données");  
 while ($row = mysqli_fetch_array($query)) 
-{  
-echo "<option value='". $row['id']."'>".$row['archive']. '</option>';
-} 
+	{	
+	// if the ID from the array is the same to $ensemble_record_id (from query $select2prefill)
+	if ($row['id']==$archive_record_id) {  		
 
-echo "</select></td>
+			// add attribute 'selected' (using variable $selected)
+            $selected = 'selected="selected"';  
+        }
+        else {	
+
+        	// otherwise do not add anything (variable $selected is empty)				
+            $selected = '';			
+        }   
+
+        // normal array, plus the variable $selected, which gives a different output following what defined above
+        echo "<option value='". $row['id']."' ". $selected .">".$row['archive']. '</option>'; 
+	} 
+
+echo "</select>
+
+
+				</td>
 				<td>
 					<span class='suggest'>La liste des fonds n'est pas complète. Écrire à Elena pour ajouter un fonds à la liste (c'est rapide).</span>
 				</td>
