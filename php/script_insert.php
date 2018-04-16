@@ -252,15 +252,18 @@ echo "	</select>
 						<span class='suggest'>La datation établie par le chercheur. 
 						<br/>Valeurs accept&#233;s : 'YYYY-MM-DD', 'YYYY-MM', 'YYYY'. Si le champ devient rouge, ça va pas !
 						<br/>Dans le cas où le document a le jour et le mois, mais pas l'année, indiquer '????-MM-DD'. Ex. '????-04-27'.
-						<br/>Dans le cas d'une fourchette, indiquer la première date, espace, tiret moyen (ou demi-cadratin), espace, la deuxième date; suivre les indication dessus pour chaque date. Exemple '1945-06-14 – 1950-09-21', '1956 – 1972'.</span>
+						<br/>Dans le cas d'une fourchette, indiquer la première date, espace, tiret moyen (ou demi-cadratin), espace, la deuxième date; suivre les indication dessus pour chaque date. Exemple '1945-06-14 – 1950-09-21', '1956 – 1972'.
+						<br/>Quand une date n’est pas entièrement indiquée et que nous devons la compléter pas une datation, procéder comme dans la fiche 580, « Missy 10 octobre 26 », n° 580.</span>
   					
   					</td>
 				
 					<td colspan='2'>
 						<textarea rows='5' cols='50' name='datationcomment'></textarea> 
 					
-						<span class='suggest'>Autres information sur la datation, par exemple datations divergentes.
-						<br/>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochets avec le mot Biblio (ex. 'Maggetti [Biblio 451] date le document au 1956, Jaquier [Biblio 367] au 1948' ).</span>
+						<span class='suggest'><b>Autres information sur la date e la datation</b>, par exemple datations divergentes ou dates des notes de journal mises au net.
+						<br/>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochets avec le mot Biblio (ex. 'Maggetti [Biblio 451] date le document au 1956, Jaquier [Biblio 367] au 1948' ).
+						<br/>Quand le document reprend une note de journal préexistante (mise au net du journal), on ne peut dater clairement le document. Mettre donc comme datation « après » la première date inscrite sur le support. Et ajouter dans le commentaire de la datation « Notes allant de xxxx-xx-xx à xxxx-xx-xx ». Voir p. ex. la fiche « Lussery », n° 136.
+						</span>
   					
   					</td>
 				</tr>   
