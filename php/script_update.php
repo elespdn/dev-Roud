@@ -383,7 +383,7 @@ echo "	</select>
   					</td>
 				
 					<td colspan='2'>
-						<textarea rows='5' cols='50' name='datationcomment'></textarea> 
+						<textarea rows='5' cols='50' name='datationcomment'>". $datationcomment_record_id ."</textarea> 
 					
 						<span class='suggest'><b>Autres information sur la date e la datation</b>, par exemple datations divergentes ou dates des notes de journal mises au net.
 						<br/>S'il y a des références bibliographique, spécifier l'<a href='biblio.php' target='_blank'>identifiant</a> entre crochets avec le mot Biblio (ex. 'Maggetti [Biblio 451] date le document au 1956, Jaquier [Biblio 367] au 1948' ).
