@@ -72,7 +72,7 @@ if ($fiche = mysqli_query($con, $visualize)) {
 
 		<tr><td>Étape</td><td>";
 		echo $row['statut'];
-		echo "</td></tr><tr><td>Version publiée</td><td>";
+		echo "</td></tr><tr><td>Référence bibliographique</td><td>";
 		
 		if ($row['biblioid'] != '') {	
 			if ($row['creator'] != '') {

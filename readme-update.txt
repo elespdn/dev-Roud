@@ -58,7 +58,7 @@ COLUMN NUMBER in visualization search.php (doesn't correspond to fiche_texte)
 	13	date
 	14	datation
 	15	etape
-	16	version publiée
+	16	Référence bibliographique
 	17	commentaire
 	18	deja numerise
 	19	deja retranscrit

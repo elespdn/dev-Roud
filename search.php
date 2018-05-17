@@ -90,7 +90,7 @@ if ($query = mysqli_query($con, $visualizeall)) {
 						<th>Date</th>
 						<th>Datation</th>
 						<th>Étape</th>
-						<th>Version publiée</th>
+						<th>Référence bibliographique</th>
 						<th>Commentaire</th>
 						<th>Déjà numérisé</th>
 						<th>Auteur traduit</th>
@@ -252,7 +252,7 @@ mysqli_close($con);
 					<input type="checkbox" id="check_date" name="check_date" checked> Date</input>
 					<input type="checkbox" id="check_datation" name="check_datation" checked> Datation</input>
 					<input type="checkbox" id="check_etape" name="check_etape" checked> Étape</input>
-					<input type="checkbox" id="check_publie" name="check_publie" checked> Version publiée</input>
+					<input type="checkbox" id="check_publie" name="check_publie" checked> Référence bibliographique</input>
 					<input type="checkbox" id="check_comm" name="check_comm"> Commentaire</input>
 					<br/><br/>
 					<input type="checkbox" id="check_alreadydigitized" name="check_alreadydigitized"> Déjà numérisé</input>

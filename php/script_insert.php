@@ -289,7 +289,7 @@ echo "	</select></td>
 				</tr>
 
 				<tr>
-					<td><legend>Version publiée </legend></td> 
+					<td><legend>Référence bibliographique </legend></td> 
 					
 					<td><p class='suggest'>Insérer le numéro de l'<a href='biblio.php' target='_blank'>entrée bibliographique</a>.</p> 
 						<textarea rows='1' cols='10' name='biblio'></textarea> 
