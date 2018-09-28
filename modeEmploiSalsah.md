@@ -88,6 +88,8 @@ ex : fiche\_CRLR GR MS 1 I/8c \_\_\_ Canzone di Togliatti
 
 ex : fiche\_CRLR GR MS 6 B1 /1a \_\_\_ \[…wohl versteh ich die Frage…\]
 
+ex : fiche\_Bibliothèque Roud \_\_\_ Note de lecture Cesare Pavese: "La Luna e i falò"
+
 ### Auteur, traducteur, éditeur, collaborateur
 
 aut\_*Auteur*
