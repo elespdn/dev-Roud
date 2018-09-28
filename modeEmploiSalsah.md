@@ -2,8 +2,6 @@
 
 
 
-<hr>
-
 ## Table des matières
 
 - [Premiers pas et configurations générales](#premiers)
@@ -19,7 +17,10 @@
 - [Distinction entre auteur et personne](#distinction)
 - [Problèmes](#problemes)
 
-<hr>
+
+
+
+
 
 
 
@@ -42,7 +43,7 @@ champ texte à côté (*toujours limiter la recherche à une base*) ;
 
 **plus**, ouvre la fenêtre pour insérer des données.
 
-<hr>
+
 
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="recherche-simple">Recherche simple</a>
@@ -61,7 +62,7 @@ majuscules ne comptent pas)**. On a 15 résultats, parmi lesquels des
 documents d’archives, des livres, des sections de livre, des articles et
 la personne Maurice Chappaz.
 
-<hr>
+
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="label">Label (étiquette)
 ==============================
@@ -187,7 +188,7 @@ ex : lieu\_Clos des Abbayes
 
 ### Œuvre (littéraire, musique, art)
 
-<hr>
+
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="symboles">Symboles logiques utilisés dans les requêtes</a>
 ============================================
@@ -261,7 +262,7 @@ résultat parce que la valeur de la propriété Collaborateurs n’est jamais
 seulement ‘Chappaz’ ; en choisissant **≠** Chappaz, on obtient donc 43
 résultats.
 
-<hr>
+
 
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="recherche-avancee">Recherche avancée</a>
@@ -328,7 +329,7 @@ obtiendra 27 résultats.
 La quatrième colonne des résultats donnera la cote, car on a spécifié
 cette propriété dans la requête.
 
-<hr>
+
 
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="lire">Lire, modifier et effacer une ressource et ses liens</a>
@@ -383,7 +384,7 @@ rouge et blanche à côté de la valeur même.
 Dans les deux cas, un message de confirmation s’affiche avant de
 procéder à éliminer la ressource.
 
-<hr>
+
 
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="conditions">Spécifier plusieurs conditions sur des propriétés</a>
@@ -414,7 +415,7 @@ Modifier le champ de propriété : Ensemble éditorial **=** ‘Propos’ ;
 
 lancer la recherche, on obtiendra 19 résultats.
 
-<hr>
+
 
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="publication">Classe abstraite Publication</a>
@@ -442,7 +443,7 @@ champ de propriété : Date **&lt;** ‘1920’ ;
 
 lancer la recherche, on obtiendra 3 résultats.
 
-<hr>
+
 
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="dates">Dates dans les manuscrits</a>
@@ -477,7 +478,7 @@ on voit que tous les manuscrits qui ont une date ou datation avant
 (&lt;) 1920 sont au nombre de 35. Tous les manuscrits qui ont une date
 ou une datation avant ou égal à (≤) 1920 sont au nombre de 48.
 
-<hr>
+
 
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="liens">Liens et références bibliographiques dans le texte</a>
@@ -507,7 +508,6 @@ où les liens ont été créés à partir des \[Biblio *num*\] dans les fiches
 (avec le symbole ∃ on pourra rechercher tous les documents d’archives
 qui ont des commentaires…).
 
-<hr>
 
 
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="distinction">Distinction entre auteur et personne</a>
