@@ -82,11 +82,11 @@ par un espace ;
 
 ### Document d'archive
 
-fiche\_*Cote* \_\_\_ *Titre*
+fiche\_*Fonds Cote* \_\_\_ *Titre*
 
-ex : fiche\_MS 1 I/8c \_\_\_ Canzone di Togliatti
+ex : fiche\_CRLR GR MS 1 I/8c \_\_\_ Canzone di Togliatti
 
-ex : fiche\_MS 6 B1 /1a \_\_\_ \[…wohl versteh ich die Frage…\]
+ex : fiche\_CRLR GR MS 6 B1 /1a \_\_\_ \[…wohl versteh ich die Frage…\]
 
 ### Auteur, traducteur, éditeur, collaborateur
 
