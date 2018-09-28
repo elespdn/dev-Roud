@@ -192,6 +192,8 @@ ex : lieu\_Clos des Abbayes
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="symboles">Symboles logiques utilisés dans les requêtes</a>
 ============================================
 
+Pour les textes
+
 ### = est égal, identique
 ### ≠ est différent, inégal
 ### ∈ inclut (un ou plusieurs signes)
@@ -201,31 +203,17 @@ ex : lieu\_Clos des Abbayes
 
 Pour les dates
 
-=
-
-pour une date ou une période
-
-&gt;
-
-après une date
-
-≥
-
-après ou égal à une date
-
-&lt;
-
-avant une date
-
-≤
-
-avant ou égal à une date
+### = pour une date ou une période
+### &gt; après une date
+### ≥ après ou égal à une date
+### &lt; avant une date
+### ≤ avant ou égal à une date
 
 Pour les exemples suivants, ouvrir la recherche avancée (loupe avec
 plus, en haut)
 
-Exemple 1 : tous les livres qui ont des collaborateurs (éditeurs,
-traducteurs, etc., en plus de l’auteur).
+**Exemple 1 : tous les livres qui ont des collaborateurs (éditeurs,
+traducteurs, etc., en plus de l’auteur).**
 
 Sélectionner le vocabulaire : Œuvres complètes de Gustave Roud ;
 
@@ -235,8 +223,8 @@ le champ de propriété : Collaborateurs ;
 
 choisir ∃, on obtient 43 résultats.
 
-Exemple 2 : tous les livres qui ont des collaborateurs parmi lesquels
-figure Chappaz.
+**Exemple 2 : tous les livres qui ont des collaborateurs parmi lesquels
+figure Chappaz.**
 
 Sélectionner le vocabulaire : Œuvres complètes de Gustave Roud ;
 
@@ -247,8 +235,8 @@ le champ de propriété : Collaborateurs ;
 choisir ⊂** **et écrire chappaz ou Chappaz (les majuscules ne comptent
 pas), on obtient 1 résultat.
 
-Exemple 3 : tous les livres qui ont des collaborateurs parmi lesquels ne
-figure pas Chappaz.
+**Exemple 3 : tous les livres qui ont des collaborateurs parmi lesquels ne
+figure pas Chappaz.**
 
 Sélectionner le vocabulaire : Œuvres complètes de Gustave Roud ;
 
@@ -287,12 +275,12 @@ Dans l’affichage des résultats, après le colonnes *info*, *type* et
 *label*, il y aura une colonne pour chaque propriété spécifiée dans la
 requête (si des propriétés ont été spécifiées).
 
-Exemple 1 : toutes les personnes.
+**Exemple 1 : toutes les personnes.**
 
 Après avoir sélectionné le vocabulaire, choisir le type de ressource :
 Personne. Lancer la recherche, on obtiendra 91 résultats.
 
-Exemple 2 : tous les article publiés dans une revue.
+**Exemple 2 : tous les article publiés dans une revue.**
 
 Après avoir sélectionné le vocabulaire, choisir le type de ressource :
 Article de périodique.
@@ -308,7 +296,7 @@ femme’.
 
 Lancer la recherche, on obtiendra 11 résultats.
 
-Exemple 3 : un document par sa cote.
+**Exemple 3 : un document par sa cote.**
 
 Après avoir sélectionné le vocabulaire, choisir le type de ressource :
 Document d’archive. Dans le champ de propriété, choisir Cote du
@@ -319,7 +307,7 @@ recherche, on obtiendra 1 résultat.
 La quatrième colonne des résultats donnera la cote, car on a spécifié
 cette propriété dans la requête.
 
-Exemple 4 : les documents dont la cote commencent par ‘MS 2 C’.
+**Exemple 4 : les documents dont la cote commencent par ‘MS 2 C’.**
 
 Après avoir sélectionné le vocabulaire, choisir le type de ressource :
 Document d’archive. Dans le champ de propriété, choisir Cote du
@@ -396,8 +384,8 @@ On peut ajouter des conditions sur plusieurs propriétés (icône plus sous
 résultats doivent satisfaire aux deux conditions (AND), et non pas l’une
 ou l’autre (OR).
 
-Exemple 5 : les documents du fonds Gustave Roud du CRLR dont la cote
-commence par MS 2 C et qui font partie de l’œuvre poétique.
+**Exemple 1 : les documents du fonds Gustave Roud du CRLR dont la cote
+commence par MS 2 C et qui font partie de l’œuvre poétique.**
 
 Type de ressource : Document d’archive ;
 
@@ -434,7 +422,7 @@ lorsqu’on insère des données. Par contre, elle peuvent être utiles lors
 d’une requête (même si les propriétés sont limitées aux propriétés en
 commun des sous-classes).
 
-Exemple 6 : les publications de Roud antérieures à une certaine date.
+**Exemple 1 : les publications de Roud antérieures à une certaine date.**
 
 Type de ressource : Publication (abstraite) ;
 
