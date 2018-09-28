@@ -454,27 +454,27 @@ datation a une version ‘lisible’ et une version ‘formalisée’, qui perme
 
 Les dates et datations lisibles sont ce qu’on voudrait voir dans le
 site, pendant que les dates et datations formalisées servent à la
-machine. **Les recherches doivent se faire sur les dates et les
-datations formalisées**.
+machine. Les recherches doivent se faire sur les dates et les
+datations formalisées.
 
 Pour faire des recherches sur des dates et des datations en même temps
 (par exemple, tous les manuscrits avant 1920, qui ont une date ou une
 datation avant 1920), on a deux possibilités :
 
-- faire deux recherches séparées (et non pas ajouter plusieurs
-conditions sur les propriétés)
+- faire **deux recherches séparées (et non pas ajouter plusieurs
+conditions sur les propriétés)**
 
-- faire une seule recherche en utilisant une propriété abstraite qui
-regroupe les deux. Pour ce faire, ouvrir une fenêtre pour la recherche
+- faire **une seule recherche en utilisant une propriété abstraite qui
+regroupe les deux**. Pour ce faire, ouvrir une fenêtre pour la recherche
 avancée, ne pas sélectionner de type (ou classe) et sélectionner la
-propriété, vers la fin de la liste : ‘(Propriété abstraite, seulement
-pour les requêtes) Date ou datation formalisées du document’. Spécifier
+propriété, vers la fin de la liste : **‘(Propriété abstraite, seulement
+pour les requêtes) Date ou datation formalisées du document’**. Spécifier
 les valeurs requises et lancer la recherche.
 
 **Exemple : en utilisant la propriété abstraite ‘(Propriété abstraite,
-seulement pour les requêtes) Date ou datation formalisées du document’,
+seulement pour les requêtes) Date ou datation formalisées du document’**,
 on voit que tous les manuscrits qui ont une date ou datation avant
-(&lt;) 1920** sont au nombre de 35. Tous les manuscrits qui ont une date
+(&lt;) 1920 sont au nombre de 35. Tous les manuscrits qui ont une date
 ou une datation avant ou égal à (≤) 1920 sont au nombre de 48.
 
 <hr>
