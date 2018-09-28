@@ -192,23 +192,33 @@ ex : lieu\_Clos des Abbayes
 <a style="color:lightgrey" href="#top">&#11025;</a> <a name="symboles">Symboles logiques utilisés dans les requêtes</a>
 ============================================
 
-Pour les textes
+### Pour les textes
 
-### = est égal, identique
-### ≠ est différent, inégal
-### ∈ inclut (un ou plusieurs signes)
-### ⊂ inclut (tous les signes)
-### ⊄ n’inclut pas
-### ∃ existe, est différent de vide ou de zéro
+= est égal, identique
 
-Pour les dates
+≠ est différent, inégal
 
-### = pour une date ou une période
-### &gt; après une date
-### ≥ après ou égal à une date
-### &lt; avant une date
-### ≤ avant ou égal à une date
+∈ inclut (un ou plusieurs signes)
 
+⊂ inclut (tous les signes)
+
+⊄ n’inclut pas
+
+∃ existe, est différent de vide ou de zéro
+
+### Pour les dates
+
+= pour une date ou une période
+
+&gt; après une date
+
+≥ après ou égal à une date
+
+&lt; avant une date
+
+≤ avant ou égal à une date
+
+### Exemples
 Pour les exemples suivants, ouvrir la recherche avancée (loupe avec
 plus, en haut)
 
@@ -232,7 +242,7 @@ le type de ressource : Livre ;
 
 le champ de propriété : Collaborateurs ;
 
-choisir ⊂** **et écrire chappaz ou Chappaz (les majuscules ne comptent
+choisir **⊂** et écrire chappaz ou Chappaz (les majuscules ne comptent
 pas), on obtient 1 résultat.
 
 **Exemple 3 : tous les livres qui ont des collaborateurs parmi lesquels ne
@@ -244,7 +254,7 @@ le type de ressource : Livre ;
 
 le champ de propriété : Collaborateurs ;
 
-choisir ⊄ et écrire chappaz ou Chappaz, on obtient 42 résultats.
+choisir **⊄** et écrire chappaz ou Chappaz, on obtient 42 résultats.
 
 **Noter** que en choisissant le symbole ‘**=**’ Chappaz, on n’a aucun
 résultat parce que la valeur de la propriété Collaborateurs n’est jamais
