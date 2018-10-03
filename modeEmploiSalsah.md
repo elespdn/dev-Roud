@@ -491,24 +491,31 @@ notices ou les commentaires. Ici, on peut insérer des liens vers
 d’autres ressources : des personnes, des entrées bibliographiques, des
 lieux, des œuvres, etc.
 
-Pour ce faire, cliquer sur le petit crayon pour [modifier](#lire) la
-valeur dans laquelle on veut insérer un lien, sélectionner la portion de
+Pour ce faire (si la ressource existe déjà cliquer sur le petit crayon pour [modifier](#lire) la
+valeur dans laquelle on veut insérer un lien), **sélectionner la portion de
 texte qui portera le lien, ouvrir dans une autre fenêtre la ressource
-vers laquelle le lien se dirige, drag and drop le point d’interrogation
+vers laquelle le lien se dirige, drag and drop le point d’interrogation**
 (en haut de la fenêtre de la ressource target) sur la portion de texte
-sélectionné. Sauvegarder, avant de fermer la fenêtre !
+sélectionné. 
 
-Pour toute référence bibliographique, le lien se tient sur une portion
+Pour toute **référence bibliographique**, le lien se tient sur une portion
 de texte composée de la façon suivante : auteur, titre, année. S’il
 s’agit d’un article en revue ou d’un chapitre d’un ouvrage, le titre de
-l’article ou du chapitre suffira. Le lien permettra d’afficher la
+l’article ou du chapitre suffira. Les titres des livres vont en italique. Le lien permettra d’afficher la
 ressource complète en passant la souris dessus ou en ouvrant la page de
 la bibliographie.
+**Exemple :  Roud, « Hölderlin », 1945.
+Exemple :  Trakl, *Vingt-quatre poèmes*, 1990.**
 
-Pour des exemples, voir dans les commentaires des documents d’archives,
+Pour d'autres exemples, voir dans les commentaires des documents d’archives,
 où les liens ont été créés à partir des \[Biblio *num*\] dans les fiches
 (avec le symbole ∃ on pourra rechercher tous les documents d’archives
 qui ont des commentaires…).
+
+Dans le cas d'un lien vers une fiche, le lien se tient sur une portion de texte composée de la façon suivante : fonds cote.
+**Exemple : CRLR GR MS 1 A/1a**. Pour créer le lien, voir les indications ci-dessus en gras.
+
+
 
 
 
