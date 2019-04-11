@@ -31,14 +31,26 @@ $(document).ready( function () {
 
 <div style="padding: 20px">
 	<h1>ROUD-TRACER</h1>
-	<p>Reprises et intertextualité dans les textes de Gustave Roud identifiées par le logiciel <a href="https://www.etrap.eu/research/tracer/" target="_blank">TRACER</a>.</p>
-	<p>Dans les deux premières colonnes apparaissent les titres des œuvres dans lesquelles la reprise se trouve. La troisième et quatrième colonne contient des numéros qui indiquent la quantité de texte réutilisé. Les deux dernières colonnes contiennent les textes.</p>
-	<p>Ordonner les colonnes à l'aide des petites flèches en haut et trier en utilisant la boite 'search' à droite. Par défaut, le contenu est ordonné selon le contenu de la colonne Percentage, du plus grande au plus petit.</p>
-	<p>Attention! Les résultats dépendent aussi du corpus traité, qui dans ce cas comprend les titres, notes de bas de page et autres éléments qui créent du bruit. L'analyse par le logiciel se fait à partir du corpus segmenté, à l'aide de la machine, en phrases : ces sont les phrases qui apparaissent, quand il y a une reprise, dans les deux dernières colonnes.</p>
-	<p>Le tableau entier peut être téléchargé <a href="tracer_201904_1.csv">ici</a>. Ouvrir dans Excel et sauvegarder comme .xsls.</p>
-</p>
-
-	
+	<table>
+		<tr>
+			<td>
+				<div style="margin-right: 80px; text-align: justify; display: block;">
+					<h3>Quoi</h3>
+					<p>Reprises et intertextualité dans les textes de Gustave Roud identifiées par le logiciel <a href="https://www.etrap.eu/research/tracer/" target="_blank">TRACER</a>.</p>
+					<p>Attention! Les résultats dépendent aussi du corpus traité, qui dans ce cas comprend les titres, notes de bas de page et autres éléments qui créent du bruit. L'analyse par le logiciel se fait à partir du corpus segmenté, à l'aide de la machine, en phrases : ces sont les phrases qui apparaissent, quand il y a une reprise, dans les deux dernières colonnes.</p>
+					<p>Pour chercher les correspondances dans les textes, le fichier 'Tout Roud' peut être téléchargé <a href="00_ToutRoud.pdf">ici</a> (c'est le même que dans Scanlett).</p>
+					<p>Le tableau entier peut être téléchargé <a href="tracer_201904_1.csv">ici</a>. Ouvrir dans Excel et sauvegarder comme .xsls.</p>
+				</div>
+			</td>
+			<td>
+				<div style="margin-left: 80px; text-align: justify; display: block;">
+					<h3>Comment</h3>
+					<p>Dans les deux premières colonnes apparaissent les titres des œuvres dans lesquelles la reprise se trouve. La troisième et quatrième colonne contient des numéros qui indiquent la quantité de texte réutilisé. Les deux colonnes suivants contiennent les textes. La dernière colonne a la valeur 'true' si la reprise est interne à un texte et 'false' si la reprise regarde deux textes.</p>
+					<p>Ordonner les colonnes à l'aide des petites flèches en haut et trier en utilisant la boite 'search' à droite. Par défaut, le contenu est ordonné selon le contenu de la colonne Percentage, du plus grande au plus petit, donc des reprises verbatim au reprises pas identiques.</p>
+				</div>
+			</td>
+		</tr>
+	</table>	
 </div>
 
 
